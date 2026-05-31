@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>사이트 소개 | 베이비페어 일정 — 전국 베이비페어·유아교육전 통합 정보</title>
+<meta name="description" content="베이비페어 일정은 전국 베이비페어·유아박람회·유아교육전 일정을 한눈에 모아볼 수 있는 임산부·육아 부모를 위한 정보 사이트입니다.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.babyfairschedule.co.kr/about.html">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-69QTMS4KBS"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-69QTMS4KBS');</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--white:#fff;--bg:#f7f8fa;--border:#e8eaed;--ink:#111827;--ink2:#4b5563;--ink3:#9ca3af;--primary:#ff6b6b;--primary-soft:#fff1f1;--green:#10b981;--green-soft:#ecfdf5;--blue:#3b82f6;--blue-soft:#eff6ff;--radius:12px;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans KR',sans-serif;font-size:15px;line-height:1.8;-webkit-font-smoothing:antialiased;}
+header{background:var(--white);border-bottom:1px solid var(--border);height:56px;position:sticky;top:0;z-index:200;}
+.h-in{max-width:1100px;margin:0 auto;padding:0 24px;height:100%;display:flex;align-items:center;gap:24px;}
+.logo{display:flex;align-items:center;gap:8px;font-size:16px;font-weight:700;color:var(--ink);text-decoration:none;}
+.logo-ic{width:28px;height:28px;border-radius:7px;background:var(--primary);display:flex;align-items:center;justify-content:center;font-size:15px;}
+nav{display:flex;gap:2px;}.nav-a{padding:6px 12px;border-radius:6px;font-size:13px;font-weight:500;color:var(--ink2);text-decoration:none;transition:.15s;}.nav-a:hover{color:var(--primary);}
+.h-cta{margin-left:auto;padding:7px 16px;border-radius:8px;background:var(--primary);color:white;font-size:13px;font-weight:600;text-decoration:none;}.h-cta:hover{background:#e55f5f;}
+.breadcrumb{max-width:780px;margin:0 auto;padding:14px 24px 0;font-size:12px;color:var(--ink3);}.breadcrumb a{color:var(--ink3);text-decoration:none;}.breadcrumb span{margin:0 6px;}
+.wrap{max-width:780px;margin:0 auto;padding:32px 24px 80px;}
+
+.page-header{background:linear-gradient(135deg,#fff1f1,#ffe4e4);border-radius:var(--radius);padding:36px;margin-bottom:24px;text-align:center;}
+.page-header h1{font-family:'Noto Serif KR',serif;font-size:28px;font-weight:700;margin-bottom:10px;}
+.page-header p{color:var(--ink2);font-size:14px;}
+
+.section{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:32px;margin-bottom:16px;}
+.section h2{font-family:'Noto Serif KR',serif;font-size:20px;font-weight:700;color:var(--ink);margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid var(--primary-soft);}
+.section h3{font-size:16px;font-weight:700;color:var(--ink);margin:20px 0 10px;}
+.section p{color:var(--ink2);line-height:1.85;margin-bottom:12px;font-size:14px;}
+.section ul{padding-left:20px;color:var(--ink2);font-size:14px;}.section ul li{margin-bottom:8px;line-height:1.75;}
+.section strong{color:var(--ink);}
+
+/* 미션 카드 */
+.mission-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0;}
+.mission-card{background:var(--bg);border-radius:10px;padding:20px;border:1px solid var(--border);}
+.mc-icon{font-size:28px;margin-bottom:10px;}
+.mc-title{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px;}
+.mc-desc{font-size:13px;color:var(--ink2);line-height:1.65;}
+
+/* 운영자 카드 */
+.owner-card{background:var(--bg);border-radius:10px;padding:20px;border:1px solid var(--border);display:flex;gap:20px;align-items:flex-start;margin:16px 0;}
+.owner-avatar{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--primary-soft),#ffe4e4);display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0;}
+.owner-info{flex:1;}
+.owner-name{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:4px;}
+.owner-role{font-size:12px;color:var(--ink3);margin-bottom:8px;}
+.owner-desc{font-size:13px;color:var(--ink2);line-height:1.7;}
+
+/* 연락처 */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0;}
+.contact-item{background:var(--bg);border-radius:8px;padding:14px;border:1px solid var(--border);}
+.contact-icon{font-size:20px;margin-bottom:6px;}
+.contact-label{font-size:11px;font-weight:700;color:var(--ink3);margin-bottom:3px;}
+.contact-val{font-size:13px;color:var(--ink);font-weight:600;}
+
+/* 업데이트 기준 */
+.update-box{background:var(--blue-soft);border:1px solid #bfdbfe;border-radius:10px;padding:16px 18px;margin:16px 0;font-size:14px;color:#1e40af;line-height:1.75;}
+.disclaimer-box{background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:16px 18px;margin:16px 0;font-size:13px;color:#991b1b;line-height:1.75;}
+
+footer{background:#111827;color:rgba(255,255,255,.4);padding:32px 24px;text-align:center;}
+.f-links{display:flex;gap:16px;justify-content:center;margin:10px 0;flex-wrap:wrap;}.f-links a{color:rgba(255,255,255,.4);text-decoration:none;font-size:12px;}.f-links a:hover{color:rgba(255,255,255,.8);}
+
+@media(max-width:600px){
+  .mission-grid,.contact-grid{grid-template-columns:1fr;}
+  .owner-card{flex-direction:column;}
+  .wrap,.section{padding:18px;}
+  header nav{display:none;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="h-in">
+    <a class="logo" href="index.html"><div class="logo-ic">🍼</div>베이비페어 일정</a>
+    <nav>
+      <a class="nav-a" href="index.html">전체 일정</a>
+      <a class="nav-a" href="blog.html">육아 꿀팁</a>
+      <a class="nav-a" href="night-care.html" style="color:#a5b4fc;">🌙 야간진료</a>
+      <a class="nav-a" href="about.html">소개</a>
+    </nav>
+    <a class="h-cta" href="index.html">일정 보기 →</a>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <a href="index.html">홈</a><span>›</span>사이트 소개
+</div>
+
+<div class="wrap">
+
+  <div class="page-header">
+    <h1>🍼 베이비페어 일정 소개</h1>
+    <p>전국 베이비페어·유아박람회·유아교육전 일정을 한눈에 모아드리는<br>임산부·육아 부모를 위한 정보 사이트예요</p>
+  </div>
+
+  <!-- 사이트 소개 -->
+  <div class="section">
+    <h2>이 사이트는 무엇인가요?</h2>
+    <p><strong>베이비페어 일정(babyfairschedule.co.kr)</strong>은 전국에서 열리는 베이비페어·유아박람회·유아교육전의 일정 정보를 한곳에서 확인할 수 있도록 만든 임산부·육아 부모를 위한 정보 사이트예요.</p>
+    <p>코베(COBE)·베페(BEPE)·맘스홀릭·베베페어·SETEC 유아교육전 등 여러 주최사의 박람회 일정을 직접 수집·정리하여 제공하고 있어요. 흩어져 있는 정보를 한번에 확인하고, 사전등록 혜택과 박람회 꿀팁까지 안내해드려요.</p>
+
+    <div class="mission-grid">
+      <div class="mission-card">
+        <div class="mc-icon">📅</div>
+        <div class="mc-title">정확한 일정 정보</div>
+        <div class="mc-desc">각 박람회 공식 홈페이지에서 직접 확인한 최신 일정을 제공해요. 변경 사항도 빠르게 반영하고 있어요.</div>
+      </div>
+      <div class="mc-card">
+        <div class="mc-icon">🔍</div>
+        <div class="mc-title">한눈에 비교</div>
+        <div class="mc-desc">지역별·월별·브랜드별 필터로 내 주변 베이비페어를 빠르게 찾을 수 있어요.</div>
+      </div>
+      <div class="mission-card">
+        <div class="mc-icon">💡</div>
+        <div class="mc-title">유용한 육아 정보</div>
+        <div class="mc-desc">베이비페어 활용법부터 임산부 혜택, 영유아 검진, 신생아 육아 꿀팁까지 실용 정보를 제공해요.</div>
+      </div>
+      <div class="mission-card">
+        <div class="mc-icon">💝</div>
+        <div class="mc-title">부모를 위한 사이트</div>
+        <div class="mc-desc">임신·출산·육아를 준비하는 모든 분들이 필요한 정보를 쉽게 찾을 수 있도록 만들었어요.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 운영자 소개 -->
+  <div class="section">
+    <h2>운영자 소개</h2>
+<ins class="adsbygoogle" style="display:block;margin:28px 0;" data-ad-client="ca-pub-2284090720087182" data-ad-slot="8862749299" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+
+    <div class="owner-card">
+      <div class="owner-avatar">🍼</div>
+      <div class="owner-info">
+        <div class="owner-name">베이비페어 일정 운영팀</div>
+        <div class="owner-role">콘텐츠 운영 · 정보 수집 및 업데이트</div>
+        <div class="owner-desc">
+          저희는 임산부·육아 부모님들이 정보를 찾는 데 드는 시간을 줄여드리고 싶어서 이 사이트를 만들었어요. 각 박람회 공식 홈페이지를 직접 확인하고, 일정 변경 사항이 생기면 빠르게 업데이트하고 있어요.<br><br>
+          베이비페어 일정표뿐 아니라 임산부 혜택 정보, 영유아 검진 가이드, 신생아 육아 정보까지 실제로 도움이 되는 콘텐츠를 꾸준히 추가하고 있어요. 궁금한 점이나 제안이 있으시면 언제든지 연락 주세요 😊
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 정보 제공 기준 -->
+  <div class="section">
+    <h2>정보 제공 기준</h2>
+
+    <h3>📅 일정 정보 출처</h3>
+    <ul>
+      <li>각 베이비페어·유아교육전 <strong>공식 홈페이지</strong>에서 직접 확인</li>
+      <li>코베(cobe.co.kr), 베베페어(bebefair.co.kr), 베페(befe.co.kr), 맘스홀릭, SETEC 등</li>
+      <li>일정 변경 사항은 최대한 빠르게 반영하고 있으나, <strong>최종 확인은 각 공식 홈페이지</strong>에서 해주세요</li>
+    </ul>
+
+    <h3>📝 블로그 콘텐츠 출처</h3>
+    <ul>
+      <li>질병관리청, 국민건강보험공단, 보건복지부 등 <strong>공식 기관 자료</strong> 기반</li>
+      <li>각 지자체 공식 홈페이지에서 확인한 <strong>최신 임산부·출산 혜택 정보</strong></li>
+      <li>의료·건강 관련 정보는 참고용이며, <strong>정확한 진단·치료는 반드시 의사와 상담</strong>하세요</li>
+    </ul>
+
+    <div class="update-box">
+      🔄 <strong>업데이트 주기:</strong><br>
+      · 베이비페어 일정: 공식 사이트 변경 시 즉시 반영 (2주에 1회 이상 확인)<br>
+      · 블로그 콘텐츠: 정책·혜택 변경 시 최신 정보로 업데이트<br>
+      · 임산부 혜택 정보: 연 1회 이상 전체 검토
+    </div>
+
+    <div class="disclaimer-box">
+      ⚠️ <strong>면책 조항:</strong><br>
+      본 사이트에서 제공하는 일정 정보는 각 공식 홈페이지 기준으로 수집되었으나, 박람회 일정·장소·입장료는 주최사 사정에 따라 예고 없이 변경될 수 있어요. 방문 전 반드시 해당 박람회 공식 홈페이지에서 최종 확인해주세요. 본 사이트는 박람회 주최사와 무관한 독립 정보 제공 사이트예요.
+    </div>
+  </div>
+
+  <!-- 연락처 -->
+  <div class="section">
+    <h2>연락처 및 문의</h2>
+    <p>사이트 관련 문의, 일정 오류 제보, 광고·제휴 문의는 아래로 연락해주세요.</p>
+
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="contact-icon">✉️</div>
+        <div class="contact-label">이메일 문의</div>
+        <div class="contact-val">kyukyurin123@gmail.com</div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📢</div>
+        <div class="contact-label">광고·제휴 문의</div>
+        <div class="contact-val">kyukyurin123@gmail.com</div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🐛</div>
+        <div class="contact-label">오류·정보 수정 제보</div>
+        <div class="contact-val">이메일로 제보해주세요</div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">⏱️</div>
+        <div class="contact-label">답변 소요 시간</div>
+        <div class="contact-val">평일 기준 1~3일 이내</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 관련 링크 -->
+  <div class="section">
+    <h2>관련 페이지</h2>
+    <ul>
+      <li><a href="index.html" style="color:var(--primary);">📅 전국 베이비페어 일정 보기</a></li>
+      <li><a href="blog.html" style="color:var(--primary);">📝 육아 꿀팁 블로그</a></li>
+      <li><a href="legal.html" style="color:var(--primary);">📋 이용약관 및 개인정보처리방침</a></li>
+      <li><a href="privacy.html" style="color:var(--primary);">🔒 개인정보처리방침</a></li>
+    </ul>
+  </div>
+
+</div>
+
+
+<ins class="adsbygoogle" style="display:block;margin:28px 0;" data-ad-client="ca-pub-2284090720087182" data-ad-slot="8862749299" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+<footer>
+  <p style="font-size:12px;line-height:1.8;">🍼 베이비페어 일정 · 전국 베이비페어·육아박람회·유아교육전 통합 정보</p>
+  <div class="f-links">
+    <a href="index.html">메인으로</a>
+    <a href="blog.html">육아 꿀팁</a>
+    <a href="about.html">사이트 소개</a>
+    <a href="privacy.html">개인정보처리방침</a>
+    <a href="legal.html">이용약관</a>
+  </div>
+  <p style="font-size:12px;">© 2026 베이비페어 일정 All rights reserved.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>아이달력 — 육아지원금 D-day 알리미</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#FFF8F5;--surface:#FFFCFA;--border:#F2D8DA;
+  --primary:#E8707A;--primary-dk:#C94F5A;--primary-lt:#FADADD;
+  --accent:#FFCBA4;--accent-lt:#FFF0E6;
+  --text:#3D2226;--text-mid:#7A4E54;--text-soft:#B08A8E;
+  --chip:#F7B8BF;--success:#6DBF8A;--success-lt:#E4F7EC;
+  --warn:#F0A500;--warn-lt:#FFF5DC;--danger:#E05555;--danger-lt:#FDEAEA;
+  --done:#F5F0F0;--hdr:rgba(255,248,245,0.9);--shadow:rgba(196,139,150,0.15);
+}
+[data-theme="mint"]{
+  --bg:#F4FBF8;--surface:#FAFEFB;--border:#C8E9DA;
+  --primary:#2BAE7E;--primary-dk:#1D8A62;--primary-lt:#B8EDD9;
+  --accent:#A8D8C8;--accent-lt:#E8F7F2;
+  --text:#1A3028;--text-mid:#3D6B58;--text-soft:#7AAD98;
+  --chip:#9EDFC6;--success:#2BAE7E;--success-lt:#D4F5E8;
+  --warn:#E09A00;--warn-lt:#FFF3D0;--danger:#D94F4F;--danger-lt:#FDEAEA;
+  --done:#EDF5F1;--hdr:rgba(244,251,248,0.9);--shadow:rgba(43,174,126,0.12);
+}
+[data-theme="lavender"]{
+  --bg:#F7F5FC;--surface:#FDFCFF;--border:#DDD5F0;
+  --primary:#8B6FC8;--primary-dk:#6A50A8;--primary-lt:#DDD5F0;
+  --accent:#C4B4E8;--accent-lt:#F0ECFB;
+  --text:#251A3D;--text-mid:#5A4878;--text-soft:#9E8EC0;
+  --chip:#C8B8E8;--success:#6BAF8A;--success-lt:#E0F5EA;
+  --warn:#D48A00;--warn-lt:#FFF3D0;--danger:#D94F4F;--danger-lt:#FDEAEA;
+  --done:#F0EDF8;--hdr:rgba(247,245,252,0.9);--shadow:rgba(139,111,200,0.12);
+}
+[data-theme="dark"]{
+  --bg:#1C1118;--surface:#261820;--border:#3D2535;
+  --primary:#F06080;--primary-dk:#D04060;--primary-lt:#3D2030;
+  --accent:#C88060;--accent-lt:#302018;
+  --text:#F5E8EC;--text-mid:#C8A0B0;--text-soft:#8A6070;
+  --chip:#4A2838;--success:#5AB87A;--success-lt:#1A3028;
+  --warn:#D48A00;--warn-lt:#2A2010;--danger:#E06060;--danger-lt:#2A1818;
+  --done:#201520;--hdr:rgba(28,17,24,0.92);--shadow:rgba(0,0,0,0.4);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;transition:background .3s,color .3s;}
+
+/* HEADER */
+header{position:sticky;top:0;z-index:200;background:var(--hdr);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 18px;height:54px;display:flex;align-items:center;justify-content:space-between;transition:background .3s,border-color .3s;}
+.logo{display:flex;align-items:center;gap:8px;font-family:'Gowun Batang',serif;font-size:19px;color:var(--text);}
+.logo-icon{width:30px;height:30px;background:linear-gradient(135deg,var(--chip),var(--accent));border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:15px;transition:background .3s;}
+.logo em{color:var(--primary);font-style:normal;}
+.theme-switcher{display:flex;align-items:center;gap:5px;}
+.t-lbl{font-size:11px;color:var(--text-soft);margin-right:2px;}
+.t-btn{width:22px;height:22px;border-radius:50%;border:2.5px solid transparent;cursor:pointer;transition:transform .15s,border-color .15s;flex-shrink:0;}
+.t-btn:hover{transform:scale(1.15);}
+.t-btn.on{border-color:var(--text);}
+.t-pink{background:linear-gradient(135deg,#F7B8BF,#FFCBA4);}
+.t-mint{background:linear-gradient(135deg,#9EDFC6,#A8D8C8);}
+.t-purple{background:linear-gradient(135deg,#C8B8E8,#8B6FC8);}
+.t-dark{background:linear-gradient(135deg,#3D2535,#1C1118);}
+
+/* HERO */
+.hero{position:relative;padding:40px 22px 36px;text-align:center;overflow:hidden;}
+.blob{position:absolute;border-radius:50%;filter:blur(50px);pointer-events:none;opacity:.2;transition:background .3s;}
+.blob1{width:220px;height:220px;background:var(--chip);top:-60px;left:-60px;}
+.blob2{width:180px;height:180px;background:var(--accent);bottom:-40px;right:-40px;}
+.hero-badge{display:inline-flex;align-items:center;gap:5px;background:var(--primary-lt);color:var(--primary-dk);font-size:12px;font-weight:700;padding:5px 14px;border-radius:20px;margin-bottom:16px;transition:background .3s,color .3s;}
+.hero h1{font-family:'Gowun Batang',serif;font-size:28px;line-height:1.45;color:var(--text);margin-bottom:10px;letter-spacing:-.5px;position:relative;z-index:1;}
+.hero h1 mark{background:linear-gradient(180deg,transparent 55%,var(--primary-lt) 55%);color:var(--primary);padding:0 2px;}
+.hero-desc{font-size:13.5px;color:var(--text-soft);line-height:1.75;margin-bottom:28px;}
+
+/* INPUT CARD */
+.input-card{background:var(--surface);border:1.5px solid var(--border);border-radius:22px;padding:20px 18px;box-shadow:0 8px 32px var(--shadow);position:relative;z-index:2;transition:background .3s,border-color .3s;}
+.ic-title{font-size:12px;font-weight:700;color:var(--text-soft);letter-spacing:.6px;text-transform:uppercase;margin-bottom:12px;}
+.input-row{display:flex;align-items:center;gap:10px;background:var(--bg);border:1.5px solid var(--border);border-radius:14px;padding:10px 14px;margin-bottom:9px;transition:border-color .2s,background .3s;}
+.input-row:focus-within{border-color:var(--primary);}
+.input-row span{font-size:18px;flex-shrink:0;}
+.input-row input,.input-row select{flex:1;border:none;background:transparent;font-family:'Noto Sans KR',sans-serif;font-size:14px;color:var(--text);outline:none;min-width:0;transition:color .3s;}
+.input-row input[type="text"]{max-width:72px;text-align:right;color:var(--text-soft);}
+.input-row select{cursor:pointer;}
+.btn-calc{width:100%;background:linear-gradient(135deg,var(--primary),var(--primary-dk));color:#fff;border:none;border-radius:14px;padding:15px;font-family:'Noto Sans KR',sans-serif;font-size:15px;font-weight:700;cursor:pointer;margin-top:4px;letter-spacing:-.3px;transition:opacity .15s,transform .1s;box-shadow:0 4px 14px var(--shadow);}
+.btn-calc:hover{opacity:.9;}
+.btn-calc:active{transform:scale(.98);}
+
+/* MAIN */
+main{max-width:480px;margin:0 auto;padding:32px 16px 80px;position:relative;z-index:1;}
+
+/* SUMMARY */
+.sum-strip{display:none;gap:8px;margin-bottom:20px;}
+.sum-strip.on{display:flex;}
+.s-chip{flex:1;background:var(--surface);border:1.5px solid var(--border);border-radius:16px;padding:13px 10px;text-align:center;transition:background .3s,border-color .3s;}
+.s-chip .num{display:block;font-size:20px;font-weight:800;color:var(--primary);line-height:1;transition:color .3s;}
+.s-chip .lbl{display:block;font-size:11px;color:var(--text-soft);margin-top:3px;}
+
+/* FILTER TABS */
+.filter-tabs{display:none;gap:7px;overflow-x:auto;padding-bottom:2px;margin-bottom:16px;scrollbar-width:none;}
+.filter-tabs::-webkit-scrollbar{display:none;}
+.filter-tabs.on{display:flex;}
+.ftab{flex-shrink:0;padding:7px 15px;border-radius:20px;border:1.5px solid var(--border);background:var(--surface);font-family:'Noto Sans KR',sans-serif;font-size:12.5px;font-weight:500;color:var(--text-soft);cursor:pointer;transition:all .15s;white-space:nowrap;}
+.ftab.on{background:var(--primary);border-color:var(--primary);color:#fff;font-weight:700;}
+
+/* BENEFIT CARD */
+.benefit-list{display:flex;flex-direction:column;gap:10px;}
+.benefit-card{background:var(--surface);border:1.5px solid var(--border);border-radius:18px;padding:16px 16px 12px;cursor:pointer;transition:box-shadow .2s,transform .15s,background .3s,border-color .3s;animation:fadeUp .35s ease both;}
+.benefit-card:hover{box-shadow:0 6px 24px var(--shadow);transform:translateY(-2px);}
+.benefit-card.done{opacity:.5;background:var(--done);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+.card-top{display:flex;align-items:flex-start;gap:12px;margin-bottom:11px;}
+.card-emoji{width:42px;height:42px;border-radius:12px;background:var(--primary-lt);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;transition:background .3s;}
+.card-meta{flex:1;min-width:0;}
+.card-name{font-size:14px;font-weight:700;color:var(--text);margin-bottom:2px;line-height:1.3;transition:color .3s;}
+.card-amount{font-size:12.5px;color:var(--primary);font-weight:600;transition:color .3s;}
+.dday-pill{flex-shrink:0;font-size:12px;font-weight:700;padding:4px 11px;border-radius:20px;white-space:nowrap;}
+.pill-urgent{background:var(--danger-lt);color:var(--danger);}
+.pill-soon{background:var(--warn-lt);color:var(--warn);}
+.pill-ok{background:var(--success-lt);color:var(--success);}
+.pill-done{background:var(--done);color:var(--text-soft);}
+.card-bottom{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border);padding-top:10px;gap:8px;transition:border-color .3s;}
+.card-info-text{font-size:11.5px;color:var(--text-soft);line-height:1.5;flex:1;min-width:0;}
+.card-info-text strong{color:var(--text-mid);font-weight:600;}
+.card-actions{display:flex;gap:5px;flex-shrink:0;}
+.btn-done{background:var(--bg);border:1.5px solid var(--border);border-radius:9px;padding:5px 10px;font-family:'Noto Sans KR',sans-serif;font-size:11.5px;font-weight:600;color:var(--text-mid);cursor:pointer;transition:background .15s;white-space:nowrap;}
+.btn-done:hover{background:var(--border);}
+.btn-cal{background:var(--success-lt);border:none;border-radius:9px;padding:5px 10px;font-size:14px;cursor:pointer;transition:opacity .15s;line-height:1;}
+.btn-cal:hover{opacity:.75;}
+.btn-apply{background:var(--primary);border:none;border-radius:9px;padding:5px 10px;font-family:'Noto Sans KR',sans-serif;font-size:11.5px;font-weight:700;color:#fff;cursor:pointer;transition:opacity .15s;white-space:nowrap;text-decoration:none;display:inline-block;}
+.btn-apply:hover{opacity:.85;}
+
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:300;align-items:flex-end;backdrop-filter:blur(5px);}
+.modal-overlay.open{display:flex;}
+.modal-sheet{background:var(--surface);border-radius:24px 24px 0 0;padding:0 0 40px;width:100%;max-width:480px;margin:0 auto;max-height:88vh;overflow-y:auto;animation:sheetUp .32s cubic-bezier(.34,1.2,.64,1);position:relative;transition:background .3s;}
+@keyframes sheetUp{from{transform:translateY(100%);opacity:0;}to{transform:translateY(0);opacity:1;}}
+.modal-handle-wrap{padding:14px 0 0;text-align:center;position:sticky;top:0;background:var(--surface);z-index:1;transition:background .3s;}
+.modal-handle{width:36px;height:4px;background:var(--border);border-radius:4px;display:inline-block;}
+.modal-close{position:absolute;top:10px;right:14px;width:30px;height:30px;border-radius:50%;background:var(--bg);border:none;font-size:15px;cursor:pointer;color:var(--text-soft);display:flex;align-items:center;justify-content:center;transition:background .3s;}
+.modal-body{padding:16px 20px 0;}
+.modal-hero{display:flex;align-items:center;gap:14px;margin-bottom:18px;}
+.modal-emoji{width:54px;height:54px;border-radius:16px;background:var(--primary-lt);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;transition:background .3s;}
+.modal-title-text{font-size:18px;font-weight:700;color:var(--text);line-height:1.3;}
+.modal-amount-text{font-size:13px;color:var(--primary);font-weight:600;margin-top:2px;}
+.modal-sec{margin-bottom:16px;}
+.modal-sec-label{font-size:11px;font-weight:700;color:var(--text-soft);letter-spacing:.5px;text-transform:uppercase;margin-bottom:7px;}
+.modal-sec p{font-size:13.5px;color:var(--text);line-height:1.75;}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.info-box{background:var(--bg);border-radius:12px;padding:11px 13px;transition:background .3s;}
+.info-box .ib-label{font-size:11px;color:var(--text-soft);margin-bottom:3px;}
+.info-box .ib-val{font-size:13px;font-weight:700;color:var(--text);}
+.tip-box{background:var(--primary-lt);border-radius:14px;padding:13px 15px;margin-top:14px;display:flex;gap:10px;align-items:flex-start;transition:background .3s;}
+.tip-box .tip-icon{font-size:18px;flex-shrink:0;}
+.tip-box p{font-size:13px;color:var(--primary-dk);line-height:1.65;transition:color .3s;}
+.modal-cta{display:flex;gap:8px;margin-top:18px;}
+.modal-cta button,.modal-cta a{flex:1;padding:14px;border-radius:14px;font-family:'Noto Sans KR',sans-serif;font-size:14px;font-weight:700;cursor:pointer;text-align:center;text-decoration:none;border:none;display:block;transition:opacity .15s;}
+.cta-cal{background:var(--success-lt);color:var(--success);border:1.5px solid var(--success)!important;}
+.cta-apply{background:var(--primary);color:#fff;}
+.cta-apply:hover,.cta-cal:hover{opacity:.85;}
+
+/* EMPTY */
+.empty-state{text-align:center;padding:56px 24px;}
+.empty-emo{font-size:52px;margin-bottom:14px;}
+.empty-state h3{font-size:17px;font-weight:700;margin-bottom:8px;}
+.empty-state p{font-size:13.5px;color:var(--text-soft);line-height:1.7;}
+
+/* AD */
+.ad-slot{background:var(--surface);border:1.5px dashed var(--border);border-radius:14px;height:88px;display:none;align-items:center;justify-content:center;color:var(--text-soft);font-size:12px;margin:16px 0;transition:background .3s,border-color .3s;}
+.ad-slot.on{display:flex;}
+
+/* TOAST */
+.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--text);color:var(--bg);font-size:13px;font-weight:600;padding:10px 20px;border-radius:20px;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;white-space:nowrap;z-index:500;}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* ── 하단 탭바 ── */
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:var(--hdr);backdrop-filter:blur(16px);border-top:1px solid var(--border);display:flex;z-index:150;padding-bottom:env(safe-area-inset-bottom);transition:background .3s,border-color .3s;}
+.nav-tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px 0 8px;cursor:pointer;transition:all .15s;border:none;background:transparent;gap:3px;}
+.nav-tab .nav-icon{font-size:22px;line-height:1;}
+.nav-tab .nav-label{font-size:10px;font-weight:600;color:var(--text-soft);letter-spacing:-0.2px;font-family:'Noto Sans KR',sans-serif;}
+.nav-tab.on .nav-label{color:var(--primary);}
+.nav-tab.on .nav-icon{transform:scale(1.12);}
+
+/* 탭 콘텐츠 */
+.tab-content{display:none;}
+.tab-content.on{display:block;}
+
+/* 베이비페어 */
+.fair-list{display:flex;flex-direction:column;gap:10px;}
+.fair-card{background:var(--surface);border:1.5px solid var(--border);border-radius:18px;padding:16px;transition:background .3s,border-color .3s;animation:fadeUp .35s ease both;}
+.fair-card-top{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px;}
+.fair-emoji{width:42px;height:42px;border-radius:12px;background:var(--primary-lt);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.fair-meta{flex:1;min-width:0;}
+.fair-name{font-size:14px;font-weight:700;color:var(--text);margin-bottom:2px;}
+.fair-venue{font-size:12px;color:var(--text-soft);}
+.fair-bottom{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border);padding-top:10px;}
+.fair-date{font-size:12px;color:var(--text-mid);}
+.fair-dday{font-size:12px;font-weight:700;padding:4px 11px;border-radius:20px;}
+.fair-link{background:var(--primary);color:#fff;border:none;border-radius:9px;padding:6px 14px;font-family:'Noto Sans KR',sans-serif;font-size:12px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block;}
+
+/* 달빛/심야약국 CSS */
+.night-tabs{display:flex;gap:8px;margin-bottom:16px;}
+.night-tab{flex:1;padding:10px;border-radius:12px;border:1.5px solid var(--border);background:var(--surface);font-family:'Noto Sans KR',sans-serif;font-size:13px;font-weight:600;color:var(--text-soft);cursor:pointer;transition:all .15s;text-align:center;}
+.night-tab.on{background:var(--primary);border-color:var(--primary);color:#fff;}
+.night-iframe-wrap{display:none;}
+.night-search{display:flex;gap:8px;margin-bottom:14px;}
+.night-search select{flex:1;background:var(--surface);border:1.5px solid var(--border);border-radius:12px;padding:11px 14px;font-family:'Noto Sans KR',sans-serif;font-size:14px;color:var(--text);outline:none;transition:border-color .2s,background .3s;}
+.night-search select:focus{border-color:var(--primary);}
+.btn-search{background:var(--primary);color:#fff;border:none;border-radius:12px;padding:11px 16px;font-family:'Noto Sans KR',sans-serif;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;flex-shrink:0;}
+.night-card{background:var(--surface);border:1.5px solid var(--border);border-radius:16px;padding:14px 16px;margin-bottom:10px;transition:background .3s,border-color .3s;animation:fadeUp .3s ease both;}
+.night-card-name{font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px;}
+.night-card-addr{font-size:12px;color:var(--text-soft);margin-bottom:6px;}
+.night-card-bottom{display:flex;align-items:center;justify-content:space-between;}
+.night-hours{font-size:12px;color:var(--success);font-weight:600;}
+.night-tag{font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;background:var(--primary-lt);color:var(--primary-dk);}
+.night-empty{text-align:center;padding:40px 20px;color:var(--text-soft);font-size:14px;line-height:1.7;}
+
+main{padding-bottom:90px;}
+</style>
+</head>
+<body data-theme="pink">
+
+<header>
+  <div class="logo">
+    <div class="logo-icon">🌸</div>
+    아이<em>달력</em>
+  </div>
+  <div class="theme-switcher">
+    <span class="t-lbl">테마</span>
+    <button class="t-btn t-pink on"    onclick="setTheme('pink','핑크 🌸')"    title="핑크"></button>
+    <button class="t-btn t-mint"       onclick="setTheme('mint','민트 🌿')"    title="민트"></button>
+    <button class="t-btn t-purple"     onclick="setTheme('lavender','퍼플 💜')" title="퍼플"></button>
+    <button class="t-btn t-dark"       onclick="setTheme('dark','다크 🌙')"    title="다크"></button>
+  </div>
+</header>
+
+<!-- 탭 콘텐츠 1: 지원금 -->
+<div class="tab-content on" id="tab-benefit">
+<section class="hero">
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <div class="hero-badge">🍼 2025·2026 최신 정보</div>
+  <h1>놓치면 <mark>못 받는 돈</mark>,<br>달력이 알려드려요</h1>
+  <p class="hero-desc">아이 생년월일만 입력하면<br>신청 가능한 지원금과 마감일을 한눈에!</p>
+  <div class="input-card">
+    <div class="ic-title">👶 아이 생년월일</div>
+    <div class="input-row">
+      <span>🧒</span>
+      <input type="date" id="childDob" onchange="saveDob()">
+    </div>
+    <div class="input-row">
+      <span>📍</span>
+      <select id="regionSelect" onchange="saveRegion()">
+        <option value="">거주 지역 (선택)</option>
+        <option>서울특별시</option><option>부산광역시</option><option>대구광역시</option>
+        <option>인천광역시</option><option>광주광역시</option><option>대전광역시</option>
+        <option>울산광역시</option><option>세종특별자치시</option><option>경기도</option>
+        <option>강원도</option><option>충청북도</option><option>충청남도</option>
+        <option>전라북도</option><option>전라남도</option><option>경상북도</option>
+        <option>경상남도</option><option>제주특별자치도</option>
+      </select>
+    </div>
+    <button class="btn-calc" onclick="calculate()">🔍 지원금 확인하기</button>
+  </div>
+</section>
+<main>
+  <div id="emptyState" class="empty-state">
+    <div class="empty-emo">📅</div>
+    <h3>아이 생년월일을 입력해 주세요</h3>
+    <p>받을 수 있는 지원금과 신청 마감일을<br>자동으로 계산해 드려요</p>
+  </div>
+  <div id="sumStrip" class="sum-strip">
+    <div class="s-chip"><span class="num" id="sumTotal">0</span><span class="lbl">총 지원금</span></div>
+    <div class="s-chip"><span class="num" id="sumUrgent" style="color:var(--danger)">0</span><span class="lbl">긴급 마감</span></div>
+    <div class="s-chip"><span class="num" id="sumAmt" style="color:var(--success);font-size:15px">0</span><span class="lbl">예상 총액</span></div>
+  </div>
+  <div id="filterTabs" class="filter-tabs">
+    <button class="ftab on" onclick="applyFilter('all',this)">전체</button>
+    <button class="ftab"    onclick="applyFilter('urgent',this)">🔴 긴급</button>
+    <button class="ftab"    onclick="applyFilter('soon',this)">🟡 임박</button>
+    <button class="ftab"    onclick="applyFilter('cat_출생',this)">🍼 출생</button>
+    <button class="ftab"    onclick="applyFilter('cat_양육',this)">🏠 양육</button>
+    <button class="ftab"    onclick="applyFilter('cat_교육',this)">📚 교육</button>
+    <button class="ftab"    onclick="applyFilter('cat_취업부모',this)">💼 직장</button>
+    <button class="ftab"    onclick="applyFilter('cat_주거',this)">🏡 주거</button>
+    <button class="ftab"    onclick="applyFilter('done',this)">✅ 완료</button>
+  </div>
+  <div id="benefitList" class="benefit-list"></div>
+  <div class="ad-slot" id="adSlot" style="display:none"></div>
+</main>
+</div>
+
+<!-- 탭 콘텐츠 2: 베이비페어 -->
+<div class="tab-content" id="tab-fair">
+<main>
+  <div class="hero-badge" style="margin:20px 0 16px;display:inline-flex">📅 베이비페어 일정</div>
+  <div class="fair-list" id="fairList"></div>
+</main>
+</div>
+
+<!-- 탭 콘텐츠 3: 달빛어린이병원 + 심야약국 -->
+<div class="tab-content" id="tab-night">
+<main>
+  <div class="night-tabs">
+    <button class="night-tab on" id="nightTabHospital" onclick="switchNight('hospital',this)">🌙 달빛어린이병원</button>
+    <button class="night-tab" id="nightTabPharmacy" onclick="switchNight('pharmacy',this)">💊 심야약국</button>
+  </div>
+  <div class="night-search">
+    <select id="nightRegion">
+      <option value="">지역 선택</option>
+      <option>서울</option><option>부산</option><option>대구</option>
+      <option>인천</option><option>광주</option><option>대전</option>
+      <option>울산</option><option>경기</option><option>강원</option>
+      <option>충북</option><option>충남</option><option>전북</option>
+      <option>전남</option><option>경북</option><option>경남</option><option>제주</option>
+    </select>
+    <button class="btn-search" onclick="searchNight()">검색</button>
+  </div>
+  <div id="nightList"><div class="night-empty">🌙<br>지역을 선택하고 검색해 주세요</div></div>
+</main>
+</div>
+
+<!-- 하단 탭바 -->
+<nav class="bottom-nav">
+  <button class="nav-tab on" onclick="switchTab('benefit',this)">
+    <span class="nav-icon">💰</span>
+    <span class="nav-label">지원금</span>
+  </button>
+  <button class="nav-tab" onclick="switchTab('fair',this)">
+    <span class="nav-icon">🎪</span>
+    <span class="nav-label">베이비페어</span>
+  </button>
+  <button class="nav-tab" onclick="switchTab('night',this)">
+    <span class="nav-icon">🌙</span>
+    <span class="nav-label">야간진료</span>
+  </button>
+</nav>
+
+<div class="modal-overlay" id="modalOverlay" onclick="closeOuter(event)">
+  <div class="modal-sheet">
+    <div class="modal-handle-wrap">
+      <div class="modal-handle"></div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ── 로컬 푸시 알림 (Capacitor) ── */
+let notifPlugin = null;
+
+async function initNotifications() {
+  try {
+    const { LocalNotifications } = await import('https://esm.sh/@capacitor/local-notifications@8.2.0');
+    notifPlugin = LocalNotifications;
+    const perm = await LocalNotifications.requestPermissions();
+    if (perm.display === 'granted') {
+      console.log('✅ 알림 권한 허용됨');
+    }
+  } catch(e) {
+    console.log('알림 플러그인 초기화 실패 (웹 환경에서는 정상):', e.message);
+  }
+}
+
+async function scheduleNotifications(benefits) {
+  if (!notifPlugin) return;
+  try {
+    // 기존 알림 전체 취소
+    const pending = await notifPlugin.getPending();
+    if (pending.notifications.length > 0) {
+      await notifPlugin.cancel({ notifications: pending.notifications });
+    }
+
+    const today = new Date();
+    const notifications = [];
+
+    benefits.forEach(b => {
+      if (b.dday < 0 || b.dday > 60) return; // 만료·60일 초과 제외
+
+      // D-7 알림
+      const d7 = new Date(b.deadlineDate);
+      d7.setDate(d7.getDate() - 7);
+      d7.setHours(9, 0, 0, 0);
+      if (d7 > today) {
+        notifications.push({
+          id: Math.abs(b.id.charCodeAt(1) * 100 + 7),
+          title: '🍼 아이달력 마감 알림',
+          body: `${b.name} 신청 마감 7일 전이에요!`,
+          schedule: { at: d7 },
+          sound: null,
+          actionTypeId: '',
+          extra: { benefitId: b.id }
+        });
+      }
+
+      // D-1 알림
+      const d1 = new Date(b.deadlineDate);
+      d1.setDate(d1.getDate() - 1);
+      d1.setHours(9, 0, 0, 0);
+      if (d1 > today) {
+        notifications.push({
+          id: Math.abs(b.id.charCodeAt(1) * 100 + 1),
+          title: '🚨 아이달력 내일 마감!',
+          body: `${b.name} 신청 마감이 내일이에요! 지금 바로 신청하세요.`,
+          schedule: { at: d1 },
+          sound: null,
+          actionTypeId: '',
+          extra: { benefitId: b.id }
+        });
+      }
+    });
+
+    if (notifications.length > 0) {
+      await notifPlugin.schedule({ notifications });
+      console.log(`✅ 알림 ${notifications.length}개 등록됨`);
+      showToast(`🔔 마감 알림 ${notifications.length}개가 등록됐어요!`);
+    }
+  } catch(e) {
+    console.log('알림 등록 실패:', e.message);
+  }
+}
+
+/* ── 자동 저장·불러오기 ── */
+function saveDob() {
+  const v = document.getElementById('childDob').value;
+  if (v) localStorage.setItem('childDob', v);
+}
+function saveRegion() {
+  const v = document.getElementById('regionSelect').value;
+  localStorage.setItem('childRegion', v);
+}
+function loadSavedInputs() {
+  const dob = localStorage.getItem('childDob');
+  const region = localStorage.getItem('childRegion');
+  if (dob) {
+    document.getElementById('childDob').value = dob;
+    // 저장된 생년월일 있으면 자동 계산
+    calculate();
+  }
+  if (region) {
+    document.getElementById('regionSelect').value = region;
+  }
+}
+
+/* ── THEME ── */
+const THEMES={pink:'핑크 🌸',mint:'민트 🌿',lavender:'퍼플 💜',dark:'다크 🌙'};
+const T_IDX={pink:0,mint:1,lavender:2,dark:3};
+function setTheme(t,label){
+  document.body.setAttribute('data-theme',t);
+  localStorage.setItem('theme',t);
+  document.querySelectorAll('.t-btn').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('.t-btn')[T_IDX[t]].classList.add('on');
+  showToast(label+' 테마로 변경됐어요');
+}
+function showToast(msg){
+  const el=document.getElementById('toast');
+  el.textContent=msg; el.classList.add('show');
+  setTimeout(()=>el.classList.remove('show'),2200);
+}
+(()=>{const s=localStorage.getItem('theme');if(s&&THEMES[s])setTheme(s,THEMES[s]);})();
+
+/* ── DATA ── */
+const B=[
+  {id:'b1',name:'임신·출산 진료비 (국민행복카드)',emoji:'💳',amount:'100만원 (다태아 140만원) 바우처',n:100,cat:'임신',
+   cond:m=>m<2,condLabel:'임신 확인 후 ~ 출생 후 2년',dl:d=>am(d,24),
+   url:'https://www.gov.kr/portal/service/serviceInfo/PTR000050720',place:'건강보험공단 또는 복지로',
+   desc:'임신 확인 시 국민행복카드를 발급받으면 임신·출산 진료비로 100만원(다태아 140만원) 바우처를 사용할 수 있어요. 출생일로부터 2년 이내 사용 가능합니다.',
+   tip:'임신 확인 즉시 신청하세요. KB·우리·하나·신한·농협·롯데·BC카드에서 수수료 없이 발급 가능해요.'},
+  {id:'b2',name:'첫만남이용권',emoji:'🎁',amount:'첫째 200만원 / 둘째이상 300만원 바우처',n:200,cat:'출생',
+   cond:m=>m>=0&&m<24,condLabel:'출생일로부터 2년 이내',dl:d=>am(d,24),
+   url:'https://www.gov.kr/portal/service/serviceInfo/PTR000051861',place:'행복출산 원스톱 또는 주민센터',
+   desc:'2024년 1월 이후 출생 아동부터 첫째 200만원, 둘째이상 300만원 바우처 일시 지급. 유흥·사행업종 제외 전 업종 사용 가능합니다.',
+   tip:'출생 신고 시 원스톱으로 신청 가능해요. 쌍둥이는 아이 수만큼 각각 지급됩니다.'},
+  {id:'b3',name:'부모급여',emoji:'👨‍👩‍👧',amount:'0세 월 100만원 / 1세 월 50만원 현금',n:100,cat:'출생',
+   cond:m=>m>=0&&m<24,condLabel:'출생 후 60일 이내 신청 필수',dl:d=>ad(d,60),
+   url:'https://www.bokjiro.go.kr',place:'주민센터 또는 복지로(온라인)',
+   desc:'만 0세(0~11개월) 월 100만원, 만 1세(12~23개월) 월 50만원 현금 지급. 어린이집 이용 시 보육료 차감 후 차액 현금. 아동수당 10만원과 중복 수령 가능!',
+   tip:'60일 이내 신청 시 출생월부터 소급 지급! 초과 시 신청월부터만 지급. 빨리 신청하세요.'},
+  {id:'b4',name:'아동수당',emoji:'💰',amount:'월 10만원 (2026년부터 만 9세 미만)',n:10,cat:'출생',
+   cond:m=>m>=0&&m<108,condLabel:'만 9세 미만 전 아동 (소득 무관)',dl:d=>am(d,108),
+   url:'https://www.bokjiro.go.kr',place:'주민센터 또는 복지로(온라인)',
+   desc:'소득·재산 무관, 모든 아동에게 매월 10만원 지급. 2026년부터 만 9세 미만으로 상향, 2030년까지 매년 1세씩 올라 최종 만 13세 미만까지 확대 예정.',
+   tip:'부모급여와 아동수당은 중복 수령 가능해요. 만 0세 기준 월 최대 110만원!'},
+  {id:'b5',name:'산모·신생아 건강관리사',emoji:'🏥',amount:'소득구간별 정부 지원 (본인부담 일부)',n:80,cat:'출생',
+   cond:m=>m>=0&&m<2,condLabel:'출산 예정일 40일 전 ~ 출산 후 60일',dl:d=>ad(d,60),
+   url:'https://www.socialservice.or.kr',place:'보건소 또는 사회서비스 전자바우처',
+   desc:'출산 가정에 건강관리사를 파견해 산모 회복과 신생아 양육을 지원해요. 소득에 따라 지원 비율이 달라지며, 이용 전 보건소에서 바우처 자격 판정을 받아야 해요.',
+   tip:'출산 예정일 40일 전부터 신청 가능! 이른둥이 출산 시 퇴원일로부터 90일 이내 이용 가능합니다.'},
+  {id:'b6',name:'가정양육수당',emoji:'🏠',amount:'24~35개월 월 20만원 / 36개월~ 월 10만원',n:15,cat:'양육',
+   cond:m=>m>=24&&m<86,condLabel:'만 2세 이상~86개월 미만, 어린이집 미이용',dl:d=>am(d,86),
+   url:'https://www.bokjiro.go.kr',place:'주민센터 또는 복지로(온라인)',
+   desc:'어린이집·유치원 미이용 가정양육 아동에게 지급. 24~35개월 월 20만원, 36개월 이상 월 10만원. 부모급여(0~23개월)와 연계되는 제도예요.',
+   tip:'어린이집 등원 시 보육료 지원으로 전환 신고 필수! 이중 수령 시 환수 처분될 수 있어요.'},
+  {id:'b7',name:'어린이집 보육료 지원',emoji:'🧸',amount:'0세 월 약 54만원 / 1세 약 47만원 (연령별 차등)',n:50,cat:'교육',
+   cond:m=>m>=0&&m<86,condLabel:'0~5세 어린이집 재원 아동 (소득 무관)',dl:d=>am(d,86),
+   url:'https://www.bokjiro.go.kr',place:'재원 어린이집 또는 복지로',
+   desc:'어린이집 다니는 0~5세 아동 전원에게 연령별 보육료를 바우처로 지원. 국공립은 거의 무료, 민간도 상당 부분 지원됩니다.',
+   tip:'어린이집 입소 후 담당 선생님께 바우처 신청을 바로 요청하세요.'},
+  {id:'b8',name:'유아학비 지원 (유치원)',emoji:'🎒',amount:'사립 월 최대 28만원 / 국공립 거의 무료',n:28,cat:'교육',
+   cond:m=>m>=36&&m<86,condLabel:'만 3~5세 유치원 재원 아동',dl:d=>am(d,86),
+   url:'https://www.gov.kr/portal/service/serviceInfo/PTR000050776',place:'재원 유치원에서 신청',
+   desc:'사립·국공립 유치원 만 3~5세 아동에게 교육비 지원. 소득·재산 무관 전 아동 대상. 사립 월 최대 28만원, 국공립은 거의 무료입니다.',
+   tip:'유치원 입학 시 원에서 바우처 신청을 처리해 드려요. 방과후 과정비도 별도 지원됩니다.'},
+  {id:'b9',name:'아이돌봄서비스',emoji:'👩‍🍼',amount:'소득구간별 시간당 이용료 차등 지원',n:50,cat:'양육',
+   cond:m=>m>=0&&m<144,condLabel:'만 12세 이하 아동',dl:d=>am(d,144),
+   url:'https://www.idolbom.go.kr',place:'아이돌봄서비스 홈페이지',
+   desc:'아이돌보미가 가정을 방문해 돌봐주는 서비스. 소득에 따라 시간당 이용료 일부를 정부가 지원하며, 시간제·종일제 두 유형이 있습니다.',
+   tip:'idolbom.go.kr에서 온라인 신청 후 대기자 등록. 인기 지역은 대기가 길 수 있어요.'},
+  {id:'b10',name:'육아휴직급여',emoji:'🛡️',amount:'1~3개월 월 최대 300만원 / 이후 최대 160만원',n:300,cat:'취업부모',
+   cond:m=>m>=0&&m<18,condLabel:'고용보험 가입 직장인 부모, 아이 18개월 전까지',dl:d=>am(d,18),
+   url:'https://www.ei.go.kr',place:'고용보험 홈페이지 또는 고용센터',
+   desc:'2025년 법 개정으로 크게 올랐어요! 1~3개월: 100%(상한 300만원), 4~6개월: 100%(상한 200만원), 7개월~: 80%(상한 160만원). 사후지급금 폐지로 매달 전액 지급!',
+   tip:'부부 모두 육아휴직 사용 시 "3+3 부모육아휴직제" 첫 3개월 상한 추가 인상. 두 분 모두 꼭 신청하세요!'},
+  {id:'b11',name:'다자녀 혜택 (2자녀 이상)',emoji:'👨‍👩‍👧‍👦',amount:'전기요금 감면·문화시설 할인·주거 우선권 등',n:30,cat:'양육',
+   cond:(m,cnt)=>cnt>=2&&m>=0,condLabel:'2자녀 이상 가구',dl:d=>am(d,36),
+   url:'https://www.gov.kr/portal/service/serviceInfo/PTR000050800',place:'주민센터',
+   desc:'2자녀 이상 가구는 전기요금 감면, 문화시설 할인, 공공임대 우선권, 다자녀 국가장학금 등 다양한 혜택을 받을 수 있어요.',
+   tip:'다자녀 우대카드를 발급받으면 전국 공공시설 할인! 3자녀 이상은 대학 등록금 전액 지원도 있어요.'},
+  {id:'b12',name:'출산축하금 (지자체별)',emoji:'🎉',amount:'지자체별 수십만~수백만원 현금',n:50,cat:'출생',
+   cond:m=>m>=0&&m<6,condLabel:'출생 후 1~6개월 이내 (지자체별 상이)',dl:d=>am(d,6),
+   url:'https://www.gov.kr/portal/main/nologin',place:'주민센터 또는 지자체 홈페이지',
+   desc:'거주 지역 지자체에서 별도 출산축하금 지급. 인구감소 지역은 수백만원~수천만원까지 지급하는 곳도 있어요.',
+   tip:'이사 계획 있다면 목적지 지자체의 출산장려금도 미리 확인! 거주 요건이 있는 경우가 많아요.'},
+  {id:'b13',name:'신생아 특례 주택 대출',emoji:'🏡',amount:'구입 최대 5억원 / 전세 최대 3억원 저금리',n:500,cat:'주거',
+   cond:m=>m>=0&&m<24,condLabel:'출생 후 2년 이내 신청 (부부합산 연 2억원 이하)',dl:d=>am(d,24),
+   url:'https://nhuf.molit.go.kr',place:'주택도시기금 홈페이지 또는 기금 취급 은행',
+   desc:'2023년 1월 이후 출산 가구에 시중보다 낮은 금리(1%대 초반~)로 주택 구입 최대 5억원, 전세 최대 3억원까지 대출 가능한 특례 상품이에요.',
+   tip:'소득(부부합산 연 2억원 이하)·주택가격(구입 9억원 이하) 요건 먼저 확인하세요.'},
+  {id:'b14',name:'자녀장려금',emoji:'📋',amount:'자녀 1인당 연 최대 100만원',n:100,cat:'세금',
+   cond:m=>m>=0&&m<216,condLabel:'연소득 7,000만원 미만 가구, 만 18세 미만 자녀',
+   dl:()=>{const d=new Date();d.setMonth(4);d.setDate(31);return d;},
+   url:'https://www.hometax.go.kr',place:'홈택스 또는 주민센터',
+   desc:'연소득 7,000만원 미만 가구의 만 18세 미만 자녀 1인당 최대 100만원을 매년 지급하는 세금 환급 제도예요.',
+   tip:'매년 5월 홈택스에서 신청. 근로장려금과 함께 신청할 수 있으니 꼭 확인하세요.'}
+];
+
+/* ── UTILS ── */
+function am(d,n){const r=new Date(d);r.setMonth(r.getMonth()+n);return r;}
+function ad(d,n){const r=new Date(d);r.setDate(r.getDate()+n);return r;}
+function dd(t,now){return Math.ceil((t-now)/(864e5));}
+function fmt(d){return`${d.getFullYear()}년 ${d.getMonth()+1}월 ${d.getDate()}일`;}
+function fmtN(n){if(n>=10000)return(n/10000).toFixed(0)+'억+';if(n>=1000)return(n/1000).toFixed(0)+'천만+';return n+'만원+';}
+function p2(v){return String(v).padStart(2,'0');}
+
+/* ── 구글 캘린더 URL 방식 ── */
+function icsDate(d){return`${d.getFullYear()}${p2(d.getMonth()+1)}${p2(d.getDate())}`;}
+function openGoogleCalendar(b){
+  const dl = b.deadlineDate;
+  const start = icsDate(dl);
+  const end   = icsDate(ad(dl,1));
+  const title = encodeURIComponent(`🍼 ${b.name} 신청 마감`);
+  const detail= encodeURIComponent(`${b.condLabel}\n신청처: ${b.place}\n${b.url}`);
+  const gcUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${start}/${end}&details=${detail}`;
+  window.open(gcUrl, '_blank');
+  showToast('📅 구글 캘린더가 열렸어요!');
+}
+// 하위 호환용 alias
+function downloadIcs(b){ openGoogleCalendar(b); }
+function dlIcs(id){const b=cur.find(x=>x.id===id);if(b)openGoogleCalendar(b);}
+
+/* ── STATE ── */
+let cur=[], doneSet=new Set(JSON.parse(localStorage.getItem('done')||'[]')), curFilter='all';
+let B_DATA = []; // JSON에서 로드된 데이터
+
+/* ── JSON 데이터 로드 ── */
+const JSON_URL = 'https://babyfairschedule.co.kr/aidiary/benefits.json';
+
+async function loadBenefits() {
+  try {
+    const res = await fetch(JSON_URL + '?v=' + Date.now());
+    const json = await res.json();
+    B_DATA = json.benefits.map(b => ({
+      ...b,
+      cond: (m) => m >= b.conditionMonthMin && m < b.conditionMonthMax,
+      dl: (dob) => {
+        if (b.deadlineType === 'addMonths') return am(dob, b.deadlineValue);
+        if (b.deadlineType === 'addDays')   return ad(dob, b.deadlineValue);
+        if (b.deadlineType === 'fixedMonth') {
+          const d = new Date(); d.setMonth(b.deadlineValue - 1); d.setDate(31); return d;
+        }
+        return am(dob, 12);
+      },
+      n: b.amountNum,
+      condLabel: b.conditionLabel,
+    }));
+    console.log(`✅ benefits.json 로드 완료 (${B_DATA.length}개, v${json.version})`);
+  } catch(e) {
+    console.warn('JSON 로드 실패, 내장 데이터 사용:', e);
+    B_DATA = B; // 실패 시 기존 하드코딩 데이터 폴백
+  }
+}
+
+/* ── CALCULATE ── */
+function calculate(){
+  const dobV=document.getElementById('childDob').value;
+  if(!dobV){showToast('생년월일을 입력해 주세요 👶');return;}
+  const today=new Date();today.setHours(0,0,0,0);
+  const dob=new Date(dobV);dob.setHours(0,0,0,0);
+  const ageM=(today.getFullYear()-dob.getFullYear())*12+(today.getMonth()-dob.getMonth());
+  const source = B_DATA.length > 0 ? B_DATA : B;
+  cur=source.filter(b=>b.cond(ageM,1)).map(b=>{
+    const deadlineDate=b.dl(dob);
+    return{...b,childName:'아이',dob,deadlineDate,dday:dd(deadlineDate,today)};
+  }).sort((a,b)=>a.dday-b.dday);
+  document.getElementById('emptyState').style.display='none';
+  document.getElementById('sumStrip').classList.add('on');
+  document.getElementById('filterTabs').classList.add('on');
+  // adSlot hidden
+  renderSum(); renderList(curFilter);
+  // 마감 알림 자동 등록
+  scheduleNotifications(cur);
+}
+
+function renderSum(){
+  document.getElementById('sumTotal').textContent=cur.length+'개';
+  document.getElementById('sumUrgent').textContent=cur.filter(b=>b.dday<=7&&b.dday>=0&&!doneSet.has(b.id)).length+'개';
+  document.getElementById('sumAmt').textContent=fmtN(cur.reduce((s,b)=>s+b.n,0));
+}
+
+function getBadge(dday,id){
+  if(doneSet.has(id))return{cls:'pill-done',t:'완료'};
+  if(dday<0)return{cls:'pill-done',t:'만료'};
+  if(dday===0)return{cls:'pill-urgent',t:'D-Day'};
+  if(dday<=7)return{cls:'pill-urgent',t:`D-${dday}`};
+  if(dday<=30)return{cls:'pill-soon',t:`D-${dday}`};
+  return{cls:'pill-ok',t:`D-${dday}`};
+}
+function getSt(b){
+  if(doneSet.has(b.id))return'done';
+  if(b.dday<0)return'expired';
+  if(b.dday<=7)return'urgent';
+  if(b.dday<=30)return'soon';
+  return'ok';
+}
+function applyFilter(type,btn){
+  curFilter=type;
+  document.querySelectorAll('.ftab').forEach(t=>t.classList.remove('on'));
+  btn.classList.add('on');
+  renderList(type);
+}
+function renderList(f){
+  const list=document.getElementById('benefitList');
+  let filtered=f==='all'?cur:f.startsWith('cat_')?cur.filter(b=>b.cat===f.slice(4)):cur.filter(b=>getSt(b)===f);
+  if(!filtered.length){list.innerHTML=`<div style="text-align:center;padding:40px;color:var(--text-soft);font-size:14px;">해당 항목이 없어요 😊</div>`;return;}
+  list.innerHTML=filtered.map((b,i)=>{
+    const bd=getBadge(b.dday,b.id);
+    const done=doneSet.has(b.id);
+    return`<div class="benefit-card${done?' done':''}" style="animation-delay:${i*.04}s" onclick="openModal('${b.id}')">
+      <div class="card-top">
+        <div class="card-emoji">${b.emoji}</div>
+        <div class="card-meta">
+          <div class="card-name">${b.name}</div>
+          <div class="card-amount">${b.amount}</div>
+        </div>
+        <div class="dday-pill ${bd.cls}">${bd.t}</div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-info-text"><strong>${b.childName}</strong> · ${b.condLabel}<br>마감 ${b.dday>=0?fmt(b.deadlineDate):'기간 만료'}</div>
+        <div class="card-actions">
+          ${!done?`<button class="btn-done" onclick="toggleDone(event,'${b.id}')">완료</button>`:''}
+          <button class="btn-cal" onclick="event.stopPropagation();dlIcs('${b.id}')" title="캘린더에 추가">📅</button>
+          <a class="btn-apply" href="javascript:void(0)" onclick="openLink('${b.url}');event.stopPropagation()">신청</a>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function dlIcs(id){const b=cur.find(x=>x.id===id);if(b)downloadIcs(b);}
+
+function toggleDone(e,id){
+  e.stopPropagation();
+  doneSet.has(id)?doneSet.delete(id):doneSet.add(id);
+  localStorage.setItem('done',JSON.stringify([...doneSet]));
+  renderSum();renderList(curFilter);
+}
+
+/* ── MODAL ── */
+function openModal(id){
+  const b=cur.find(x=>x.id===id);if(!b)return;
+  const bd=getBadge(b.dday,id);
+  const done=doneSet.has(id);
+  document.getElementById('modalBody').innerHTML=`
+    <div class="modal-hero">
+      <div class="modal-emoji">${b.emoji}</div>
+      <div><div class="modal-title-text">${b.name}</div><div class="modal-amount-text">${b.amount}</div></div>
+    </div>
+    <div class="modal-sec"><div class="modal-sec-label">지원 내용</div><p>${b.desc}</p></div>
+    <div class="info-grid">
+      <div class="info-box"><div class="ib-label">신청 마감</div><div class="ib-val" style="font-size:12px">${b.dday>=0?fmt(b.deadlineDate):'기간 만료'}</div></div>
+      <div class="info-box"><div class="ib-label">D-day</div><div class="ib-val" style="color:${b.dday<=7&&b.dday>=0?'var(--danger)':'var(--text)'}">${bd.t}</div></div>
+      <div class="info-box"><div class="ib-label">신청 조건</div><div class="ib-val" style="font-size:11px;font-weight:500">${b.condLabel}</div></div>
+      <div class="info-box"><div class="ib-label">신청 방법</div><div class="ib-val" style="font-size:11px;font-weight:500">${b.place}</div></div>
+    </div>
+    <div class="tip-box"><span class="tip-icon">💡</span><p>${b.tip}</p></div>
+    <div class="modal-cta">
+      <button class="cta-cal" onclick="dlIcs('${id}')">📅 구글 캘린더에 추가</button>
+      <a class="cta-apply" href="javascript:void(0)" onclick="openLink('${b.url}')">신청하러 가기 →</a>
+    </div>`;
+  document.getElementById('modalOverlay').classList.add('open');
+}
+function closeModal(){document.getElementById('modalOverlay').classList.remove('open');}
+function closeOuter(e){if(e.target===document.getElementById('modalOverlay'))closeModal();}
+document.addEventListener('keydown',e=>{if(e.key==='Enter')calculate();});
+
+// 앱 시작 시 초기화
+async function init() {
+  await loadBenefits();
+  await initNotifications();
+  loadSavedInputs(); // 저장된 생년월일 자동 불러오기
+}
+init();
+
+// 뒤로 버튼 처리 (Capacitor)
+(async () => {
+  try {
+    const { App } = await import('https://esm.sh/@capacitor/app@6.0.0');
+    App.addListener('backButton', ({ canGoBack }) => {
+      // 모달 열려있으면 모달 닫기
+      if (document.getElementById('modalOverlay').classList.contains('open')) {
+        closeModal(); return;
+      }
+      // 지원금 탭이 아니면 지원금 탭으로
+      const activeTab = document.querySelector('.nav-tab.on');
+      if (activeTab && activeTab.querySelector('.nav-label').textContent !== '지원금') {
+        document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('on'));
+        document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('on'));
+        document.getElementById('tab-benefit').classList.add('on');
+        document.querySelectorAll('.nav-tab')[0].classList.add('on');
+        return;
+      }
+      // 그 외 앱 종료
+      App.exitApp();
+    });
+  } catch(e) {
+    console.log('뒤로 버튼 처리 (웹 환경):', e.message);
+  }
+})();
+
+/* ── 탭 전환 ── */
+function switchTab(name, btn) {
+  document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('on'));
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('on'));
+  document.getElementById('tab-'+name).classList.add('on');
+  btn.classList.add('on');
+  if(name==='fair') renderFairs();
+}
+
+/* ── 베이비페어 데이터 (2026년 최신) ── */
+const FAIRS = [
+  {
+    name:'코베 수원컨벤션센터 2차',emoji:'👶',venue:'수원컨벤션센터 (광교)',
+    startDate:'2026-07-23',endDate:'2026-07-26',
+    url:'https://babyfairschedule.co.kr'
+  },
+  {
+    name:'코베 킨텍스 2차',emoji:'🍼',venue:'경기 고양 킨텍스',
+    startDate:'2026-08-06',endDate:'2026-08-09',
+    url:'https://babyfairschedule.co.kr'
+  },
+  {
+    name:'코베 대전컨벤션센터',emoji:'🌟',venue:'대전컨벤션센터 (DCC)',
+    startDate:'2026-08-20',endDate:'2026-08-23',
+    url:'https://babyfairschedule.co.kr'
+  },
+  {
+    name:'코베 대구 엑스코 3차',emoji:'🎠',venue:'대구 EXCO',
+    startDate:'2026-08-27',endDate:'2026-08-30',
+    url:'https://babyfairschedule.co.kr'
+  },
+  {
+    name:'코베 청주오스코 2차',emoji:'🌿',venue:'청주오스코',
+    startDate:'2026-09-03',endDate:'2026-09-06',
+    url:'https://babyfairschedule.co.kr'
+  },
+  {
+    name:'제50회 삼성 베페 🎉',emoji:'🎪',venue:'서울 코엑스',
+    startDate:'2026-09-10',endDate:'2026-09-13',
+    url:'https://babyfairschedule.co.kr'
+  },
+  {
+    name:'코베 수원메쎄 3차',emoji:'🏟️',venue:'수원메쎄',
+    startDate:'2026-09-17',endDate:'2026-09-20',
+    url:'https://babyfairschedule.co.kr'
+  },
+  {
+    name:'코베 벡스코 부산 2차',emoji:'🌊',venue:'부산 BEXCO',
+    startDate:'2026-10-01',endDate:'2026-10-04',
+    url:'https://babyfairschedule.co.kr'
+  },
+  {
+    name:'코베 킨텍스 3차',emoji:'🎡',venue:'경기 고양 킨텍스',
+    startDate:'2026-10-08',endDate:'2026-10-11',
+    url:'https://babyfairschedule.co.kr'
+  },
+  {
+    name:'코베 코엑스 2차',emoji:'🎪',venue:'서울 코엑스',
+    startDate:'2026-10-29',endDate:'2026-11-01',
+    url:'https://babyfairschedule.co.kr'
+  },
+  {
+    name:'코베 수원메쎄 4차',emoji:'👶',venue:'수원메쎄',
+    startDate:'2026-11-26',endDate:'2026-11-29',
+    url:'https://babyfairschedule.co.kr'
+  },
+  {
+    name:'코베 대구 엑스코 4차',emoji:'🌟',venue:'대구 EXCO',
+    startDate:'2026-12-03',endDate:'2026-12-06',
+    url:'https://babyfairschedule.co.kr'
+  }
+];
+
+function renderFairs() {
+  const today = new Date(); today.setHours(0,0,0,0);
+  const list = document.getElementById('fairList');
+  const sorted = FAIRS
+    .map(f => {
+      const start = new Date(f.startDate);
+      const end = new Date(f.endDate);
+      const dday = Math.ceil((start - today) / 864e5);
+      return {...f, start, end, dday};
+    })
+    .filter(f => f.end >= today)
+    .sort((a,b) => a.dday - b.dday);
+
+  if(!sorted.length) {
+    list.innerHTML = '<div class="night-empty">예정된 베이비페어가 없어요 😊</div>';
+    return;
+  }
+
+  list.innerHTML = sorted.map((f,i) => {
+    let ddayText, ddayCls;
+    if(f.dday < 0) { ddayText='진행중🔥'; ddayCls='pill-ok'; }
+    else if(f.dday===0) { ddayText='오늘개막!'; ddayCls='pill-urgent'; }
+    else if(f.dday<=7) { ddayText=`D-${f.dday}`; ddayCls='pill-urgent'; }
+    else if(f.dday<=30) { ddayText=`D-${f.dday}`; ddayCls='pill-soon'; }
+    else { ddayText=`D-${f.dday}`; ddayCls='pill-ok'; }
+
+    return `<div class="fair-card" style="animation-delay:${i*.05}s">
+      <div class="fair-card-top">
+        <div class="fair-emoji">${f.emoji}</div>
+        <div class="fair-meta">
+          <div class="fair-name">${f.name}</div>
+          <div class="fair-venue">📍 ${f.venue}</div>
+        </div>
+        <div class="dday-pill ${ddayCls}" style="font-size:12px;padding:4px 11px;border-radius:20px;font-weight:700;flex-shrink:0">${ddayText}</div>
+      </div>
+      <div class="fair-bottom">
+        <div class="fair-date">📅 ${f.startDate} ~ ${f.endDate}</div>
+        <a class="fair-link" href="javascript:void(0)" onclick="openLink('${f.url}')">일정 보기</a>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+/* ── 외부 링크 열기 (인앱브라우저) ── */
+async function openLink(url) {
+  try {
+    const { Browser } = await import('https://esm.sh/@capacitor/browser@6.0.0');
+    await Browser.open({ url, presentationStyle: 'popover' });
+  } catch(e) {
+    // 폴백: 일반 브라우저
+    window.open(url, '_blank');
+  }
+}
+
+/* ── 달빛어린이병원 + 심야약국 ── */
+let nightMode = 'hospital';
+let httpPlugin = null;
+
+// Capacitor HTTP 플러그인 초기화 (CORS 우회)
+(async () => {
+  try {
+    const { CapacitorHttp } = await import('https://esm.sh/@capacitor/core@6.0.0');
+    if (CapacitorHttp) { httpPlugin = CapacitorHttp; console.log('✅ CapacitorHttp 사용'); }
+  } catch(e) { console.log('CapacitorHttp 없음, fetch 사용'); }
+})();
+
+// HTTP GET 요청 (앱: CapacitorHttp / 웹: fetch)
+async function httpGet(url) {
+  if (httpPlugin) {
+    const res = await httpPlugin.get({ url });
+    return res.data; // 문자열 또는 객체
+  } else {
+    const res = await fetch(url);
+    return await res.text();
+  }
+}
+
+function switchNight(mode, btn) {
+  nightMode = mode;
+  document.querySelectorAll('.night-tab').forEach(t=>t.classList.remove('on'));
+  btn.classList.add('on');
+  document.getElementById('nightList').innerHTML = '<div class="night-empty">🌙<br>지역을 선택하고 검색해 주세요</div>';
+}
+
+async function searchNight() {
+  const region = document.getElementById('nightRegion').value;
+  if(!region) { showToast('지역을 선택해 주세요 📍'); return; }
+  const list = document.getElementById('nightList');
+  list.innerHTML = '<div class="night-empty">⏳ 검색 중...</div>';
+  try {
+    if(nightMode === 'hospital') await searchHospital(region, list);
+    else await searchPharmacy(region, list);
+  } catch(e) {
+    console.error('검색 오류:', e);
+    list.innerHTML = `<div class="night-empty">😢 검색 중 오류가 발생했어요<br>잠시 후 다시 시도해 주세요</div>`;
+  }
+}
+
+async function searchHospital(region, list) {
+  const API_KEY = 'OVzrs%2BrFzZKkBiMl43c2lnFpOHYBM6TFB6P7bOFlXvkSLvQOeVhuvMVQFaOZ0Z%2BAYbItA9ZkIFcjMLw2nFULpA%3D%3D';
+  const url = `https://apis.data.go.kr/B552657/DalbitChildHospital/getDalbitChildHospital?serviceKey=${API_KEY}&pageNo=1&numOfRows=30&sidoNm=${encodeURIComponent(region)}`;
+
+  const data = await httpGet(url);
+  const text = typeof data === 'string' ? data : JSON.stringify(data);
+  const parser = new DOMParser();
+  const xml = parser.parseFromString(text, 'text/xml');
+  const items = xml.querySelectorAll('item');
+
+  if(!items.length) {
+    list.innerHTML = `<div class="night-empty">🌙 ${region} 지역의 달빛어린이병원을 찾을 수 없어요</div>`;
+    return;
+  }
+
+  list.innerHTML = [...items].map((item,i) => {
+    const name = item.querySelector('yadmNm')?.textContent || '';
+    const addr = item.querySelector('addr')?.textContent || '';
+    const tel  = item.querySelector('telno')?.textContent || '';
+    const mon  = item.querySelector('monTreatTime')?.textContent || '';
+    return `<div class="night-card" style="animation-delay:${i*.04}s">
+      <div class="night-card-name">🏥 ${name}</div>
+      <div class="night-card-addr">📍 ${addr}</div>
+      <div class="night-card-bottom">
+        <div class="night-hours">🕐 ${mon||'운영시간 확인 필요'}</div>
+        <span class="night-tag">달빛어린이병원</span>
+      </div>
+      ${tel?`<div style="font-size:12px;color:var(--text-soft);margin-top:6px">📞 <a href="tel:${tel}" style="color:var(--primary)">${tel}</a></div>`:''}
+    </div>`;
+  }).join('');
+}
+
+async function searchPharmacy(region, list) {
+  const API_KEY = 'OVzrs%2BrFzZKkBiMl43c2lnFpOHYBM6TFB6P7bOFlXvkSLvQOeVhuvMVQFaOZ0Z%2BAYbItA9ZkIFcjMLw2nFULpA%3D%3D';
+  const url = `https://apis.data.go.kr/B552657/ErmctInsttInfoInqireService/getParmacyListInfoInqire?serviceKey=${API_KEY}&pageNo=1&numOfRows=30&Q0=${encodeURIComponent(region)}&QN=&ORD=NAME`;
+
+  const data = await httpGet(url);
+  const text = typeof data === 'string' ? data : JSON.stringify(data);
+  const parser = new DOMParser();
+  const xml = parser.parseFromString(text, 'text/xml');
+  const items = xml.querySelectorAll('item');
+
+  if(!items.length) {
+    list.innerHTML = `<div class="night-empty">💊 ${region} 지역의 심야약국을 찾을 수 없어요</div>`;
+    return;
+  }
+
+  list.innerHTML = [...items].map((item,i) => {
+    const name = item.querySelector('dutyName')?.textContent || '';
+    const addr = item.querySelector('dutyAddr')?.textContent || '';
+    const tel  = item.querySelector('dutyTel1')?.textContent || '';
+    const time = item.querySelector('dutyTime1c')?.textContent || '';
+    return `<div class="night-card" style="animation-delay:${i*.04}s">
+      <div class="night-card-name">💊 ${name}</div>
+      <div class="night-card-addr">📍 ${addr}</div>
+      <div class="night-card-bottom">
+        <div class="night-hours">${time?'🕐 '+time:'운영시간 확인 필요'}</div>
+        <span class="night-tag">약국</span>
+      </div>
+      ${tel?`<div style="font-size:12px;color:var(--text-soft);margin-top:6px">📞 <a href="tel:${tel}" style="color:var(--primary)">${tel}</a></div>`:''}
+    </div>`;
+  }).join('');
+}
+</script>
+</body>
+</html>

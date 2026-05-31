@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>이용약관 및 개인정보처리방침 — 베이비페어 일정</title>
+<meta name="description" content="베이비페어 일정 서비스의 이용약관 및 개인정보처리방침입니다.">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --white:#ffffff;--bg:#f7f8fa;--border:#e8eaed;--border2:#d1d5db;
+  --ink:#111827;--ink2:#4b5563;--ink3:#9ca3af;--ink4:#d1d5db;
+  --primary:#ff6b6b;--primary-soft:#fff1f1;--primary-mid:#ffe0e0;
+  --radius:12px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans KR',sans-serif;font-size:14px;line-height:1.8;-webkit-font-smoothing:antialiased;}
+
+/* HEADER */
+header{background:var(--white);border-bottom:1px solid var(--border);height:56px;position:sticky;top:0;z-index:100;}
+.h-in{max-width:1000px;margin:0 auto;padding:0 24px;height:100%;display:flex;align-items:center;gap:12px;}
+.logo{display:flex;align-items:center;gap:8px;font-size:16px;font-weight:700;color:var(--ink);text-decoration:none;}
+.logo-ic{width:28px;height:28px;border-radius:7px;background:var(--primary);display:flex;align-items:center;justify-content:center;font-size:15px;}
+.back{margin-left:auto;padding:6px 14px;border:1px solid var(--border2);border-radius:8px;background:transparent;color:var(--ink2);font-size:13px;cursor:pointer;font-family:'Noto Sans KR',sans-serif;text-decoration:none;transition:.15s;}
+.back:hover{background:var(--bg);}
+
+/* LAYOUT */
+.wrap{max-width:1000px;margin:0 auto;padding:36px 24px 80px;display:grid;grid-template-columns:200px 1fr;gap:28px;align-items:start;}
+
+/* TOC */
+.toc{position:sticky;top:72px;background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:18px;font-size:12px;}
+.toc-label{font-size:10px;font-weight:700;color:var(--ink3);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;}
+.toc-group{margin-bottom:14px;}
+.toc-gh{font-size:11px;font-weight:700;color:var(--ink2);padding-bottom:6px;border-bottom:1px solid var(--border);margin-bottom:6px;}
+.toc-a{display:block;color:var(--ink3);padding:3px 0 3px 8px;border-left:2px solid transparent;cursor:pointer;transition:.12s;line-height:1.4;}
+.toc-a:hover{color:var(--primary);}
+.toc-a.on{color:var(--primary);border-left-color:var(--primary);font-weight:600;}
+
+/* TABS */
+.tabs{display:flex;border-bottom:2px solid var(--border);margin-bottom:24px;}
+.tab{padding:10px 22px;font-size:14px;font-weight:600;color:var(--ink3);cursor:pointer;border:none;background:none;border-bottom:2px solid transparent;margin-bottom:-2px;font-family:'Noto Sans KR',sans-serif;transition:.15s;}
+.tab:hover{color:var(--ink2);}
+.tab.on{color:var(--primary);border-bottom-color:var(--primary);}
+
+/* DOC */
+.doc{display:none;}
+.doc.on{display:block;}
+
+/* DOC TOP */
+.doc-top{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-bottom:16px;}
+.doc-badge{display:inline-flex;align-items:center;gap:5px;background:var(--primary-soft);color:var(--primary);border-radius:20px;padding:4px 12px;font-size:11px;font-weight:700;margin-bottom:10px;}
+.doc-title{font-size:20px;font-weight:700;letter-spacing:-.5px;margin-bottom:8px;}
+.doc-meta{font-size:12px;color:var(--ink3);display:flex;gap:14px;flex-wrap:wrap;}
+
+/* SECTION */
+.sec{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-bottom:12px;scroll-margin-top:74px;}
+.sec-n{font-family:'DM Mono',monospace;font-size:10px;color:var(--ink4);margin-bottom:3px;}
+.sec-t{font-size:16px;font-weight:700;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+.sec-t em{color:var(--primary);font-style:normal;}
+
+p{color:var(--ink2);margin-bottom:8px;}
+p:last-child{margin-bottom:0;}
+strong{color:var(--ink);}
+
+.art{margin-bottom:16px;}
+.art-t{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px;}
+
+ol.dl{padding-left:18px;color:var(--ink2);}
+ol.dl li{margin-bottom:5px;line-height:1.7;}
+ul.dl{padding-left:18px;color:var(--ink2);list-style:disc;}
+ul.dl li{margin-bottom:4px;line-height:1.7;}
+
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse;margin:10px 0;font-size:13px;}
+.tbl th{background:#f9fafb;padding:9px 12px;text-align:left;font-weight:600;color:var(--ink);border:1px solid var(--border);font-size:12px;}
+.tbl td{padding:9px 12px;border:1px solid var(--border);color:var(--ink2);vertical-align:top;line-height:1.6;}
+
+/* BOXES */
+.box-pink{background:var(--primary-soft);border:1px solid var(--primary-mid);border-radius:8px;padding:12px 16px;margin:10px 0;font-size:13px;color:var(--ink2);}
+.box-blue{background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:12px 16px;margin:10px 0;font-size:13px;color:#1e40af;}
+.box-green{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:12px 16px;margin:10px 0;font-size:13px;color:#15803d;}
+.box-gray{background:#f9fafb;border:1px solid var(--border);border-radius:8px;padding:12px 16px;margin:10px 0;font-size:13px;color:var(--ink2);}
+
+/* FUTURE BADGE */
+.future{display:inline-flex;align-items:center;gap:3px;background:#f0fdf4;border:1px solid #bbf7d0;color:#15803d;border-radius:4px;padding:1px 7px;font-size:10px;font-weight:700;margin-left:6px;vertical-align:middle;}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;}
+.contact-item{background:var(--bg);border-radius:8px;padding:14px;}
+.c-lbl{font-size:10px;color:var(--ink3);font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;}
+.c-val{font-size:14px;font-weight:600;color:var(--ink);}
+.c-sub{font-size:12px;color:var(--ink3);margin-top:2px;}
+
+footer{background:var(--ink);color:rgba(255,255,255,.4);padding:32px 24px;text-align:center;margin-top:0;}
+footer p{font-size:12px;line-height:1.8;}
+.f-links{display:flex;gap:16px;justify-content:center;margin:10px 0;flex-wrap:wrap;}
+.f-links a{color:rgba(255,255,255,.4);text-decoration:none;font-size:12px;}
+.f-links a:hover{color:rgba(255,255,255,.8);}
+
+@media(max-width:720px){
+  .wrap{grid-template-columns:1fr;padding:20px 16px 60px;}
+  .toc{display:none;}
+  .contact-grid{grid-template-columns:1fr;}
+}
+</style>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-69QTMS4KBS"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-69QTMS4KBS');</script>
+  <link rel="canonical" href="https://www.babyfairschedule.co.kr/legal.html">
+</head>
+<body>
+
+<header>
+  <div class="h-in">
+    <a class="logo" href="babyfair-v2.html">
+      <div class="logo-ic">🍼</div>베이비페어 일정
+    </a>
+    <a class="back" href="babyfair-v2.html">← 메인으로</a>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- TOC -->
+  <nav class="toc" id="tocNav">
+    <div class="toc-label">목차</div>
+    <div class="toc-group">
+      <div class="toc-gh">📋 이용약관</div>
+      <a class="toc-a" onclick="go('t1')">제1조 목적</a>
+      <a class="toc-a" onclick="go('t2')">제2조 정의</a>
+      <a class="toc-a" onclick="go('t3')">제3조 서비스 내용</a>
+      <a class="toc-a" onclick="go('t4')">제4조 회원 가입</a>
+      <a class="toc-a" onclick="go('t5')">제5조 회원 혜택</a>
+      <a class="toc-a" onclick="go('t6')">제6조 제휴 서비스</a>
+      <a class="toc-a" onclick="go('t7')">제7조 광고 및 수익</a>
+      <a class="toc-a" onclick="go('t8')">제8조 금지 행위</a>
+      <a class="toc-a" onclick="go('t9')">제9조 면책조항</a>
+      <a class="toc-a" onclick="go('t10')">제10조 준거법</a>
+    </div>
+    <div class="toc-group">
+      <div class="toc-gh">🔐 개인정보처리방침</div>
+      <a class="toc-a" onclick="go('p1')">제1조 수집 항목</a>
+      <a class="toc-a" onclick="go('p2')">제2조 수집 목적</a>
+      <a class="toc-a" onclick="go('p3')">제3조 보유 기간</a>
+      <a class="toc-a" onclick="go('p4')">제4조 제3자 제공</a>
+      <a class="toc-a" onclick="go('p5')">제5조 위탁 업체</a>
+      <a class="toc-a" onclick="go('p6')">제6조 이용자 권리</a>
+      <a class="toc-a" onclick="go('p7')">제7조 쿠키 및 광고</a>
+      <a class="toc-a" onclick="go('p8')">제8조 보안 조치</a>
+      <a class="toc-a" onclick="go('p9')">제9조 개인정보 담당자</a>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main>
+    <div class="tabs">
+      <button class="tab on" onclick="switchTab('terms',this)">📋 이용약관</button>
+      <button class="tab" onclick="switchTab('privacy',this)">🔐 개인정보처리방침</button>
+    </div>
+
+    <!-- ══════════════════════════════ -->
+    <!-- 이용약관                       -->
+    <!-- ══════════════════════════════ -->
+    <div class="doc on" id="doc-terms">
+
+      <div class="doc-top">
+        <div class="doc-badge">📋 이용약관</div>
+        <div class="doc-title">베이비페어 일정 서비스 이용약관</div>
+        <div class="doc-meta">
+          <span>📅 시행일: 2026년 3월 9일</span>
+          <span>🔄 최종 개정: 2026년 3월 9일</span>
+          <span>📌 버전: v1.0</span>
+        </div>
+      </div>
+
+      <div class="sec" id="t1">
+        <div class="sec-n">제1조</div>
+        <div class="sec-t"><em>목적</em></div>
+        <p>이 약관은 <strong>베이비페어 일정</strong>(이하 "서비스")이 제공하는 전국 베이비페어·육아박람회·유아교육전 통합 정보 서비스 및 관련 부가 서비스의 이용 조건과 절차, 회사와 이용자 간의 권리·의무를 규정함을 목적으로 합니다.</p>
+      </div>
+
+      <div class="sec" id="t2">
+        <div class="sec-n">제2조</div>
+        <div class="sec-t"><em>정의</em></div>
+        <ol class="dl">
+          <li><strong>"서비스"</strong>란 베이비페어 일정 웹사이트 및 모바일 앱(추후 출시 예정)을 통해 제공하는 박람회 일정 안내, 사전등록 연결, 육아 정보 콘텐츠, 회원 혜택 등 일체의 서비스를 말합니다.</li>
+          <li><strong>"이용자"</strong>란 서비스에 접속하여 본 약관에 따라 서비스를 이용하는 모든 방문자를 말합니다.</li>
+          <li><strong>"회원"</strong>이란 서비스에 개인정보를 제공하고 회원 등록을 완료한 자로서, 회원 전용 기능(즐겨찾기, 알림, 쿠폰 등)을 이용할 수 있는 자를 말합니다. <span class="future">추후 도입 예정</span></li>
+          <li><strong>"제휴사"</strong>란 서비스와 협약을 맺고 할인 쿠폰, 사은품, 입장권 등 혜택을 제공하는 박람회 주최사 및 육아용품 업체를 말합니다. <span class="future">추후 도입 예정</span></li>
+          <li><strong>"콘텐츠"</strong>란 서비스 내 박람회 일정, 이미지, 텍스트, 블로그 게시물 등 모든 디지털 정보를 말합니다.</li>
+        </ol>
+      </div>
+
+      <div class="sec" id="t3">
+        <div class="sec-n">제3조</div>
+        <div class="sec-t"><em>서비스 내용</em></div>
+        <div class="art">
+          <div class="art-t">① 현재 제공 서비스</div>
+          <ul class="dl">
+            <li>전국 베이비페어·육아박람회·유아교육전 일정 통합 안내</li>
+            <li>지역별·월별·종류별 필터링 및 검색</li>
+            <li>박람회 상세 정보 안내 (일정, 장소, 입장료, 품목 등)</li>
+            <li>공식 사이트 및 사전등록 페이지 연결</li>
+            <li>육아 관련 꿀팁 콘텐츠 제공</li>
+          </ul>
+        </div>
+        <div class="art">
+          <div class="art-t">② 추후 제공 예정 서비스 <span class="future">출시 예정</span></div>
+          <ul class="dl">
+            <li>모바일 앱 서비스 (iOS / Android)</li>
+            <li>박람회 오픈·사전등록 푸시 알림</li>
+            <li>회원 즐겨찾기·관심 박람회 저장</li>
+            <li>제휴사 할인 쿠폰 및 사은품 혜택</li>
+            <li>박람회 후기·리뷰 커뮤니티</li>
+          </ul>
+        </div>
+        <div class="art">
+          <div class="art-t">③ 서비스 변경 및 중단</div>
+          <p>운영상·기술상 필요에 의해 서비스 내용을 변경하거나 일시 중단할 수 있으며, 중요한 변경 사항은 사전에 공지합니다. 서비스 중단으로 인한 손해에 대해 회사는 별도의 법적 책임을 지지 않습니다.</p>
+        </div>
+      </div>
+
+      <div class="sec" id="t4">
+        <div class="sec-n">제4조</div>
+        <div class="sec-t"><em>회원 가입 및 관리</em> <span class="future">추후 도입 예정</span></div>
+        <div class="art">
+          <div class="art-t">① 가입 방법</div>
+          <p>회원 가입은 이메일 주소 또는 소셜 계정(카카오, 네이버, 구글)으로 가입할 수 있습니다. 가입 시 본 약관 및 개인정보처리방침에 동의한 것으로 간주합니다.</p>
+        </div>
+        <div class="art">
+          <div class="art-t">② 가입 제한</div>
+          <ul class="dl">
+            <li>만 14세 미만은 회원 가입이 제한됩니다.</li>
+            <li>과거 이용약관 위반으로 이용 정지된 경우 재가입이 제한될 수 있습니다.</li>
+            <li>타인의 정보를 도용하거나 허위 정보로 가입하는 경우 이용이 정지됩니다.</li>
+          </ul>
+        </div>
+        <div class="art">
+          <div class="art-t">③ 계정 관리 의무</div>
+          <p>회원은 자신의 계정 및 비밀번호 관리에 대한 책임을 지며, 타인에게 계정을 양도하거나 공유할 수 없습니다. 계정 도용이 의심될 경우 즉시 서비스에 신고해야 합니다.</p>
+        </div>
+        <div class="art">
+          <div class="art-t">④ 탈퇴</div>
+          <p>회원은 언제든지 탈퇴를 요청할 수 있으며, 탈퇴 즉시 회원 데이터는 삭제됩니다. 단, 관련 법령에 따라 일정 기간 보관이 필요한 정보는 예외적으로 보유합니다.</p>
+        </div>
+      </div>
+
+      <div class="sec" id="t5">
+        <div class="sec-n">제5조</div>
+        <div class="sec-t"><em>회원 혜택</em> <span class="future">추후 도입 예정</span></div>
+        <div class="box-green">
+          💚 회원 혜택은 서비스 성장에 따라 순차적으로 도입될 예정입니다. 혜택 내용은 제휴사와의 협약에 따라 달라질 수 있습니다.
+        </div>
+        <div class="art">
+          <div class="art-t">① 기본 혜택 (무료 회원)</div>
+          <ul class="dl">
+            <li>관심 박람회 즐겨찾기 저장</li>
+            <li>박람회 오픈·사전등록 알림 서비스</li>
+            <li>육아 꿀팁 뉴스레터 구독</li>
+          </ul>
+        </div>
+        <div class="art">
+          <div class="art-t">② 제휴 혜택 (제휴사 연동 시)</div>
+          <ul class="dl">
+            <li>제휴 박람회 입장권 할인 쿠폰 제공</li>
+            <li>사전등록 전용 사은품 증정 이벤트 우선 안내</li>
+            <li>제휴 육아용품 브랜드 할인 혜택</li>
+            <li>회원 전용 박람회 얼리버드 정보 우선 제공</li>
+          </ul>
+        </div>
+        <div class="art">
+          <div class="art-t">③ 혜택 변경 및 종료</div>
+          <p>회원 혜택은 제휴사 협약 종료, 서비스 정책 변경 등의 사유로 변경되거나 종료될 수 있으며, 변경 시 7일 전에 공지합니다.</p>
+        </div>
+      </div>
+
+      <div class="sec" id="t6">
+        <div class="sec-n">제6조</div>
+        <div class="sec-t"><em>제휴 서비스</em> <span class="future">추후 도입 예정</span></div>
+        <div class="art">
+          <div class="art-t">① 제휴 형태</div>
+          <p>서비스는 박람회 주최사, 육아용품 브랜드, 교육 콘텐츠 업체 등과 제휴를 맺어 이용자에게 할인 혜택, 사전등록 연결, 제품 정보 등을 제공할 수 있습니다.</p>
+        </div>
+        <div class="art">
+          <div class="art-t">② 제휴 콘텐츠 표시</div>
+          <p>제휴사가 제공하는 콘텐츠(쿠폰, 광고성 정보 등)는 <strong>"제휴"</strong> 또는 <strong>"AD"</strong> 표시를 통해 일반 정보와 명확히 구분하여 제공합니다.</p>
+        </div>
+        <div class="art">
+          <div class="art-t">③ 외부 링크 면책</div>
+          <p>서비스 내 제휴사 링크를 통해 이동한 외부 사이트에서의 거래, 개인정보 처리, 분쟁 등에 대해 서비스는 책임을 지지 않습니다.</p>
+        </div>
+      </div>
+
+      <div class="sec" id="t7">
+        <div class="sec-n">제7조</div>
+        <div class="sec-t"><em>광고 및 수익 구조</em></div>
+        <div class="art">
+          <div class="art-t">① 광고 게재</div>
+          <p>서비스는 제3자 광고 네트워크를 통해 광고를 게재할 수 있습니다. 광고는 서비스 운영 비용 충당을 위해 제공되며, 광고 콘텐츠는 광고주가 결정합니다.</p>
+        </div>
+        <div class="art">
+          <div class="art-t">② 광고 구분</div>
+          <p>모든 <strong>"광고"</strong> 또는 <strong>"AD"</strong>로 명확히 표시하며, 서비스의 일반 정보 콘텐츠와 구분됩니다.</p>
+        </div>
+        <div class="art">
+          <div class="art-t">③ 제휴 수익 (어필리에이트)</div>
+          <p>서비스는 일부 외부 링크에 제휴 추천 코드가 포함될 수 있으며, 이를 통한 구매 시 소정의 수수료가 발생할 수 있습니다. 이는 이용자의 추가 비용 없이 진행됩니다.</p>
+        </div>
+      </div>
+
+      <div class="sec" id="t8">
+        <div class="sec-n">제8조</div>
+        <div class="sec-t"><em>금지 행위</em></div>
+        <p>이용자는 다음 행위를 해서는 안 됩니다.</p>
+        <ol class="dl">
+          <li>타인의 개인정보, 계정 정보를 도용하거나 무단으로 사용하는 행위</li>
+          <li>서비스의 정상적인 운영을 방해하는 행위 (과도한 크롤링, DDoS 등)</li>
+          <li>서비스 내 콘텐츠를 무단으로 복제·배포·상업적으로 이용하는 행위</li>
+          <li>허위 정보를 게시하거나 다른 이용자를 기만하는 행위</li>
+          <li>음란·폭력·혐오 등 불법·유해 콘텐츠를 게시하는 행위</li>
+          <li>관련 법령을 위반하는 모든 행위</li>
+        </ol>
+        <div class="box-pink">위반 시 사전 통보 없이 서비스 이용이 제한될 수 있습니다.</div>
+      </div>
+
+      <div class="sec" id="t9">
+        <div class="sec-n">제9조</div>
+        <div class="sec-t"><em>면책조항</em></div>
+        <ol class="dl">
+          <li>서비스에 제공되는 박람회 일정 정보는 각 주최사의 공식 정보를 수집·정리한 것으로, 주최사 사정에 따라 변경·취소될 수 있습니다. 정확한 정보는 각 공식 홈페이지에서 확인하시기 바랍니다.</li>
+          <li>서비스는 천재지변, 불가항력, 기간통신사업자의 서비스 중단 등의 사유로 서비스가 중단된 경우 책임을 지지 않습니다.</li>
+          <li>이용자가 서비스를 이용하며 기대하는 수익·효과를 보장하지 않습니다.</li>
+          <li>이용자 간 또는 이용자와 제3자 간의 분쟁에 대해 서비스는 개입하지 않으며 책임을 부담하지 않습니다.</li>
+        </ol>
+      </div>
+
+      <div class="sec" id="t10">
+        <div class="sec-n">제10조</div>
+        <div class="sec-t"><em>준거법 및 분쟁 해결</em></div>
+        <p>본 약관은 대한민국 법령에 따라 해석되며, 서비스와 이용자 간 분쟁 발생 시 상호 협의를 통해 해결하는 것을 원칙으로 합니다. 협의가 이루어지지 않을 경우 관할 법원은 민사소송법상 관할 법원으로 합니다.</p>
+        <div class="box-gray">
+          <strong>문의:</strong> 이용약관 관련 문의는 하단의 고객센터 이메일로 연락해 주세요.
+        </div>
+      </div>
+
+    </div><!-- /terms -->
+
+
+    <!-- ══════════════════════════════ -->
+    <!-- 개인정보처리방침                 -->
+    <!-- ══════════════════════════════ -->
+    <div class="doc" id="doc-privacy">
+
+      <div class="doc-top">
+        <div class="doc-badge">🔐 개인정보처리방침</div>
+        <div class="doc-title">베이비페어 일정 개인정보처리방침</div>
+        <div class="doc-meta">
+          <span>📅 시행일: 2026년 3월 9일</span>
+          <span>🔄 최종 개정: 2026년 3월 9일</span>
+          <span>📌 버전: v1.0</span>
+        </div>
+      </div>
+
+      <div class="sec" style="background:var(--primary-soft);border-color:var(--primary-mid);">
+        <p style="color:var(--ink2);">
+          <strong>베이비페어 일정</strong>은 이용자의 개인정보를 소중히 여기며, 「개인정보 보호법」 및 관련 법령을 준수합니다. 본 방침은 서비스가 수집하는 개인정보의 항목, 수집 목적, 보유 기간, 이용자의 권리 등을 안내합니다.
+        </p>
+      </div>
+
+      <div class="sec" id="p1">
+        <div class="sec-n">제1조</div>
+        <div class="sec-t"><em>수집하는 개인정보 항목</em></div>
+
+        <div class="art">
+          <div class="art-t">① 현재 수집 항목 (비회원)</div>
+          <table class="tbl">
+            <thead><tr><th>항목</th><th>수집 방법</th><th>목적</th></tr></thead>
+            <tbody>
+              <tr><td>IP 주소</td><td>자동 수집</td><td>서비스 보안, 통계 분석</td></tr>
+              <tr><td>방문 페이지, 접속 시간</td><td>자동 수집</td><td>서비스 이용 통계</td></tr>
+              <tr><td>브라우저 종류, OS</td><td>자동 수집</td><td>서비스 최적화</td></tr>
+              <tr><td>쿠키 (Cookie)</td><td>자동 수집</td><td>광고 최적화, 재방문 인식</td></tr>
+            </tbody>
+          </table>
+          <div class="box-blue">📌 현재 서비스는 회원 가입 없이 운영되며, 별도의 개인정보를 직접 수집하지 않습니다.</div>
+        </div>
+
+        <div class="art">
+          <div class="art-t">② 추후 수집 예정 항목 (회원 가입 시) <span class="future">추후 도입 예정</span></div>
+          <table class="tbl">
+            <thead><tr><th>구분</th><th>필수 항목</th><th>선택 항목</th></tr></thead>
+            <tbody>
+              <tr><td>이메일 가입</td><td>이메일 주소, 비밀번호</td><td>닉네임, 자녀 연령대, 거주 지역</td></tr>
+              <tr><td>소셜 가입 (카카오)</td><td>카카오 고유 ID, 이메일</td><td>프로필 이미지, 닉네임</td></tr>
+              <tr><td>소셜 가입 (네이버)</td><td>네이버 고유 ID, 이메일</td><td>프로필 이미지, 닉네임</td></tr>
+              <tr><td>알림 설정</td><td>-</td><td>기기 토큰 (푸시 알림용)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="sec" id="p2">
+        <div class="sec-n">제2조</div>
+        <div class="sec-t"><em>개인정보 수집 및 이용 목적</em></div>
+        <table class="tbl">
+          <thead><tr><th>목적</th><th>수집 항목</th><th>비고</th></tr></thead>
+          <tbody>
+            <tr><td>서비스 제공 및 운영</td><td>접속 로그, IP</td><td>현재 운영 중</td></tr>
+            <tr><td>광고 게재 최적화</td><td>쿠키, 접속 정보</td><td>구글 광고 서비스</td></tr>
+            <tr><td>서비스 통계 및 개선</td><td>방문 데이터</td><td>Google Analytics</td></tr>
+            <tr><td>회원 서비스 제공</td><td>이메일, 소셜 ID</td><td>추후 도입 예정</td></tr>
+            <tr><td>푸시 알림 발송</td><td>기기 토큰</td><td>추후 도입 예정</td></tr>
+            <tr><td>제휴 혜택 제공</td><td>이메일, 지역</td><td>추후 도입 예정</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="sec" id="p3">
+        <div class="sec-n">제3조</div>
+        <div class="sec-t"><em>개인정보 보유 및 이용 기간</em></div>
+        <table class="tbl">
+          <thead><tr><th>항목</th><th>보유 기간</th><th>근거</th></tr></thead>
+          <tbody>
+            <tr><td>접속 로그, IP 주소</td><td>3개월</td><td>통신비밀보호법</td></tr>
+            <tr><td>회원 정보 (추후)</td><td>탈퇴 즉시 삭제</td><td>이용자 동의</td></tr>
+            <tr><td>광고 관련 쿠키</td><td>최대 2년</td><td>광고 목적</td></tr>
+            <tr><td>민원·분쟁 처리 기록</td><td>3년</td><td>전자상거래법</td></tr>
+          </tbody>
+        </table>
+        <div class="box-gray">위 기간이 경과하면 해당 정보는 지체 없이 파기합니다.</div>
+      </div>
+
+      <div class="sec" id="p4">
+        <div class="sec-n">제4조</div>
+        <div class="sec-t"><em>개인정보의 제3자 제공</em></div>
+        <p>서비스는 원칙적으로 이용자의 개인정보를 제3자에게 제공하지 않습니다. 다만, 다음의 경우는 예외로 합니다.</p>
+        <ol class="dl">
+          <li>이용자가 사전에 명시적으로 동의한 경우</li>
+          <li>법령의 규정에 의하거나 수사기관의 적법한 요청이 있는 경우</li>
+          <li>제휴 혜택 제공을 위해 이용자 동의 후 제휴사에 제공하는 경우 <span class="future">추후 도입 예정</span></li>
+        </ol>
+        <div class="art" style="margin-top:14px;">
+          <div class="art-t">제휴사 제공 예정 항목 <span class="future">추후 도입 예정</span></div>
+          <table class="tbl">
+            <thead><tr><th>제공 대상</th><th>제공 항목</th><th>목적</th><th>보유 기간</th></tr></thead>
+            <tbody>
+              <tr><td>박람회 주최사</td><td>이메일, 이름 (동의 시)</td><td>사전등록 처리</td><td>행사 종료 후 즉시 삭제</td></tr>
+              <tr><td>제휴 육아 브랜드</td><td>이메일 (동의 시)</td><td>쿠폰·혜택 발송</td><td>제휴 종료 후 삭제</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="sec" id="p5">
+        <div class="sec-n">제5조</div>
+        <div class="sec-t"><em>개인정보 처리 위탁</em></div>
+        <table class="tbl">
+          <thead><tr><th>수탁 업체</th><th>위탁 업무</th><th>보유 기간</th></tr></thead>
+          <tbody>
+            <tr><td>Google LLC</td><td>웹사이트 통계 분석 (Google Analytics), 광고 게재 (구글 광고 서비스)</td><td>서비스 이용 기간</td></tr>
+            <tr><td>Netlify / Vercel (예정)</td><td>웹 호스팅 및 서버 운영</td><td>서비스 이용 기간</td></tr>
+            <tr><td>Kakao Corp. (추후)</td><td>소셜 로그인 인증</td><td>회원 탈퇴 시</td></tr>
+            <tr><td>NAVER Corp. (추후)</td><td>소셜 로그인 인증</td><td>회원 탈퇴 시</td></tr>
+            <tr><td>Firebase (추후)</td><td>푸시 알림 발송</td><td>알림 해제 시</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="sec" id="p6">
+        <div class="sec-n">제6조</div>
+        <div class="sec-t"><em>이용자의 권리</em></div>
+        <p>이용자(회원)는 언제든지 다음 권리를 행사할 수 있습니다.</p>
+        <ol class="dl">
+          <li><strong>열람 요청:</strong> 서비스가 보유한 본인의 개인정보 열람을 요청할 수 있습니다.</li>
+          <li><strong>정정·삭제 요청:</strong> 오류가 있는 정보의 정정 또는 삭제를 요청할 수 있습니다.</li>
+          <li><strong>처리 정지 요청:</strong> 개인정보 처리의 정지를 요청할 수 있습니다.</li>
+          <li><strong>동의 철회:</strong> 마케팅·광고 수신 동의를 언제든지 철회할 수 있습니다.</li>
+          <li><strong>회원 탈퇴:</strong> 계정 설정에서 즉시 탈퇴할 수 있으며, 탈퇴 시 개인정보는 즉시 파기됩니다.</li>
+        </ol>
+        <div class="box-blue">권리 행사는 이메일(아래 담당자)로 요청하시면 10영업일 이내 처리합니다.</div>
+      </div>
+
+      <div class="sec" id="p7">
+        <div class="sec-n">제7조</div>
+        <div class="sec-t"><em>쿠키 및 광고 데이터 정책</em></div>
+        <div class="art">
+          <div class="art-t">① 쿠키 사용</div>
+          <p>서비스는 이용자 경험 향상 및 광고 최적화를 위해 쿠키(Cookie)와 유사 추적 기술을 사용합니다. 쿠키는 브라우저 설정에서 거부할 수 있으나, 일부 서비스 기능이 제한될 수 있습니다.</p>
+        </div>
+        <div class="art">
+          <div class="art-t">② 구글 광고 서비스 광고</div>
+          <p>서비스는 구글 광고 서비스를 통해 맞춤 광고를 제공합니다. Google은 쿠키를 사용하여 이용자의 관심사에 맞는 광고를 노출할 수 있습니다.</p>
+          <ul class="dl">
+            <li>광고 맞춤 설정 해제: <strong>google.com/settings/ads</strong></li>
+            <li>Google 개인정보처리방침: <strong>policies.google.com/privacy</strong></li>
+          </ul>
+        </div>
+        <div class="art">
+          <div class="art-t">③ Google Analytics</div>
+          <p>서비스 개선을 위해 Google Analytics를 통한 방문 통계를 수집합니다. 수집 데이터는 익명으로 처리되며 개인을 식별하지 않습니다.</p>
+        </div>
+      </div>
+
+      <div class="sec" id="p8">
+        <div class="sec-n">제8조</div>
+        <div class="sec-t"><em>개인정보 보호 조치</em></div>
+        <ol class="dl">
+          <li><strong>기술적 조치:</strong> SSL/TLS 암호화 통신 적용, 접근 권한 최소화</li>
+          <li><strong>관리적 조치:</strong> 개인정보 처리 직원 최소화 및 정기 교육</li>
+          <li><strong>물리적 조치:</strong> 클라우드 서버의 물리적 접근 통제 (AWS, Google Cloud 등 활용)</li>
+          <li><strong>정기 점검:</strong> 개인정보 보호 정책 및 보안 조치를 정기적으로 검토·갱신</li>
+        </ol>
+        <div class="box-pink">개인정보 침해 사고 발생 시 72시간 이내 이용자에게 통지합니다.</div>
+      </div>
+
+      <div class="sec" id="p9">
+        <div class="sec-n">제9조</div>
+        <div class="sec-t"><em>개인정보 보호 담당자 및 문의</em></div>
+        <p>개인정보 관련 문의, 열람·정정·삭제 요청은 아래로 연락해 주세요. 접수 후 10영업일 이내에 답변드립니다.</p>
+        <div class="contact-grid">
+          <div class="contact-item">
+            <div class="c-lbl">서비스명</div>
+            <div class="c-val">베이비페어 일정</div>
+            <div class="c-sub">babyfair-schedule.com</div>
+          </div>
+          <div class="contact-item">
+            <div class="c-lbl">문의 이메일</div>
+            <div class="c-val">kyukyurin123@gmail.com</div>
+            <div class="c-sub">10영업일 이내 답변</div>
+          </div>
+          <div class="contact-item">
+            <div class="c-lbl">개인정보 침해 신고</div>
+            <div class="c-val">privacy.kisa.or.kr</div>
+            <div class="c-sub">한국인터넷진흥원 (KISA)</div>
+          </div>
+          <div class="contact-item">
+            <div class="c-lbl">개인정보 분쟁 조정</div>
+            <div class="c-val">www.kopico.go.kr</div>
+            <div class="c-sub">개인정보분쟁조정위원회</div>
+          </div>
+        </div>
+        <div class="box-gray" style="margin-top:14px;">
+          본 개인정보처리방침은 법령 또는 서비스 정책 변경에 따라 개정될 수 있으며, 변경 시 공지사항을 통해 안내합니다.
+        </div>
+      </div>
+
+    </div><!-- /privacy -->
+
+  </main>
+</div>
+
+
+<ins class="adsbygoogle" style="display:block;margin:28px 0;" data-ad-client="ca-pub-2284090720087182" data-ad-slot="8862749299" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+<footer>
+  <p>🍼 베이비페어 일정 · 전국 베이비페어·육아박람회·유아교육전 통합 정보</p>
+  <div class="f-links">
+    <a href="#">이용약관</a>
+    <a href="#">개인정보처리방침</a>
+    <a href="babyfair-v2.html">메인으로</a>
+    <a href="#">광고문의</a>
+    <a href="#">제휴문의</a>
+  </div>
+  <p>© 2026 베이비페어 일정 All rights reserved.</p>
+</footer>
+
+<script>
+function switchTab(id, btn) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('on'));
+  document.querySelectorAll('.doc').forEach(d => d.classList.remove('on'));
+  btn.classList.add('on');
+  document.getElementById('doc-' + id).classList.add('on');
+
+  // TOC 업데이트
+  const toc = document.getElementById('tocNav');
+  const groups = toc.querySelectorAll('.toc-group');
+  if (id === 'terms') {
+    groups[0].style.display = '';
+    groups[1].style.display = 'none';
+  } else {
+    groups[0].style.display = 'none';
+    groups[1].style.display = '';
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function go(id) {
+  // 해당 섹션이 속한 탭 자동 전환
+  const el = document.getElementById(id);
+  if (!el) return;
+  const inTerms = el.closest('#doc-terms');
+  const tabs = document.querySelectorAll('.tab');
+  if (inTerms && !document.getElementById('doc-terms').classList.contains('on')) {
+    switchTab('terms', tabs[0]);
+  } else if (!inTerms && !document.getElementById('doc-privacy').classList.contains('on')) {
+    switchTab('privacy', tabs[1]);
+  }
+  setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+
+  // TOC 활성화
+  document.querySelectorAll('.toc-a').forEach(a => a.classList.remove('on'));
+  event.target.classList.add('on');
+}
+
+// 초기 TOC 상태
+document.getElementById('tocNav').querySelectorAll('.toc-group')[1].style.display = 'none';
+</script>
+</body>
+</html>

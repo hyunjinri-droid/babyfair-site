@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>원더윅스 계산기 2026 — 아기 예정일 입력하면 원더윅스 시기 자동 계산 | 베이비페어 일정</title>
+<meta name="description" content="원더윅스 계산기! 아기 출생일(또는 예정일) 입력하면 10번의 원더윅스 시기를 자동 계산해드려요. 각 도약기 특징과 대처법도 함께 확인하세요.">
+<meta name="keywords" content="원더윅스 계산기, 원더윅스 시기, 아기 원더윅스, 원더윅스 도약기, 아기 칭얼거림, 원더윅스 계산">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.babyfairschedule.co.kr/blog-wonderweeks.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="원더윅스 계산기 2026 — 출생일 입력하면 10번의 도약기 자동 계산">
+<meta property="og:description" content="출생일만 입력하면 원더윅스 10번의 도약기 날짜를 자동 계산! 각 단계별 특징과 대처법도 함께 확인하세요.">
+<meta property="og:url" content="https://www.babyfairschedule.co.kr/blog-wonderweeks.html">
+<meta property="og:site_name" content="베이비페어 일정">
+<meta property="og:locale" content="ko_KR">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2284090720087182"
+     crossorigin="anonymous"></script>
+<style>
+  :root{--brand:#c47a3a;--bg:#fdf9f4;--ink:#2d2d2d;--ink2:#555;--ink3:#999;--radius:14px;--shadow:0 2px 12px rgba(0,0,0,.06);}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Pretendard','Apple SD Gothic Neo',sans-serif;background:var(--bg);color:var(--ink);line-height:1.75;}
+  a{color:var(--brand);text-decoration:none;}a:hover{text-decoration:underline;}
+  header{background:#fff;border-bottom:1px solid #e8d8c0;position:sticky;top:0;z-index:100;}
+  .header-inner{max-width:780px;margin:0 auto;padding:0 16px;display:flex;align-items:center;justify-content:space-between;height:52px;}
+  .logo{font-weight:800;font-size:17px;color:#e05a5a;}
+  nav{display:flex;gap:4px;}.nav-a{font-size:13px;padding:6px 10px;border-radius:8px;color:var(--ink2);}
+  .hero{background:linear-gradient(135deg,#c47a3a,#e0a060);color:#fff;padding:40px 16px 36px;text-align:center;}
+  .hero-tag{display:inline-block;background:rgba(255,255,255,.2);border-radius:20px;padding:4px 14px;font-size:12px;font-weight:600;margin-bottom:14px;}
+  .hero h1{font-size:clamp(19px,5vw,27px);font-weight:900;line-height:1.4;margin-bottom:10px;}
+  .hero-meta{font-size:13px;opacity:.85;}
+  .wrap{max-width:780px;margin:0 auto;padding:28px 16px 60px;}
+
+  /* 계산기 */
+  .calc-box{background:#fff;border-radius:var(--radius);padding:24px;margin-bottom:28px;box-shadow:var(--shadow);border:2px solid #e8d8c0;}
+  .calc-box h2{font-size:17px;font-weight:800;color:var(--brand);margin-bottom:6px;}
+  .calc-desc{font-size:14px;color:var(--ink3);margin-bottom:18px;}
+  .input-row{display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap;}
+  .input-group{flex:1;min-width:180px;}
+  .input-group label{display:block;font-size:13px;font-weight:700;color:var(--ink2);margin-bottom:6px;}
+  .input-group input{width:100%;padding:12px 14px;border:2px solid #e8d8c0;border-radius:10px;font-size:15px;background:#fdf9f4;outline:none;transition:.2s;}
+  .input-group input:focus{border-color:var(--brand);}
+  .toggle-row{display:flex;gap:8px;margin-bottom:14px;}
+  .toggle-btn{flex:1;padding:10px;border:2px solid #e8d8c0;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;background:#fff;color:var(--ink2);transition:.2s;}
+  .toggle-btn.active{background:var(--brand);color:#fff;border-color:var(--brand);}
+  .calc-btn{padding:12px 24px;background:var(--brand);color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:800;cursor:pointer;transition:.2s;white-space:nowrap;}
+  .calc-btn:hover{opacity:.88;}
+
+  /* 결과 */
+  #result{display:none;margin-top:20px;}
+  .result-header{background:linear-gradient(135deg,#c47a3a,#e0a060);border-radius:12px;padding:16px;color:#fff;margin-bottom:16px;text-align:center;}
+  .result-header h3{font-size:16px;font-weight:800;margin-bottom:4px;}
+  .result-header p{font-size:13px;opacity:.9;}
+  .current-badge{display:inline-block;background:rgba(255,255,255,.25);border-radius:20px;padding:4px 14px;font-size:12px;font-weight:700;margin-top:8px;}
+
+  .ww-item{background:#fff;border-radius:12px;padding:16px;margin-bottom:10px;box-shadow:var(--shadow);display:flex;align-items:flex-start;gap:14px;transition:.2s;}
+  .ww-item.active{border:2px solid var(--brand);background:#fdf5eb;}
+  .ww-item.passed{opacity:.5;}
+  .ww-num{width:36px;height:36px;border-radius:50%;background:#f5ead8;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:var(--brand);flex-shrink:0;}
+  .ww-item.active .ww-num{background:var(--brand);color:#fff;}
+  .ww-info{flex:1;}
+  .ww-name{font-size:14px;font-weight:800;color:var(--ink);}
+  .ww-date{font-size:12px;color:var(--ink3);margin-top:2px;}
+  .ww-week{font-size:12px;color:var(--brand);font-weight:700;margin-top:2px;}
+  .ww-status{font-size:11px;font-weight:700;padding:3px 8px;border-radius:8px;margin-top:4px;display:inline-block;}
+  .status-active{background:#fff3e0;color:#e65100;}
+  .status-soon{background:#e8f5e9;color:#2e7d32;}
+  .status-passed{background:#f5f5f5;color:#9e9e9e;}
+  .status-future{background:#e8eaf6;color:#3949ab;}
+
+  h2.sec{font-size:18px;font-weight:800;margin:32px 0 14px;padding-bottom:8px;border-bottom:2px solid #e8d8c0;}
+  p{color:var(--ink2);margin-bottom:12px;font-size:15px;}
+  .info-card{background:#fff;border-radius:var(--radius);padding:18px;margin-bottom:14px;box-shadow:var(--shadow);}
+  .ic-head{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px;}
+  .ic-icon{font-size:24px;flex-shrink:0;}
+  .ic-title{font-size:15px;font-weight:800;}
+  .ic-week{font-size:12px;color:var(--brand);font-weight:700;margin-top:2px;}
+  .ic-body{font-size:14px;color:var(--ink2);line-height:1.7;}
+  .ic-body ul{padding-left:16px;margin-top:6px;}
+  .ic-body li{margin-bottom:4px;}
+  .tip-box{background:#fff8f0;border:1px solid #f5d9b0;border-radius:var(--radius);padding:16px;margin:20px 0;}
+  .tip-box .tip-title{font-weight:700;color:#c47a3a;margin-bottom:8px;font-size:14px;}
+  .tip-box ul{padding-left:16px;font-size:14px;color:var(--ink2);}
+  .tip-box li{margin-bottom:4px;}
+  .faq-item{background:#fff;border-radius:var(--radius);margin-bottom:10px;box-shadow:var(--shadow);}
+  .faq-q{font-size:14px;font-weight:700;padding:16px;color:var(--ink);}
+  .faq-a{font-size:14px;color:var(--ink2);padding:0 16px 16px;line-height:1.7;}
+  .cta-box{background:linear-gradient(135deg,#c47a3a,#e0a060);border-radius:var(--radius);padding:24px;text-align:center;color:#fff;margin:32px 0;}
+  .cta-box h3{font-size:17px;font-weight:800;margin-bottom:8px;}
+  .cta-box p{font-size:13px;opacity:.9;margin-bottom:14px;}
+  .cta-btn{display:inline-block;background:#fff;color:var(--brand);font-weight:800;border-radius:10px;padding:10px 22px;font-size:14px;}
+  .related{margin-top:32px;}.related h3{font-size:16px;font-weight:700;margin-bottom:12px;}
+  .related-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .related-card{background:#fff;border-radius:12px;padding:14px;box-shadow:var(--shadow);font-size:13px;}
+  .rc-label{font-size:11px;color:var(--brand);font-weight:700;margin-bottom:4px;}
+  .rc-title{font-weight:700;color:var(--ink);line-height:1.4;}
+  footer{background:#fff;border-top:1px solid #e8d8c0;padding:24px 16px;text-align:center;font-size:12px;color:var(--ink3);}
+  footer a{color:var(--ink3);margin:0 6px;}
+  @media(max-width:480px){.input-row{flex-direction:column;}.related-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a class="logo" href="https://babyfairschedule.co.kr/">🍼 베이비페어 일정</a>
+    <nav>
+      <a class="nav-a" href="https://babyfairschedule.co.kr/">전체 일정</a>
+      <a class="nav-a" href="https://babyfairschedule.co.kr/blog.html">육아 꿀팁</a>
+      <a class="nav-a" href="https://babyfairschedule.co.kr/night-care.html">🌙 야간진료</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-tag">🌟 원더윅스 계산기 2026</div>
+  <h1>원더윅스 계산기<br>아기 도약기 날짜 자동 계산!</h1>
+  <div class="hero-meta">출생일 입력하면 10번의 원더윅스 시기를 모두 알려드려요 😊</div>
+</div>
+
+<div class="wrap">
+  <p style="font-size:13px;color:var(--ink3);margin-bottom:20px;">
+    <a href="https://babyfairschedule.co.kr/">홈</a> › <a href="https://babyfairschedule.co.kr/blog.html">육아 꿀팁</a> › 원더윅스 계산기
+  </p>
+
+  <!-- 계산기 -->
+  <div class="calc-box">
+    <h2>🌟 원더윅스 날짜 계산기</h2>
+    <div class="calc-desc">출생일 또는 예정일을 입력하면 10번의 도약기 날짜를 자동 계산해드려요!</div>
+
+    <div class="toggle-row">
+      <button class="toggle-btn active" id="btn-born" onclick="setMode('born')">출생일로 계산</button>
+      <button class="toggle-btn" id="btn-due" onclick="setMode('due')">예정일로 계산</button>
+    </div>
+
+    <div class="input-row">
+      <div class="input-group">
+        <label id="date-label">아기 출생일</label>
+        <input type="date" id="birth-date" max="">
+      </div>
+      <button class="calc-btn" onclick="calculate()">계산하기</button>
+    </div>
+    <p style="font-size:12px;color:var(--ink3);margin-top:10px;margin-bottom:0;">※ 원더윅스는 예정일 기준으로 계산해요. 예정일보다 일찍/늦게 태어난 경우 예정일 모드를 사용하세요.</p>
+
+    <div id="result">
+      <div class="result-header">
+        <h3 id="result-title">계산 결과</h3>
+        <p id="result-sub"></p>
+        <span class="current-badge" id="current-badge"></span>
+      </div>
+      <div id="ww-list"></div>
+    </div>
+  </div>
+
+  <h2 class="sec">원더윅스란 무엇인가요?</h2>
+<ins class="adsbygoogle" style="display:block;margin:28px 0;" data-ad-client="ca-pub-2284090720087182" data-ad-slot="8862749299" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+
+  <p>원더윅스(Wonder Weeks)는 네덜란드 발달심리학자 헷셀 판 더 레이트 박사가 연구한 <strong>아기의 10번의 정신 발달 도약기</strong>를 말해요. 이 시기 동안 아기의 뇌가 급격히 발달하면서 일시적으로 <strong>칭얼거림·수면 퇴행·낯가림</strong>이 심해져요.</p>
+  <p>도약이 끝나면 아기는 새로운 능력을 갖추게 되고, 힘든 시기가 지나면 언제 그랬냐는 듯 밝고 활발해져요. "이건 원더윅스 때문이구나!"라고 알면 훨씬 마음이 편해질 거예요 😊</p>
+
+  <h2 class="sec">원더윅스 10번 도약기 특징</h2>
+
+  <div class="info-card">
+    <div class="ic-head"><div class="ic-icon">1️⃣</div><div class="ic-title-wrap"><div class="ic-title">1도약 — 감각의 세계</div><div class="ic-week">예정일로부터 약 5주</div></div></div>
+    <div class="ic-body">주변 환경을 처음으로 인식해요. 소리·빛·감촉에 더 민감하게 반응하기 시작해요.<ul><li>칭얼거림 심해짐, 자주 안아줘야 함</li><li>도약 후: 주변을 관찰하고 미소 짓기 시작</li></ul></div>
+  </div>
+
+  <div class="info-card">
+    <div class="ic-head"><div class="ic-icon">2️⃣</div><div class="ic-title-wrap"><div class="ic-title">2도약 — 패턴의 세계</div><div class="ic-week">예정일로부터 약 8주</div></div></div>
+    <div class="ic-body">반복되는 패턴을 인식해요. 엄마 얼굴·목소리를 구별하기 시작해요.<ul><li>낯가림 시작, 엄마만 찾음</li><li>도약 후: 사회적 미소, 옹알이 시작</li></ul></div>
+  </div>
+
+  <div class="info-card">
+    <div class="ic-head"><div class="ic-icon">3️⃣</div><div class="ic-title-wrap"><div class="ic-title">3도약 — 전환의 세계</div><div class="ic-week">예정일로부터 약 12주</div></div></div>
+    <div class="ic-body">부드러운 움직임과 변화를 인식해요.<ul><li>손발 움직임 관찰, 목 가누기 발달</li><li>도약 후: 손을 쥐고 탐색하기 시작</li></ul></div>
+  </div>
+
+  <div class="info-card">
+    <div class="ic-head"><div class="ic-icon">4️⃣</div><div class="ic-title-wrap"><div class="ic-title">4도약 — 사건의 세계</div><div class="ic-week">예정일로부터 약 19주</div></div></div>
+    <div class="ic-body">원인과 결과를 이해하기 시작해요. 장난감을 떨어뜨리고 소리 나는 것을 즐겨요.<ul><li>분리 불안 시작, 낯선 사람 타기</li><li>도약 후: 뒤집기, 손으로 물건 잡기</li></ul></div>
+  </div>
+
+  <div class="info-card">
+    <div class="ic-head"><div class="ic-icon">5️⃣</div><div class="ic-title-wrap"><div class="ic-title">5도약 — 관계의 세계</div><div class="ic-week">예정일로부터 약 26주</div></div></div>
+    <div class="ic-body">사물 간의 관계를 이해해요. 컵 안에 뭔가 들어있다는 것을 알아요.<ul><li>이 시기가 가장 힘든 도약 중 하나</li><li>도약 후: 앉기 시도, 낯가림 심해짐</li></ul></div>
+  </div>
+
+  <div class="info-card">
+    <div class="ic-head"><div class="ic-icon">6️⃣</div><div class="ic-title-wrap"><div class="ic-title">6도약 — 카테고리의 세계</div><div class="ic-week">예정일로부터 약 37주</div></div></div>
+    <div class="ic-body">사물을 분류할 줄 알아요. 개·고양이·사람을 다르게 인식해요.<ul><li>집착이 심해짐, 혼자 놀기 어려워함</li><li>도약 후: 기기 시작, 음식 선호도 생김</li></ul></div>
+  </div>
+
+  <div class="info-card">
+    <div class="ic-head"><div class="ic-icon">7️⃣</div><div class="ic-title-wrap"><div class="ic-title">7도약 — 순서의 세계</div><div class="ic-week">예정일로부터 약 46주</div></div></div>
+    <div class="ic-body">순서와 절차를 이해해요. 장난감을 정리하는 순서를 배워요.<ul><li>떼쓰기 시작, 원하는 것이 명확해짐</li><li>도약 후: 서기 시도, 언어 이해 발달</li></ul></div>
+  </div>
+
+  <div class="info-card">
+    <div class="ic-head"><div class="ic-icon">8️⃣</div><div class="ic-title-wrap"><div class="ic-title">8도약 — 프로그램의 세계</div><div class="ic-week">예정일로부터 약 55주</div></div></div>
+    <div class="ic-body">복잡한 계획과 행동 순서를 이해해요.<ul><li>의사 표현이 강해짐, 고집이 세짐</li><li>도약 후: 걷기 시작, 말 흉내 내기</li></ul></div>
+  </div>
+
+  <div class="info-card">
+    <div class="ic-head"><div class="ic-icon">9️⃣</div><div class="ic-title-wrap"><div class="ic-title">9도약 — 원칙의 세계</div><div class="ic-week">예정일로부터 약 64주</div></div></div>
+    <div class="ic-body">규칙과 원칙을 이해해요. 규칙을 배우고 적용하려 해요.<ul><li>다양한 감정 표현, 공감 능력 발달</li><li>도약 후: 두 단어 연결, 규칙 이해</li></ul></div>
+  </div>
+
+  <div class="info-card">
+    <div class="ic-head"><div class="ic-icon">🔟</div><div class="ic-title-wrap"><div class="ic-title">10도약 — 시스템의 세계</div><div class="ic-week">예정일로부터 약 75주</div></div></div>
+    <div class="ic-body">복잡한 시스템과 가치관을 이해하기 시작해요.<ul><li>독립심과 자아 의식이 생김</li><li>도약 후: 언어 폭발기, 역할 놀이 시작</li></ul></div>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-title">💡 원더윅스 시기 대처법</div>
+    <ul>
+      <li>"이건 원더윅스야!" 알면 덜 당황해요 — 일시적이에요</li>
+      <li>도약기엔 평소보다 더 많이 안아주고 스킨십 늘리기</li>
+      <li>수면 퇴행이 올 수 있어요 — 잠깐 힘들어도 곧 나아져요</li>
+      <li>새로운 자극(새 장난감, 산책, 노래)이 도움이 돼요</li>
+      <li>엄마·아빠도 지치는 시기예요 — 번갈아 쉬기!</li>
+    </ul>
+  </div>
+
+  <h2 class="sec">자주 묻는 질문 (FAQ)</h2>
+  <div class="faq-item">
+    <div class="faq-q">Q. 원더윅스는 예정일 기준인가요, 출생일 기준인가요?</div>
+    <div class="faq-a">원더윅스는 <strong>예정일 기준</strong>으로 계산해요. 예정일보다 일찍 태어난 경우(조산) 실제 출생일보다 늦게 도약기가 올 수 있어요. 예정일과 출생일 차이가 2주 이내라면 출생일로 계산해도 크게 다르지 않아요.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Q. 모든 아기가 원더윅스를 경험하나요?</div>
+    <div class="faq-a">원더윅스는 모든 아기가 경험하는 정상적인 발달 과정이에요. 단, 아기마다 반응 강도가 달라요. 어떤 아기는 심하게 칭얼거리고, 어떤 아기는 비교적 조용히 넘어가기도 해요. 기질에 따라 차이가 있어요.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Q. 원더윅스 시기에 수면 교육을 해도 될까요?</div>
+    <div class="faq-a">원더윅스 도약기에는 수면 교육을 잠깐 멈추는 것을 권장해요. 이 시기에는 아기가 불안감을 더 크게 느끼기 때문에 반응을 빠르게 해주는 게 좋아요. 도약기가 끝나고 안정되면 다시 시작하세요!</div>
+  </div>
+
+  <div class="cta-box">
+    <h3>🍼 베이비페어에서 육아 용품 준비하세요!</h3>
+    <p>전국 베이비페어·유아교육전 일정을 확인하고<br>원더윅스 시기를 현명하게 대비해요 😊</p>
+    <a class="cta-btn" href="https://babyfairschedule.co.kr/">전국 베이비페어 일정 보러가기 →</a>
+  </div>
+
+  <div class="related">
+    <h3>📚 관련 글</h3>
+    <div class="related-grid">
+      <a class="related-card" href="https://babyfairschedule.co.kr/blog-sleep-position.html"><div class="rc-label">임산부 건강</div><div class="rc-title">임산부 잠자리 자세 총정리 2026</div></a>
+      <a class="related-card" href="https://babyfairschedule.co.kr/blog-firstwelcome.html"><div class="rc-label">출산 지원</div><div class="rc-title">첫만남이용권 사용처 총정리 2026</div></a>
+      <a class="related-card" href="https://babyfairschedule.co.kr/blog-preeclampsia.html"><div class="rc-label">임산부 건강</div><div class="rc-title">임신중독증 증상·원인·치료 총정리</div></a>
+      <a class="related-card" href="https://babyfairschedule.co.kr/blog-dental.html"><div class="rc-label">임산부 건강</div><div class="rc-title">임산부 치과 치료 가능한가요?</div></a>
+    </div>
+  </div>
+</div>
+
+
+<ins class="adsbygoogle" style="display:block;margin:28px 0;" data-ad-client="ca-pub-2284090720087182" data-ad-slot="8862749299" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+<footer>
+  🍼 베이비페어 일정 · 전국 베이비페어·육아박람회·유아교육전 통합 정보<br>
+  <a href="https://babyfairschedule.co.kr/">메인으로</a>
+  <a href="https://babyfairschedule.co.kr/blog.html">육아 꿀팁</a>
+  <a href="https://babyfairschedule.co.kr/legal.html">이용약관</a>
+  <a href="https://babyfairschedule.co.kr/privacy.html">개인정보처리방침</a><br><br>
+  © 2026 베이비페어 일정 All rights reserved.
+</footer>
+
+<script>
+const WW = [
+  {n:1, name:"1도약 — 감각의 세계", weeks:5, emoji:"1️⃣"},
+  {n:2, name:"2도약 — 패턴의 세계", weeks:8, emoji:"2️⃣"},
+  {n:3, name:"3도약 — 전환의 세계", weeks:12, emoji:"3️⃣"},
+  {n:4, name:"4도약 — 사건의 세계", weeks:19, emoji:"4️⃣"},
+  {n:5, name:"5도약 — 관계의 세계", weeks:26, emoji:"5️⃣"},
+  {n:6, name:"6도약 — 카테고리의 세계", weeks:37, emoji:"6️⃣"},
+  {n:7, name:"7도약 — 순서의 세계", weeks:46, emoji:"7️⃣"},
+  {n:8, name:"8도약 — 프로그램의 세계", weeks:55, emoji:"8️⃣"},
+  {n:9, name:"9도약 — 원칙의 세계", weeks:64, emoji:"9️⃣"},
+  {n:10, name:"10도약 — 시스템의 세계", weeks:75, emoji:"🔟"}
+];
+
+let mode = 'born';
+
+function setMode(m) {
+  mode = m;
+  document.getElementById('btn-born').classList.toggle('active', m==='born');
+  document.getElementById('btn-due').classList.toggle('active', m==='due');
+  document.getElementById('date-label').textContent = m==='born' ? '아기 출생일' : '출산 예정일';
+}
+
+function fmt(d) {
+  return d.getFullYear()+'년 '+(d.getMonth()+1)+'월 '+d.getDate()+'일';
+}
+
+function calculate() {
+  const val = document.getElementById('birth-date').value;
+  if (!val) { alert('날짜를 입력해주세요!'); return; }
+
+  const base = new Date(val);
+  // 예정일 기준 계산 (출생일 모드면 출생일=예정일로 가정)
+  const today = new Date();
+  today.setHours(0,0,0,0);
+
+  const ageWeeks = Math.floor((today - base) / (7 * 24 * 60 * 60 * 1000));
+
+  document.getElementById('result-title').textContent = mode==='born' ? '아기의 원더윅스 일정' : '예정일 기준 원더윅스 일정';
+  document.getElementById('result-sub').textContent = (mode==='born'?'출생일: ':'예정일: ') + fmt(base) + ' · 현재 ' + ageWeeks + '주';
+
+  let currentLeap = null;
+  let html = '';
+
+  WW.forEach(w => {
+    const start = new Date(base);
+    start.setDate(start.getDate() + w.weeks * 7 - 5);
+    const end = new Date(start);
+    end.setDate(end.getDate() + 14);
+
+    let statusClass = '', statusText = '', itemClass = '';
+
+    if (today >= start && today <= end) {
+      statusClass = 'status-active'; statusText = '🔥 지금 도약 중!'; itemClass = 'active';
+      currentLeap = w;
+    } else if (today < start) {
+      const daysLeft = Math.ceil((start - today) / (24*60*60*1000));
+      if (daysLeft <= 14) {
+        statusClass = 'status-soon'; statusText = `D-${daysLeft} 곧 시작`;
+      } else {
+        statusClass = 'status-future'; statusText = fmt(start) + ' 예정';
+      }
+    } else {
+      statusClass = 'status-passed'; statusText = '완료 ✓'; itemClass = 'passed';
+    }
+
+    html += `<div class="ww-item ${itemClass}">
+      <div class="ww-num">${w.n}</div>
+      <div class="ww-info">
+        <div class="ww-name">${w.emoji} ${w.name}</div>
+        <div class="ww-date">${fmt(start)} ~ ${fmt(end)}</div>
+        <div class="ww-week">예정일 기준 ${w.weeks}주</div>
+        <span class="ww-status ${statusClass}">${statusText}</span>
+      </div>
+    </div>`;
+  });
+
+  if (currentLeap) {
+    document.getElementById('current-badge').textContent = `현재 ${currentLeap.n}도약 중! 조금만 힘내세요 💪`;
+  } else if (ageWeeks > 75) {
+    document.getElementById('current-badge').textContent = '10번의 도약을 모두 마쳤어요! 🎉';
+  } else {
+    document.getElementById('current-badge').textContent = '현재 도약기 사이 안정기예요 😊';
+  }
+
+  document.getElementById('ww-list').innerHTML = html;
+  document.getElementById('result').style.display = 'block';
+  document.getElementById('result').scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+
+// 오늘 날짜 이후는 입력 못하게 (출생일 모드 기준)
+document.getElementById('birth-date').max = new Date().toISOString().split('T')[0];
+</script>
+</body>
+</html>
