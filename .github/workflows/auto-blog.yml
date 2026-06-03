@@ -1,0 +1,40 @@
+name: 블로그 자동 발행
+
+on:
+  schedule:
+    - cron: '0 0 * * 1'   # 월요일 09:00 KST (UTC 00:00)
+    - cron: '0 0 * * 4'   # 목요일 09:00 KST (UTC 00:00)
+  workflow_dispatch:        # 수동 실행 허용
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: 저장소 체크아웃
+        uses: actions/checkout@v4
+
+      - name: Node.js 설정
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Anthropic SDK 설치
+        run: npm install @anthropic-ai/sdk
+
+      - name: 블로그 포스트 생성
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/generate-blog.js
+
+      - name: 변경사항 커밋 & 푸시
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --staged --quiet && echo "변경사항 없음" || (
+            git commit -m "auto: 블로그 자동 발행 $(date +'%Y-%m-%d')" &&
+            git push
+          )
