@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>육아지원금 조회 — 아이 나이별 신청 가능한 지원금 & 마감일 계산기</title>
+<meta name="description" content="아이 생년월일만 입력하면 부모급여·첫만남이용권·아동수당·자녀장려금 등 신청 가능한 정부 육아지원금 목록과 마감일을 자동으로 계산해드려요. 놓치면 못 받는 돈, 미리 확인하세요.">
+<link rel="canonical" href="https://www.babyfairschedule.co.kr/subsidy.html">
+
+<meta property="og:title" content="육아지원금 조회 — 아이 생년월일로 받을 수 있는 지원금 확인">
+<meta property="og:description" content="부모급여·첫만남이용권·아동수당·자녀장려금 등 신청 가능한 지원금과 마감일을 자동 계산해드려요.">
+<meta property="og:url" content="https://www.babyfairschedule.co.kr/subsidy.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="베이비페어스케줄">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="육아지원금 조회 계산기">
+<meta name="twitter:description" content="아이 생년월일 입력 → 신청 가능한 지원금 & 마감일 자동 계산">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.babyfairschedule.co.kr/subsidy.html",
+      "name": "육아지원금 조회 계산기",
+      "description": "아이 생년월일로 신청 가능한 정부 육아지원금과 마감일을 확인하는 계산기",
+      "url": "https://www.babyfairschedule.co.kr/subsidy.html",
+      "inLanguage": "ko"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"홈","item":"https://www.babyfairschedule.co.kr/"},
+        {"@type":"ListItem","position":2,"name":"육아지원금 조회","item":"https://www.babyfairschedule.co.kr/subsidy.html"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "부모급여는 언제까지 신청해야 하나요?",
+          "acceptedAnswer": {"@type":"Answer","text":"출생 후 60일 이내에 신청해야 출생월부터 소급 지급됩니다. 60일을 초과하면 신청월부터만 지급되므로 빠른 신청이 중요합니다."}
+        },
+        {
+          "@type": "Question",
+          "name": "첫만남이용권 금액이 얼마인가요?",
+          "acceptedAnswer": {"@type":"Answer","text":"2024년 1월 이후 출생 아동은 첫째 200만원, 둘째 이상 300만원을 바우처로 받을 수 있습니다. 출생신고 시 행복출산 원스톱으로 한 번에 신청 가능합니다."}
+        },
+        {
+          "@type": "Question",
+          "name": "아동수당과 부모급여를 동시에 받을 수 있나요?",
+          "acceptedAnswer": {"@type":"Answer","text":"네, 중복 수령 가능합니다. 만 0세 기준 부모급여 월 100만원 + 아동수당 월 10만원 = 월 최대 110만원을 동시에 받을 수 있습니다."}
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-69QTMS4KBS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-69QTMS4KBS');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #FFF8F5; --surface: #FFFCFA; --border: #F2D8DA;
+  --primary: #E8707A; --primary-dk: #C94F5A; --primary-lt: #FADADD;
+  --accent: #FFCBA4; --accent-lt: #FFF0E6;
+  --text: #3D2226; --text-mid: #7A4E54; --text-soft: #B08A8E;
+  --chip: #F7B8BF;
+  --success: #6DBF8A; --success-lt: #E4F7EC;
+  --warn: #F0A500; --warn-lt: #FFF5DC;
+  --danger: #E05555; --danger-lt: #FDEAEA;
+  --done: #F5F0F0; --hdr: rgba(255,248,245,0.92);
+  --shadow: rgba(196,139,150,0.15);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Noto Sans KR', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+/* ── HEADER ── */
+header {
+  position: sticky; top: 0; z-index: 200;
+  background: var(--hdr); backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 20px; height: 56px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+.logo-icon { width: 30px; height: 30px; background: linear-gradient(135deg,var(--chip),var(--accent)); border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 15px; }
+.logo-text { font-family: 'Gowun Batang', serif; font-size: 18px; color: var(--text); }
+.logo-text em { color: var(--primary); font-style: normal; }
+.header-nav { display: flex; align-items: center; gap: 16px; }
+.header-nav a { font-size: 13px; color: var(--text-soft); text-decoration: none; font-weight: 500; transition: color .15s; }
+.header-nav a:hover { color: var(--primary); }
+.header-nav a.active { color: var(--primary); font-weight: 700; }
+
+/* ── HERO ── */
+.hero {
+  position: relative; padding: 44px 22px 38px;
+  text-align: center; overflow: hidden;
+  max-width: 580px; margin: 0 auto;
+}
+.blob { position: absolute; border-radius: 50%; filter: blur(60px); pointer-events: none; opacity: .16; }
+.blob1 { width: 260px; height: 260px; background: var(--chip); top: -70px; left: -70px; }
+.blob2 { width: 200px; height: 200px; background: var(--accent); bottom: -40px; right: -40px; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: var(--primary-lt); color: var(--primary-dk);
+  font-size: 12px; font-weight: 700; padding: 5px 15px;
+  border-radius: 20px; margin-bottom: 16px;
+}
+.hero h1 {
+  font-family: 'Gowun Batang', serif; font-size: 28px;
+  line-height: 1.45; color: var(--text); margin-bottom: 10px;
+  letter-spacing: -.5px; position: relative; z-index: 1;
+}
+.hero h1 mark {
+  background: linear-gradient(180deg,transparent 55%,var(--primary-lt) 55%);
+  color: var(--primary); padding: 0 2px;
+}
+.hero-desc { font-size: 13.5px; color: var(--text-soft); line-height: 1.75; margin-bottom: 28px; }
+
+/* ── INPUT CARD ── */
+.input-card {
+  background: var(--surface); border: 1.5px solid var(--border);
+  border-radius: 22px; padding: 20px 18px;
+  box-shadow: 0 8px 32px var(--shadow); position: relative; z-index: 2;
+}
+.ic-title { font-size: 11.5px; font-weight: 700; color: var(--text-soft); letter-spacing: .6px; text-transform: uppercase; margin-bottom: 12px; }
+.input-row {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--bg); border: 1.5px solid var(--border);
+  border-radius: 14px; padding: 10px 14px; margin-bottom: 9px;
+  transition: border-color .2s;
+}
+.input-row:focus-within { border-color: var(--primary); }
+.input-row span { font-size: 18px; flex-shrink: 0; }
+.input-row input, .input-row select {
+  flex: 1; border: none; background: transparent;
+  font-family: 'Noto Sans KR', sans-serif; font-size: 14px;
+  color: var(--text); outline: none; min-width: 0; cursor: pointer;
+}
+.btn-calc {
+  width: 100%; background: linear-gradient(135deg,var(--primary),var(--primary-dk));
+  color: #fff; border: none; border-radius: 14px; padding: 15px;
+  font-family: 'Noto Sans KR', sans-serif; font-size: 15px; font-weight: 700;
+  cursor: pointer; margin-top: 4px; letter-spacing: -.3px;
+  transition: opacity .15s, transform .1s; box-shadow: 0 4px 14px var(--shadow);
+}
+.btn-calc:hover { opacity: .9; }
+.btn-calc:active { transform: scale(.98); }
+
+/* ── MAIN ── */
+main { max-width: 580px; margin: 0 auto; padding: 24px 16px 80px; }
+
+/* ── DATA NOTE ── */
+.data-note {
+  display: none; align-items: center; gap: 6px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 9px 14px;
+  font-size: 12px; color: var(--text-soft); margin-bottom: 16px;
+}
+.data-note.on { display: flex; }
+
+/* ── SUMMARY STRIP ── */
+.sum-strip { display: none; gap: 8px; margin-bottom: 20px; }
+.sum-strip.on { display: flex; }
+.s-chip {
+  flex: 1; background: var(--surface); border: 1.5px solid var(--border);
+  border-radius: 16px; padding: 13px 10px; text-align: center;
+}
+.s-chip .num { display: block; font-size: 20px; font-weight: 800; color: var(--primary); line-height: 1; }
+.s-chip .lbl { display: block; font-size: 11px; color: var(--text-soft); margin-top: 3px; }
+
+/* ── FILTER TABS ── */
+.filter-tabs {
+  display: none; gap: 7px; overflow-x: auto;
+  padding-bottom: 2px; margin-bottom: 16px; scrollbar-width: none;
+}
+.filter-tabs::-webkit-scrollbar { display: none; }
+.filter-tabs.on { display: flex; }
+.ftab {
+  flex-shrink: 0; padding: 7px 14px; border-radius: 20px;
+  border: 1.5px solid var(--border); background: var(--surface);
+  font-family: 'Noto Sans KR', sans-serif; font-size: 12.5px;
+  font-weight: 500; color: var(--text-soft); cursor: pointer;
+  transition: all .15s; white-space: nowrap;
+}
+.ftab.on { background: var(--primary); border-color: var(--primary); color: #fff; font-weight: 700; }
+
+/* ── BENEFIT CARDS ── */
+.benefit-list { display: flex; flex-direction: column; gap: 10px; }
+.benefit-card {
+  background: var(--surface); border: 1.5px solid var(--border);
+  border-radius: 18px; padding: 16px 16px 12px; cursor: pointer;
+  transition: box-shadow .2s, transform .15s;
+  animation: fadeUp .35s ease both;
+}
+.benefit-card:hover { box-shadow: 0 6px 24px var(--shadow); transform: translateY(-2px); }
+.benefit-card.done { opacity: .5; background: var(--done); }
+@keyframes fadeUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+.card-top { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 11px; }
+.card-emoji {
+  width: 44px; height: 44px; border-radius: 13px;
+  background: var(--primary-lt); display: flex;
+  align-items: center; justify-content: center; font-size: 21px; flex-shrink: 0;
+}
+.card-meta { flex: 1; min-width: 0; }
+.card-name { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 2px; line-height: 1.3; }
+.card-amount { font-size: 12.5px; color: var(--primary); font-weight: 600; }
+.dday-pill { flex-shrink: 0; font-size: 12px; font-weight: 700; padding: 4px 11px; border-radius: 20px; white-space: nowrap; }
+.pill-urgent { background: var(--danger-lt); color: var(--danger); }
+.pill-soon   { background: var(--warn-lt);   color: var(--warn); }
+.pill-ok     { background: var(--success-lt); color: var(--success); }
+.pill-done   { background: var(--done);       color: var(--text-soft); }
+.card-bottom {
+  display: flex; align-items: center; justify-content: space-between;
+  border-top: 1px solid var(--border); padding-top: 10px; gap: 8px;
+}
+.card-info-text { font-size: 11.5px; color: var(--text-soft); line-height: 1.55; flex: 1; min-width: 0; }
+.card-info-text strong { color: var(--text-mid); font-weight: 600; }
+.card-actions { display: flex; gap: 5px; flex-shrink: 0; }
+.btn-done {
+  background: var(--bg); border: 1.5px solid var(--border); border-radius: 9px;
+  padding: 5px 10px; font-family: 'Noto Sans KR', sans-serif;
+  font-size: 11.5px; font-weight: 600; color: var(--text-mid); cursor: pointer;
+}
+.btn-done:hover { background: var(--border); }
+.btn-cal {
+  background: var(--success-lt); border: none; border-radius: 9px;
+  padding: 5px 10px; font-size: 14px; cursor: pointer; line-height: 1;
+}
+.btn-cal:hover { opacity: .75; }
+.btn-apply {
+  background: var(--primary); border: none; border-radius: 9px;
+  padding: 5px 10px; font-family: 'Noto Sans KR', sans-serif;
+  font-size: 11.5px; font-weight: 700; color: #fff; cursor: pointer;
+  white-space: nowrap; text-decoration: none; display: inline-block;
+}
+.btn-apply:hover { opacity: .85; }
+
+/* ── EMPTY STATE ── */
+.empty-state { text-align: center; padding: 56px 24px; }
+.empty-emo { font-size: 52px; margin-bottom: 14px; }
+.empty-state h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+.empty-state p { font-size: 13.5px; color: var(--text-soft); line-height: 1.7; }
+
+/* ── INFO / FAQ ── */
+.info-section {
+  background: var(--primary-lt); border-radius: 20px;
+  padding: 22px 20px; margin-top: 32px; display: none;
+}
+.info-section.on { display: block; }
+.info-section h2 { font-size: 15px; font-weight: 700; color: var(--primary-dk); margin-bottom: 14px; }
+.info-qa { margin-bottom: 14px; }
+.info-qa:last-child { margin-bottom: 0; }
+.info-qa dt { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 5px; }
+.info-qa dd { font-size: 13px; color: var(--text-mid); line-height: 1.7; }
+
+.region-note {
+  background: var(--warn-lt); border: 1px solid var(--warn);
+  border-radius: 14px; padding: 12px 16px; margin-top: 16px;
+  font-size: 13px; color: #7a5a00; line-height: 1.65; display: none;
+}
+.region-note.on { display: block; }
+
+/* ── MODAL ── */
+.modal-overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,.45); z-index: 300;
+  align-items: flex-end; backdrop-filter: blur(5px);
+}
+.modal-overlay.open { display: flex; }
+.modal-sheet {
+  background: var(--surface); border-radius: 24px 24px 0 0;
+  padding: 0 0 40px; width: 100%; max-width: 580px; margin: 0 auto;
+  max-height: 88vh; overflow-y: auto;
+  animation: sheetUp .32s cubic-bezier(.34,1.2,.64,1); position: relative;
+}
+@keyframes sheetUp { from{transform:translateY(100%);opacity:0} to{transform:translateY(0);opacity:1} }
+.modal-handle-wrap {
+  padding: 14px 0 0; text-align: center;
+  position: sticky; top: 0; background: var(--surface); z-index: 1;
+}
+.modal-handle { width: 36px; height: 4px; background: var(--border); border-radius: 4px; display: inline-block; }
+.modal-close {
+  position: absolute; top: 10px; right: 14px;
+  width: 30px; height: 30px; border-radius: 50%; background: var(--bg);
+  border: none; font-size: 15px; cursor: pointer; color: var(--text-soft);
+  display: flex; align-items: center; justify-content: center;
+}
+.modal-body { padding: 16px 20px 0; }
+.modal-hero { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+.modal-emoji { width: 54px; height: 54px; border-radius: 16px; background: var(--primary-lt); display: flex; align-items: center; justify-content: center; font-size: 26px; flex-shrink: 0; }
+.modal-title-text { font-size: 18px; font-weight: 700; color: var(--text); line-height: 1.3; }
+.modal-amount-text { font-size: 13px; color: var(--primary); font-weight: 600; margin-top: 2px; }
+.modal-sec { margin-bottom: 16px; }
+.modal-sec-label { font-size: 11px; font-weight: 700; color: var(--text-soft); letter-spacing: .5px; text-transform: uppercase; margin-bottom: 7px; }
+.modal-sec p { font-size: 13.5px; color: var(--text); line-height: 1.75; }
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.info-box { background: var(--bg); border-radius: 12px; padding: 11px 13px; }
+.info-box .ib-label { font-size: 11px; color: var(--text-soft); margin-bottom: 3px; }
+.info-box .ib-val { font-size: 13px; font-weight: 700; color: var(--text); }
+.tip-box { background: var(--primary-lt); border-radius: 14px; padding: 13px 15px; margin-top: 14px; display: flex; gap: 10px; align-items: flex-start; }
+.tip-box .tip-icon { font-size: 18px; flex-shrink: 0; }
+.tip-box p { font-size: 13px; color: var(--primary-dk); line-height: 1.65; }
+.modal-cta { display: flex; gap: 8px; margin-top: 18px; }
+.modal-cta button, .modal-cta a {
+  flex: 1; padding: 14px; border-radius: 14px;
+  font-family: 'Noto Sans KR', sans-serif; font-size: 14px; font-weight: 700;
+  cursor: pointer; text-align: center; text-decoration: none; border: none; display: block;
+  transition: opacity .15s;
+}
+.cta-cal { background: var(--success-lt); color: var(--success); border: 1.5px solid var(--success) !important; }
+.cta-apply { background: var(--primary); color: #fff; }
+.cta-cal:hover, .cta-apply:hover { opacity: .85; }
+
+/* ── TOAST ── */
+.toast {
+  position: fixed; bottom: 28px; left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--text); color: var(--bg);
+  font-size: 13px; font-weight: 600; padding: 10px 20px;
+  border-radius: 20px; opacity: 0; pointer-events: none;
+  transition: opacity .25s, transform .25s; white-space: nowrap; z-index: 500;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+@media (max-width: 480px) {
+  .hero { padding: 32px 18px 28px; }
+  .hero h1 { font-size: 24px; }
+  .header-nav a:not(.active) { display: none; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="/">
+    <div class="logo-icon">🌸</div>
+    <span class="logo-text">베이비페어 <em>스케줄</em></span>
+  </a>
+  <nav class="header-nav">
+    <a href="/">베이비페어</a>
+    <a href="/aidiary/">아이달력</a>
+    <a href="/blog.html">육아정보</a>
+    <a href="/subsidy.html" class="active">지원금 조회</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <div class="hero-badge">💰 2025·2026 최신 지원금 정보</div>
+  <h1>놓치면 <mark>못 받는 돈</mark>,<br>지금 바로 확인하세요</h1>
+  <p class="hero-desc">아이 생년월일만 입력하면 신청 가능한<br>정부 지원금과 마감일을 자동으로 알려드려요</p>
+
+  <div class="input-card">
+    <div class="ic-title">아이 정보 입력</div>
+    <div class="input-row">
+      <span>👶</span>
+      <input type="date" id="childDob" onchange="saveDob()">
+    </div>
+    <div class="input-row">
+      <span>📍</span>
+      <select id="regionSelect" onchange="saveRegion()">
+        <option value="">거주 지역 선택 (선택사항)</option>
+        <option>서울특별시</option><option>부산광역시</option><option>대구광역시</option>
+        <option>인천광역시</option><option>광주광역시</option><option>대전광역시</option>
+        <option>울산광역시</option><option>세종특별자치시</option><option>경기도</option>
+        <option>강원도</option><option>충청북도</option><option>충청남도</option>
+        <option>전라북도</option><option>전라남도</option><option>경상북도</option>
+        <option>경상남도</option><option>제주특별자치도</option>
+      </select>
+    </div>
+    <button class="btn-calc" onclick="calculate()">지원금 확인하기</button>
+  </div>
+</section>
+
+<main>
+  <div id="emptyState" class="empty-state">
+    <div class="empty-emo">📅</div>
+    <h3>아이 생년월일을 입력해 주세요</h3>
+    <p>신청 가능한 지원금과 마감일을<br>자동으로 계산해 드려요</p>
+  </div>
+
+  <div id="dataNote" class="data-note"></div>
+
+  <div id="sumStrip" class="sum-strip">
+    <div class="s-chip">
+      <span class="num" id="sumTotal">0</span>
+      <span class="lbl">신청 가능</span>
+    </div>
+    <div class="s-chip">
+      <span class="num" id="sumUrgent" style="color:var(--danger)">0</span>
+      <span class="lbl">긴급 마감</span>
+    </div>
+    <div class="s-chip">
+      <span class="num" id="sumAmt" style="color:var(--success);font-size:15px">0</span>
+      <span class="lbl">예상 혜택</span>
+    </div>
+  </div>
+
+  <div id="filterTabs" class="filter-tabs">
+    <button class="ftab on" onclick="applyFilter('all',this)">전체</button>
+    <button class="ftab"    onclick="applyFilter('urgent',this)">🔴 긴급</button>
+    <button class="ftab"    onclick="applyFilter('soon',this)">🟡 임박</button>
+    <button class="ftab"    onclick="applyFilter('cat_출생',this)">🍼 출생</button>
+    <button class="ftab"    onclick="applyFilter('cat_양육',this)">🏠 양육</button>
+    <button class="ftab"    onclick="applyFilter('cat_교육',this)">📚 교육</button>
+    <button class="ftab"    onclick="applyFilter('cat_취업부모',this)">💼 직장</button>
+    <button class="ftab"    onclick="applyFilter('cat_주거',this)">🏡 주거</button>
+    <button class="ftab"    onclick="applyFilter('cat_세금',this)">📋 세금</button>
+    <button class="ftab"    onclick="applyFilter('done',this)">✅ 완료</button>
+  </div>
+
+  <div id="benefitList" class="benefit-list"></div>
+
+  <div id="regionNote" class="region-note"></div>
+
+  <div id="infoSection" class="info-section">
+    <h2>자주 묻는 질문</h2>
+    <dl>
+      <div class="info-qa">
+        <dt>Q. 지원금은 어디서 신청하나요?</dt>
+        <dd>대부분 <strong>복지로(bokjiro.go.kr)</strong> 또는 주민센터(읍·면·동)에서 신청 가능해요. 출생신고 시 <strong>행복출산 원스톱</strong>으로 한 번에 신청할 수도 있습니다.</dd>
+      </div>
+      <div class="info-qa">
+        <dt>Q. 지역 출산축하금은 어떻게 확인하나요?</dt>
+        <dd>거주 지역 주민센터 또는 지자체 홈페이지에서 확인하세요. 인구감소 지역은 수백만원~수천만원을 지급하는 경우도 있으며, 거주 요건이 있는 경우가 많습니다.</dd>
+      </div>
+      <div class="info-qa">
+        <dt>Q. 부모급여와 아동수당을 동시에 받을 수 있나요?</dt>
+        <dd>네, 중복 수령 가능합니다. 만 0세 기준 부모급여 월 100만원 + 아동수당 월 10만원 = <strong>월 최대 110만원</strong>을 동시에 받을 수 있어요.</dd>
+      </div>
+      <div class="info-qa">
+        <dt>Q. 마감일이 지나면 신청이 불가능한가요?</dt>
+        <dd>대부분의 급여는 기간 내에 신청해야 전액 받을 수 있어요. 특히 <strong>부모급여는 출생 후 60일 이내</strong>에 신청해야 출생월부터 소급 지급됩니다.</dd>
+      </div>
+    </dl>
+  </div>
+</main>
+
+<div class="modal-overlay" id="modalOverlay" onclick="closeOuter(event)">
+  <div class="modal-sheet">
+    <div class="modal-handle-wrap">
+      <div class="modal-handle"></div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ── UTILS ── */
+function am(d, n) { const r = new Date(d); r.setMonth(r.getMonth() + n); return r; }
+function ad(d, n) { const r = new Date(d); r.setDate(r.getDate() + n); return r; }
+function dd(t, now) { return Math.ceil((t - now) / 864e5); }
+function fmt(d) { return `${d.getFullYear()}년 ${d.getMonth()+1}월 ${d.getDate()}일`; }
+function fmtN(n) {
+  if (n >= 10000) return (n/10000).toFixed(0) + '억+';
+  if (n >= 1000)  return (n/1000).toFixed(0) + '천만+';
+  return n + '만원+';
+}
+function p2(v) { return String(v).padStart(2, '0'); }
+
+/* ── 구글 캘린더 ── */
+function openGoogleCal(b) {
+  const s = b.deadlineDate;
+  const start = `${s.getFullYear()}${p2(s.getMonth()+1)}${p2(s.getDate())}`;
+  const end   = `${s.getFullYear()}${p2(s.getMonth()+1)}${p2(s.getDate()+1)}`;
+  const title = encodeURIComponent(`🍼 ${b.name} 신청 마감`);
+  const detail = encodeURIComponent(`${b.condLabel}\n신청처: ${b.place}\n${b.url}`);
+  window.open(`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${start}/${end}&details=${detail}`, '_blank');
+  showToast('📅 구글 캘린더가 열렸어요!');
+}
+
+/* ── 저장/불러오기 ── */
+function saveDob()    { const v = document.getElementById('childDob').value;    if (v) localStorage.setItem('subsidyDob', v); }
+function saveRegion() { const v = document.getElementById('regionSelect').value; localStorage.setItem('subsidyRegion', v); }
+function loadSaved() {
+  const dob    = localStorage.getItem('subsidyDob');
+  const region = localStorage.getItem('subsidyRegion');
+  if (dob)    document.getElementById('childDob').value = dob;
+  if (region) document.getElementById('regionSelect').value = region;
+  if (dob)    calculate();
+}
+
+/* ── TOAST ── */
+function showToast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg; el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 2400);
+}
+
+/* ── STATE ── */
+let cur = [];
+let BDATA = [];
+let doneSet = new Set(JSON.parse(localStorage.getItem('subsidyDone') || '[]'));
+let curFilter = 'all';
+
+/* ── DATA LOAD ── */
+async function loadBenefits() {
+  try {
+    const res  = await fetch('/aidiary/benefits.json?v=' + Date.now());
+    const json = await res.json();
+    BDATA = json.benefits.map(b => ({
+      ...b,
+      cat: b.category,
+      n:   b.amountNum,
+      condLabel: b.conditionLabel,
+      cond: m => m >= b.conditionMonthMin && m < b.conditionMonthMax,
+      dl: dob => {
+        if (b.deadlineType === 'addMonths')  return am(dob, b.deadlineValue);
+        if (b.deadlineType === 'addDays')    return ad(dob, b.deadlineValue);
+        if (b.deadlineType === 'fixedMonth') {
+          const d = new Date(); d.setMonth(b.deadlineValue - 1); d.setDate(31); return d;
+        }
+        return am(dob, 12);
+      },
+    }));
+    const note = document.getElementById('dataNote');
+    note.innerHTML = `📋 데이터 기준일: ${json.lastUpdated} (v${json.version}) · 정책 변경 시 공식 사이트를 확인하세요`;
+    note.classList.add('on');
+  } catch(e) {
+    console.warn('benefits.json 로드 실패:', e);
+  }
+}
+
+/* ── CALCULATE ── */
+function calculate() {
+  const dobV = document.getElementById('childDob').value;
+  if (!dobV) { showToast('생년월일을 입력해 주세요 👶'); return; }
+  if (!BDATA.length) { showToast('데이터 로딩 중이에요, 잠시 후 다시 시도해 주세요'); return; }
+
+  const today = new Date(); today.setHours(0,0,0,0);
+  const dob   = new Date(dobV); dob.setHours(0,0,0,0);
+  const ageM  = (today.getFullYear() - dob.getFullYear()) * 12 + (today.getMonth() - dob.getMonth());
+
+  if (ageM < -12) { showToast('미래 생년월일은 입력할 수 없어요'); return; }
+
+  cur = BDATA.filter(b => b.cond(ageM)).map(b => {
+    const deadlineDate = b.dl(dob);
+    return { ...b, dob, deadlineDate, dday: dd(deadlineDate, today) };
+  }).sort((a, b) => a.dday - b.dday);
+
+  document.getElementById('emptyState').style.display = 'none';
+  document.getElementById('sumStrip').classList.add('on');
+  document.getElementById('filterTabs').classList.add('on');
+  document.getElementById('infoSection').classList.add('on');
+
+  const region = document.getElementById('regionSelect').value;
+  const rNote  = document.getElementById('regionNote');
+  if (region) {
+    rNote.innerHTML = `📍 <strong>${region}</strong> 거주자라면 지자체 출산축하금도 추가로 받을 수 있어요. 금액은 지역마다 다르므로 주민센터 또는 지자체 홈페이지에서 확인하세요.`;
+    rNote.classList.add('on');
+  } else {
+    rNote.classList.remove('on');
+  }
+
+  renderSum();
+  renderList(curFilter);
+}
+
+function renderSum() {
+  const active = cur.filter(b => b.dday >= 0 && !doneSet.has(b.id));
+  document.getElementById('sumTotal').textContent  = active.length + '개';
+  document.getElementById('sumUrgent').textContent = active.filter(b => b.dday <= 7).length + '개';
+  document.getElementById('sumAmt').textContent    = fmtN(cur.reduce((s, b) => s + b.n, 0));
+}
+
+function getBadge(dday, id) {
+  if (doneSet.has(id))  return { cls: 'pill-done',   t: '완료' };
+  if (dday < 0)         return { cls: 'pill-done',   t: '만료' };
+  if (dday === 0)       return { cls: 'pill-urgent', t: 'D-Day' };
+  if (dday <= 7)        return { cls: 'pill-urgent', t: `D-${dday}` };
+  if (dday <= 30)       return { cls: 'pill-soon',   t: `D-${dday}` };
+  return                       { cls: 'pill-ok',     t: `D-${dday}` };
+}
+function getSt(b) {
+  if (doneSet.has(b.id)) return 'done';
+  if (b.dday < 0)        return 'expired';
+  if (b.dday <= 7)       return 'urgent';
+  if (b.dday <= 30)      return 'soon';
+  return 'ok';
+}
+
+function applyFilter(type, btn) {
+  curFilter = type;
+  document.querySelectorAll('.ftab').forEach(t => t.classList.remove('on'));
+  btn.classList.add('on');
+  renderList(type);
+}
+
+function renderList(f) {
+  const list = document.getElementById('benefitList');
+  let filtered;
+  if (f === 'all')           filtered = cur;
+  else if (f.startsWith('cat_')) filtered = cur.filter(b => b.cat === f.slice(4));
+  else                       filtered = cur.filter(b => getSt(b) === f);
+
+  if (!filtered.length) {
+    list.innerHTML = `<div style="text-align:center;padding:40px;color:var(--text-soft);font-size:14px">해당 항목이 없어요 😊</div>`;
+    return;
+  }
+
+  list.innerHTML = filtered.map((b, i) => {
+    const bd   = getBadge(b.dday, b.id);
+    const done = doneSet.has(b.id);
+    return `<div class="benefit-card${done ? ' done' : ''}" style="animation-delay:${i*.04}s" onclick="openModal('${b.id}')">
+      <div class="card-top">
+        <div class="card-emoji">${b.emoji}</div>
+        <div class="card-meta">
+          <div class="card-name">${b.name}</div>
+          <div class="card-amount">${b.amount}</div>
+        </div>
+        <div class="dday-pill ${bd.cls}">${bd.t}</div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-info-text">
+          <strong>${b.condLabel}</strong><br>
+          마감 ${b.dday >= 0 ? fmt(b.deadlineDate) : '기간 만료'}
+        </div>
+        <div class="card-actions">
+          ${!done ? `<button class="btn-done" onclick="toggleDone(event,'${b.id}')">완료</button>` : ''}
+          <button class="btn-cal" onclick="event.stopPropagation();openCalById('${b.id}')" title="캘린더 추가">📅</button>
+          <a class="btn-apply" href="${b.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">신청</a>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function openCalById(id) {
+  const b = cur.find(x => x.id === id);
+  if (b) openGoogleCal(b);
+}
+
+function toggleDone(e, id) {
+  e.stopPropagation();
+  doneSet.has(id) ? doneSet.delete(id) : doneSet.add(id);
+  localStorage.setItem('subsidyDone', JSON.stringify([...doneSet]));
+  renderSum();
+  renderList(curFilter);
+}
+
+/* ── MODAL ── */
+function openModal(id) {
+  const b = cur.find(x => x.id === id);
+  if (!b) return;
+  const bd = getBadge(b.dday, id);
+  document.getElementById('modalBody').innerHTML = `
+    <div class="modal-hero">
+      <div class="modal-emoji">${b.emoji}</div>
+      <div>
+        <div class="modal-title-text">${b.name}</div>
+        <div class="modal-amount-text">${b.amount}</div>
+      </div>
+    </div>
+    <div class="modal-sec">
+      <div class="modal-sec-label">지원 내용</div>
+      <p>${b.desc}</p>
+    </div>
+    <div class="info-grid">
+      <div class="info-box">
+        <div class="ib-label">신청 마감</div>
+        <div class="ib-val" style="font-size:12px">${b.dday >= 0 ? fmt(b.deadlineDate) : '기간 만료'}</div>
+      </div>
+      <div class="info-box">
+        <div class="ib-label">D-day</div>
+        <div class="ib-val" style="color:${b.dday <= 7 && b.dday >= 0 ? 'var(--danger)' : 'var(--text)'}">${bd.t}</div>
+      </div>
+      <div class="info-box">
+        <div class="ib-label">신청 조건</div>
+        <div class="ib-val" style="font-size:11px;font-weight:500">${b.condLabel}</div>
+      </div>
+      <div class="info-box">
+        <div class="ib-label">신청 방법</div>
+        <div class="ib-val" style="font-size:11px;font-weight:500">${b.place}</div>
+      </div>
+    </div>
+    <div class="tip-box">
+      <span class="tip-icon">💡</span>
+      <p>${b.tip}</p>
+    </div>
+    <div class="modal-cta">
+      <button class="cta-cal" onclick="openCalById('${id}')">📅 구글 캘린더에 추가</button>
+      <a class="cta-apply" href="${b.url}" target="_blank" rel="noopener">신청하러 가기 →</a>
+    </div>`;
+  document.getElementById('modalOverlay').classList.add('open');
+}
+function closeModal() { document.getElementById('modalOverlay').classList.remove('open'); }
+function closeOuter(e) { if (e.target === document.getElementById('modalOverlay')) closeModal(); }
+document.addEventListener('keydown', e => {
+  if (e.key === 'Enter')  calculate();
+  if (e.key === 'Escape') closeModal();
+});
+
+/* ── INIT ── */
+(async () => {
+  await loadBenefits();
+  loadSaved();
+})();
+</script>
+</body>
+</html>

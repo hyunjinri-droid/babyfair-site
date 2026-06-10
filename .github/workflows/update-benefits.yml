@@ -1,0 +1,39 @@
+name: 지원금 정보 자동 업데이트
+
+on:
+  schedule:
+    - cron: '0 0 1 * *'   # 매월 1일 09:00 KST (UTC 00:00)
+  workflow_dispatch:        # 수동 실행 허용
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: 저장소 체크아웃
+        uses: actions/checkout@v4
+
+      - name: Node.js 설정
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Anthropic SDK 설치
+        run: npm install @anthropic-ai/sdk
+
+      - name: 지원금 정보 업데이트
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/update-benefits.js
+
+      - name: 변경사항 커밋 & 푸시
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add aidiary/benefits.json
+          git diff --staged --quiet && echo "변경사항 없음" || (
+            git commit -m "auto: 지원금 정보 업데이트 $(date +'%Y-%m')" &&
+            git push
+          )
