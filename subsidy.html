@@ -59,6 +59,9 @@
 }
 </script>
 
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2284090720087182" crossorigin="anonymous"></script>
+
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-69QTMS4KBS"></script>
 <script>
@@ -387,6 +390,12 @@ main { max-width: 580px; margin: 0 auto; padding: 24px 16px 80px; }
   </div>
 </section>
 
+<!-- 상단 광고 -->
+<div style="max-width:580px;margin:0 auto;padding:0 16px 4px;">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2284090720087182" data-ad-slot="8862749299" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
+
 <main>
   <div id="emptyState" class="empty-state">
     <div class="empty-emo">📅</div>
@@ -426,6 +435,11 @@ main { max-width: 580px; margin: 0 auto; padding: 24px 16px 80px; }
 
   <div id="benefitList" class="benefit-list"></div>
 
+  <!-- 결과 사이 광고: calculate() 후 push -->
+  <div id="adMid" style="display:none;margin:8px 0 16px;">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2284090720087182" data-ad-slot="8862749299" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+
   <div id="regionNote" class="region-note"></div>
 
   <div id="infoSection" class="info-section">
@@ -448,6 +462,12 @@ main { max-width: 580px; margin: 0 auto; padding: 24px 16px 80px; }
         <dd>대부분의 급여는 기간 내에 신청해야 전액 받을 수 있어요. 특히 <strong>부모급여는 출생 후 60일 이내</strong>에 신청해야 출생월부터 소급 지급됩니다.</dd>
       </div>
     </dl>
+  </div>
+
+  <!-- 하단 광고 -->
+  <div style="margin:28px 0 0;">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2284090720087182" data-ad-slot="8862749299" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
   </div>
 </main>
 
@@ -560,6 +580,14 @@ function calculate() {
   document.getElementById('sumStrip').classList.add('on');
   document.getElementById('filterTabs').classList.add('on');
   document.getElementById('infoSection').classList.add('on');
+
+  // 결과 사이 광고 — 첫 계산 시 1회만 push
+  const adMid = document.getElementById('adMid');
+  if (adMid && !adMid.dataset.pushed) {
+    adMid.style.display = 'block';
+    try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
+    adMid.dataset.pushed = '1';
+  }
 
   const region = document.getElementById('regionSelect').value;
   const rNote  = document.getElementById('regionNote');
