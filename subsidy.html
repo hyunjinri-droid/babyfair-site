@@ -4,17 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>육아지원금 조회 — 아이 나이별 신청 가능한 지원금 & 마감일 계산기</title>
-<meta name="description" content="아이 생년월일만 입력하면 부모급여·첫만남이용권·아동수당·자녀장려금 등 신청 가능한 정부 육아지원금 목록과 마감일을 자동으로 계산해드려요. 놓치면 못 받는 돈, 미리 확인하세요.">
+<meta name="description" content="아이 생년월일만 입력하면 부모급여·첫만남이용권·아동수당·자녀장려금 등 신청 가능한 정부 육아지원금 목록과 마감일을 자동으로 계산해드려요. 2~3명 다자녀 추가 혜택도 한눈에 확인하세요.">
 <link rel="canonical" href="https://www.babyfairschedule.co.kr/subsidy.html">
 
 <meta property="og:title" content="육아지원금 조회 — 아이 생년월일로 받을 수 있는 지원금 확인">
-<meta property="og:description" content="부모급여·첫만남이용권·아동수당·자녀장려금 등 신청 가능한 지원금과 마감일을 자동 계산해드려요.">
+<meta property="og:description" content="부모급여·첫만남이용권·아동수당·자녀장려금 등 신청 가능한 지원금과 마감일을 자동 계산해드려요. 다자녀 추가 혜택도 확인 가능!">
 <meta property="og:url" content="https://www.babyfairschedule.co.kr/subsidy.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="베이비페어스케줄">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="육아지원금 조회 계산기">
-<meta name="twitter:description" content="아이 생년월일 입력 → 신청 가능한 지원금 & 마감일 자동 계산">
+<meta name="twitter:title" content="육아지원금 조회 계산기 (다자녀 포함)">
+<meta name="twitter:description" content="아이 생년월일 입력 → 신청 가능한 지원금 & 마감일 자동 계산. 다자녀 혜택까지!">
 
 <script type="application/ld+json">
 {
@@ -24,7 +24,7 @@
       "@type": "WebPage",
       "@id": "https://www.babyfairschedule.co.kr/subsidy.html",
       "name": "육아지원금 조회 계산기",
-      "description": "아이 생년월일로 신청 가능한 정부 육아지원금과 마감일을 확인하는 계산기",
+      "description": "아이 생년월일로 신청 가능한 정부 육아지원금과 마감일을 확인하는 계산기. 다자녀 추가 혜택 포함.",
       "url": "https://www.babyfairschedule.co.kr/subsidy.html",
       "inLanguage": "ko"
     },
@@ -45,13 +45,13 @@
         },
         {
           "@type": "Question",
-          "name": "첫만남이용권 금액이 얼마인가요?",
-          "acceptedAnswer": {"@type":"Answer","text":"2024년 1월 이후 출생 아동은 첫째 200만원, 둘째 이상 300만원을 바우처로 받을 수 있습니다. 출생신고 시 행복출산 원스톱으로 한 번에 신청 가능합니다."}
+          "name": "둘째 아이 첫만남이용권은 얼마인가요?",
+          "acceptedAnswer": {"@type":"Answer","text":"둘째 이상은 300만원이 지급됩니다. 첫째 200만원보다 100만원 많으며, 출생신고 시 행복출산 원스톱으로 신청 가능합니다."}
         },
         {
           "@type": "Question",
-          "name": "아동수당과 부모급여를 동시에 받을 수 있나요?",
-          "acceptedAnswer": {"@type":"Answer","text":"네, 중복 수령 가능합니다. 만 0세 기준 부모급여 월 100만원 + 아동수당 월 10만원 = 월 최대 110만원을 동시에 받을 수 있습니다."}
+          "name": "다자녀 혜택은 몇 명부터 받을 수 있나요?",
+          "acceptedAnswer": {"@type":"Answer","text":"2024년부터 대부분의 정부 기관과 지자체에서 2자녀 이상을 다자녀로 인정합니다. 전기요금 감면, 문화시설 할인, 공공임대 우선권 등 다양한 혜택을 받을 수 있습니다."}
         }
       ]
     }
@@ -163,6 +163,26 @@ header {
 .btn-calc:hover { opacity: .9; }
 .btn-calc:active { transform: scale(.98); }
 
+/* ── CHILD INPUT ROWS ── */
+.child-row { display: flex; align-items: center; gap: 8px; margin-bottom: 9px; }
+.child-label { font-size: 12px; font-weight: 700; color: var(--text-mid); white-space: nowrap; min-width: 42px; }
+.child-row .input-row { flex: 1; margin-bottom: 0; }
+.btn-remove-child {
+  width: 28px; height: 28px; border-radius: 50%;
+  border: 1.5px solid var(--border); background: var(--bg);
+  color: var(--text-soft); font-size: 13px; cursor: pointer; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; transition: all .15s;
+}
+.btn-remove-child:hover { background: var(--danger-lt); color: var(--danger); border-color: var(--danger); }
+.btn-add-child {
+  width: 100%; background: transparent; border: 1.5px dashed var(--border);
+  border-radius: 14px; padding: 10px; margin-bottom: 9px;
+  font-family: 'Noto Sans KR', sans-serif; font-size: 13px; font-weight: 600;
+  color: var(--primary); cursor: pointer; transition: all .15s; letter-spacing: -.2px;
+}
+.btn-add-child:hover { background: var(--primary-lt); border-color: var(--primary); }
+.btn-add-child:disabled { color: var(--text-soft); cursor: not-allowed; background: transparent; }
+
 /* ── MAIN ── */
 main { max-width: 580px; margin: 0 auto; padding: 24px 16px 80px; }
 
@@ -184,6 +204,22 @@ main { max-width: 580px; margin: 0 auto; padding: 24px 16px 80px; }
 }
 .s-chip .num { display: block; font-size: 20px; font-weight: 800; color: var(--primary); line-height: 1; }
 .s-chip .lbl { display: block; font-size: 11px; color: var(--text-soft); margin-top: 3px; }
+
+/* ── CHILD TABS ── */
+.child-tabs {
+  display: none; gap: 6px; margin-bottom: 12px;
+  overflow-x: auto; padding-bottom: 2px; scrollbar-width: none;
+}
+.child-tabs.on { display: flex; }
+.child-tabs::-webkit-scrollbar { display: none; }
+.ctab {
+  flex-shrink: 0; padding: 8px 16px; border-radius: 20px;
+  border: 1.5px solid var(--border); background: var(--surface);
+  font-family: 'Noto Sans KR', sans-serif; font-size: 13px; font-weight: 600;
+  color: var(--text-mid); cursor: pointer; transition: all .15s; white-space: nowrap;
+}
+.ctab.on { background: var(--text); border-color: var(--text); color: #fff; }
+.ctab.multi.on { background: linear-gradient(135deg,#ff9a56,#e8707a); border-color: transparent; color: #fff; }
 
 /* ── FILTER TABS ── */
 .filter-tabs {
@@ -251,6 +287,32 @@ main { max-width: 580px; margin: 0 auto; padding: 24px 16px 80px; }
   white-space: nowrap; text-decoration: none; display: inline-block;
 }
 .btn-apply:hover { opacity: .85; }
+
+/* ── 다자녀 혜택 ── */
+.multi-banner {
+  background: linear-gradient(135deg,#fff4f0,var(--primary-lt));
+  border: 1.5px solid var(--chip); border-radius: 20px;
+  padding: 20px 18px;
+}
+.multi-banner h3 { font-size: 15px; font-weight: 800; color: var(--primary-dk); margin-bottom: 14px; }
+.multi-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  background: #fff; border-radius: 14px; padding: 13px 14px; margin-bottom: 9px;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+.multi-item:last-of-type { margin-bottom: 12px; }
+.mi-emoji { font-size: 22px; flex-shrink: 0; line-height: 1.3; }
+.mi-body { flex: 1; min-width: 0; }
+.mi-badge {
+  display: inline-block; background: var(--primary-lt); color: var(--primary-dk);
+  font-size: 10.5px; font-weight: 700; padding: 2px 9px; border-radius: 10px; margin-bottom: 4px;
+}
+.mi-name { font-size: 13.5px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+.mi-desc { font-size: 12px; color: var(--text-soft); line-height: 1.65; }
+.multi-tip {
+  background: rgba(232,112,122,0.08); border-radius: 12px;
+  padding: 12px 14px; font-size: 12px; color: var(--primary-dk); line-height: 1.7;
+}
 
 /* ── EMPTY STATE ── */
 .empty-state { text-align: center; padding: 56px 24px; }
@@ -366,15 +428,13 @@ main { max-width: 580px; margin: 0 auto; padding: 24px 16px 80px; }
   <div class="blob blob2"></div>
   <div class="hero-badge">💰 2025·2026 최신 지원금 정보</div>
   <h1>놓치면 <mark>못 받는 돈</mark>,<br>지금 바로 확인하세요</h1>
-  <p class="hero-desc">아이 생년월일만 입력하면 신청 가능한<br>정부 지원금과 마감일을 자동으로 알려드려요</p>
+  <p class="hero-desc">생년월일 입력 → 신청 가능한 지원금·마감일 자동 계산<br>다자녀 추가 혜택도 한눈에 확인!</p>
 
   <div class="input-card">
-    <div class="ic-title">아이 정보 입력</div>
-    <div class="input-row">
-      <span>👶</span>
-      <input type="date" id="childDob" onchange="saveDob()">
-    </div>
-    <div class="input-row">
+    <div class="ic-title">아이 정보 입력 (최대 3명)</div>
+    <div id="childRows"></div>
+    <button class="btn-add-child" id="btnAddChild" onclick="addChild()">+ 둘째 생년월일 추가</button>
+    <div class="input-row" style="margin-top:4px">
       <span>📍</span>
       <select id="regionSelect" onchange="saveRegion()">
         <option value="">거주 지역 선택 (선택사항)</option>
@@ -420,6 +480,9 @@ main { max-width: 580px; margin: 0 auto; padding: 24px 16px 80px; }
     </div>
   </div>
 
+  <!-- 아이 선택 탭 (2명 이상일 때) -->
+  <div id="childTabs" class="child-tabs"></div>
+
   <div id="filterTabs" class="filter-tabs">
     <button class="ftab on" onclick="applyFilter('all',this)">전체</button>
     <button class="ftab"    onclick="applyFilter('urgent',this)">🔴 긴급</button>
@@ -450,8 +513,8 @@ main { max-width: 580px; margin: 0 auto; padding: 24px 16px 80px; }
         <dd>대부분 <strong>복지로(bokjiro.go.kr)</strong> 또는 주민센터(읍·면·동)에서 신청 가능해요. 출생신고 시 <strong>행복출산 원스톱</strong>으로 한 번에 신청할 수도 있습니다.</dd>
       </div>
       <div class="info-qa">
-        <dt>Q. 지역 출산축하금은 어떻게 확인하나요?</dt>
-        <dd>거주 지역 주민센터 또는 지자체 홈페이지에서 확인하세요. 인구감소 지역은 수백만원~수천만원을 지급하는 경우도 있으며, 거주 요건이 있는 경우가 많습니다.</dd>
+        <dt>Q. 다자녀 혜택은 몇 명부터인가요?</dt>
+        <dd>2024년부터 대부분의 정부기관과 지자체에서 <strong>2자녀 이상을 다자녀</strong>로 인정합니다. 전기요금 감면, 문화시설 할인, 공공임대 우선권 등이 주어집니다.</dd>
       </div>
       <div class="info-qa">
         <dt>Q. 부모급여와 아동수당을 동시에 받을 수 있나요?</dt>
@@ -484,10 +547,14 @@ main { max-width: 580px; margin: 0 auto; padding: 24px 16px 80px; }
 <div class="toast" id="toast"></div>
 
 <script>
+/* ── CONSTANTS ── */
+const CHILD_LABELS = ['첫째', '둘째', '셋째'];
+const CHILD_EMOJIS = ['👶', '👧', '👦'];
+
 /* ── UTILS ── */
 function am(d, n) { const r = new Date(d); r.setMonth(r.getMonth() + n); return r; }
 function ad(d, n) { const r = new Date(d); r.setDate(r.getDate() + n); return r; }
-function dd(t, now) { return Math.ceil((t - now) / 864e5); }
+function ddays(t, now) { return Math.ceil((t - now) / 864e5); }
 function fmt(d) { return `${d.getFullYear()}년 ${d.getMonth()+1}월 ${d.getDate()}일`; }
 function fmtN(n) {
   if (n >= 10000) return (n/10000).toFixed(0) + '억+';
@@ -496,7 +563,7 @@ function fmtN(n) {
 }
 function p2(v) { return String(v).padStart(2, '0'); }
 
-/* ── 구글 캘린더 ── */
+/* ── GOOGLE CALENDAR ── */
 function openGoogleCal(b) {
   const s = b.deadlineDate;
   const start = `${s.getFullYear()}${p2(s.getMonth()+1)}${p2(s.getDate())}`;
@@ -507,17 +574,6 @@ function openGoogleCal(b) {
   showToast('📅 구글 캘린더가 열렸어요!');
 }
 
-/* ── 저장/불러오기 ── */
-function saveDob()    { const v = document.getElementById('childDob').value;    if (v) localStorage.setItem('subsidyDob', v); }
-function saveRegion() { const v = document.getElementById('regionSelect').value; localStorage.setItem('subsidyRegion', v); }
-function loadSaved() {
-  const dob    = localStorage.getItem('subsidyDob');
-  const region = localStorage.getItem('subsidyRegion');
-  if (dob)    document.getElementById('childDob').value = dob;
-  if (region) document.getElementById('regionSelect').value = region;
-  if (dob)    calculate();
-}
-
 /* ── TOAST ── */
 function showToast(msg) {
   const el = document.getElementById('toast');
@@ -526,10 +582,82 @@ function showToast(msg) {
 }
 
 /* ── STATE ── */
-let cur = [];
 let BDATA = [];
-let doneSet = new Set(JSON.parse(localStorage.getItem('subsidyDone') || '[]'));
+let children = [{ dob: null }];   // [{dob: 'YYYY-MM-DD'|null}, ...]
+let childResults = [];              // array of benefit[] per child
+let curChildIdx = 0;               // 0-based; -1 = 다자녀 tab
 let curFilter = 'all';
+let doneSet = new Set(JSON.parse(localStorage.getItem('subsidyDoneV2') || '[]'));
+
+/* ── CHILD INPUT MANAGEMENT ── */
+function renderChildInputs() {
+  const container = document.getElementById('childRows');
+  container.innerHTML = children.map((c, i) => `
+    <div class="child-row">
+      <span class="child-label">${CHILD_EMOJIS[i]} ${CHILD_LABELS[i]}</span>
+      <div class="input-row" style="flex:1;margin-bottom:0">
+        <input type="date" id="childDob${i}" value="${c.dob || ''}" onchange="onDobChange(${i})">
+      </div>
+      ${i > 0 ? `<button class="btn-remove-child" onclick="removeChild(${i})" title="${CHILD_LABELS[i]} 삭제">✕</button>` : ''}
+    </div>
+  `).join('');
+
+  const btn = document.getElementById('btnAddChild');
+  if (children.length >= 3) {
+    btn.disabled = true;
+    btn.textContent = '✅ 최대 3명까지 입력 가능해요';
+  } else {
+    btn.disabled = false;
+    btn.textContent = `+ ${CHILD_LABELS[children.length]} 생년월일 추가`;
+  }
+}
+
+function addChild() {
+  if (children.length >= 3) return;
+  children.push({ dob: null });
+  renderChildInputs();
+  saveChildren();
+}
+
+function removeChild(i) {
+  children.splice(i, 1);
+  renderChildInputs();
+  saveChildren();
+  if (childResults.length > 0) {
+    curChildIdx = Math.min(curChildIdx, children.length - 1);
+    calculate();
+  }
+}
+
+function onDobChange(i) {
+  children[i].dob = document.getElementById(`childDob${i}`)?.value || null;
+  saveChildren();
+}
+
+/* ── PERSIST ── */
+function saveChildren() {
+  localStorage.setItem('subsidyDobs', JSON.stringify(children.map(c => c.dob || '')));
+}
+function saveRegion() {
+  localStorage.setItem('subsidyRegion', document.getElementById('regionSelect').value);
+}
+function loadSaved() {
+  try {
+    const dobsRaw = localStorage.getItem('subsidyDobs');
+    if (dobsRaw) {
+      const dobs = JSON.parse(dobsRaw);
+      children = dobs.map(d => ({ dob: d || null }));
+      if (!children.length) children = [{ dob: null }];
+    }
+  } catch(e) { children = [{ dob: null }]; }
+
+  renderChildInputs();
+
+  const region = localStorage.getItem('subsidyRegion');
+  if (region) document.getElementById('regionSelect').value = region;
+
+  if (children.some(c => c.dob)) calculate();
+}
 
 /* ── DATA LOAD ── */
 async function loadBenefits() {
@@ -561,27 +689,52 @@ async function loadBenefits() {
 
 /* ── CALCULATE ── */
 function calculate() {
-  const dobV = document.getElementById('childDob').value;
-  if (!dobV) { showToast('생년월일을 입력해 주세요 👶'); return; }
+  // sync dob values from DOM
+  children.forEach((c, i) => {
+    const el = document.getElementById(`childDob${i}`);
+    if (el) c.dob = el.value || null;
+  });
+
+  if (!children.some(c => c.dob)) { showToast('생년월일을 입력해 주세요 👶'); return; }
   if (!BDATA.length) { showToast('데이터 로딩 중이에요, 잠시 후 다시 시도해 주세요'); return; }
 
   const today = new Date(); today.setHours(0,0,0,0);
-  const dob   = new Date(dobV); dob.setHours(0,0,0,0);
-  const ageM  = (today.getFullYear() - dob.getFullYear()) * 12 + (today.getMonth() - dob.getMonth());
+  const totalChildren = children.filter(c => c.dob).length;
 
-  if (ageM < -12) { showToast('미래 생년월일은 입력할 수 없어요'); return; }
+  childResults = children.map((c, i) => {
+    if (!c.dob) return [];
+    const dob = new Date(c.dob); dob.setHours(0,0,0,0);
+    const ageM = (today.getFullYear() - dob.getFullYear()) * 12 + (today.getMonth() - dob.getMonth());
+    if (ageM < -12) return [];
 
-  cur = BDATA.filter(b => b.cond(ageM)).map(b => {
-    const deadlineDate = b.dl(dob);
-    return { ...b, dob, deadlineDate, dday: dd(deadlineDate, today) };
-  }).sort((a, b) => a.dday - b.dday);
+    return BDATA.filter(b => b.cond(ageM)).map(b => {
+      const deadlineDate = b.dl(dob);
+      const uid = `${i}_${b.id}`;
+      // 둘째+ 첫만남이용권은 300만원
+      const adjustedAmount = (b.id === 'b2' && i >= 1) ? '300만원 바우처 (둘째이상)' : b.amount;
+      const adjustedN      = (b.id === 'b2' && i >= 1) ? 300 : b.n;
+      return {
+        ...b, dob, deadlineDate, uid,
+        dday: ddays(deadlineDate, today),
+        childIdx: i,
+        childLabel: CHILD_LABELS[i],
+        amount: adjustedAmount,
+        n: adjustedN,
+        totalChildren,
+      };
+    }).sort((a, b) => a.dday - b.dday);
+  });
+
+  // pick first child with data as default tab
+  const firstValid = childResults.findIndex(r => r.length > 0);
+  if (curChildIdx >= children.length) curChildIdx = Math.max(0, firstValid);
 
   document.getElementById('emptyState').style.display = 'none';
   document.getElementById('sumStrip').classList.add('on');
   document.getElementById('filterTabs').classList.add('on');
   document.getElementById('infoSection').classList.add('on');
 
-  // 결과 사이 광고 — 첫 계산 시 1회만 push
+  // show mid ad once
   const adMid = document.getElementById('adMid');
   if (adMid && !adMid.dataset.pushed) {
     adMid.style.display = 'block';
@@ -589,6 +742,7 @@ function calculate() {
     adMid.dataset.pushed = '1';
   }
 
+  // region note
   const region = document.getElementById('regionSelect').value;
   const rNote  = document.getElementById('regionNote');
   if (region) {
@@ -598,33 +752,87 @@ function calculate() {
     rNote.classList.remove('on');
   }
 
+  renderChildTabs();
   renderSum();
   renderList(curFilter);
 }
 
+/* ── CHILD TABS ── */
+function renderChildTabs() {
+  const tabs = document.getElementById('childTabs');
+  const validChildren = children.filter(c => c.dob);
+
+  if (validChildren.length <= 1) {
+    tabs.classList.remove('on');
+    return;
+  }
+
+  tabs.classList.add('on');
+  const childBtns = children.map((c, i) => {
+    if (!c.dob) return '';
+    const active = curChildIdx === i ? ' on' : '';
+    return `<button class="ctab${active}" onclick="switchChild(${i},this)">${CHILD_EMOJIS[i]} ${CHILD_LABELS[i]}</button>`;
+  }).join('');
+
+  const multiActive = curChildIdx === -1 ? ' on' : '';
+  const multiBtn = `<button class="ctab multi${multiActive}" onclick="switchChild(-1,this)">👨‍👩‍👧 다자녀 혜택</button>`;
+
+  tabs.innerHTML = childBtns + multiBtn;
+}
+
+function switchChild(idx, btn) {
+  curChildIdx = idx;
+  document.querySelectorAll('.ctab').forEach(t => t.classList.remove('on'));
+  btn.classList.add('on');
+
+  // 다자녀 탭에서는 카테고리 필터 숨김
+  const filterTabs = document.getElementById('filterTabs');
+  if (idx === -1) {
+    filterTabs.classList.remove('on');
+  } else {
+    filterTabs.classList.add('on');
+    curFilter = 'all';
+    document.querySelectorAll('.ftab').forEach(t => t.classList.remove('on'));
+    document.querySelector('.ftab')?.classList.add('on');
+  }
+
+  renderSum();
+  renderList(curFilter);
+}
+
+/* ── SUM STRIP ── */
 function renderSum() {
-  const active = cur.filter(b => b.dday >= 0 && !doneSet.has(b.id));
+  if (curChildIdx === -1) {
+    document.getElementById('sumTotal').textContent  = '다자녀';
+    document.getElementById('sumUrgent').textContent = '+혜택';
+    document.getElementById('sumAmt').textContent    = '추가';
+    return;
+  }
+  const cur = childResults[curChildIdx] || [];
+  const active = cur.filter(b => b.dday >= 0 && !doneSet.has(b.uid));
   document.getElementById('sumTotal').textContent  = active.length + '개';
   document.getElementById('sumUrgent').textContent = active.filter(b => b.dday <= 7).length + '개';
   document.getElementById('sumAmt').textContent    = fmtN(cur.reduce((s, b) => s + b.n, 0));
 }
 
-function getBadge(dday, id) {
-  if (doneSet.has(id))  return { cls: 'pill-done',   t: '완료' };
-  if (dday < 0)         return { cls: 'pill-done',   t: '만료' };
-  if (dday === 0)       return { cls: 'pill-urgent', t: 'D-Day' };
-  if (dday <= 7)        return { cls: 'pill-urgent', t: `D-${dday}` };
-  if (dday <= 30)       return { cls: 'pill-soon',   t: `D-${dday}` };
-  return                       { cls: 'pill-ok',     t: `D-${dday}` };
+/* ── BADGE / STATUS ── */
+function getBadge(dday, uid) {
+  if (doneSet.has(uid))  return { cls: 'pill-done',   t: '완료' };
+  if (dday < 0)          return { cls: 'pill-done',   t: '만료' };
+  if (dday === 0)        return { cls: 'pill-urgent', t: 'D-Day' };
+  if (dday <= 7)         return { cls: 'pill-urgent', t: `D-${dday}` };
+  if (dday <= 30)        return { cls: 'pill-soon',   t: `D-${dday}` };
+  return                        { cls: 'pill-ok',     t: `D-${dday}` };
 }
 function getSt(b) {
-  if (doneSet.has(b.id)) return 'done';
-  if (b.dday < 0)        return 'expired';
-  if (b.dday <= 7)       return 'urgent';
-  if (b.dday <= 30)      return 'soon';
+  if (doneSet.has(b.uid)) return 'done';
+  if (b.dday < 0)         return 'expired';
+  if (b.dday <= 7)        return 'urgent';
+  if (b.dday <= 30)       return 'soon';
   return 'ok';
 }
 
+/* ── FILTER ── */
 function applyFilter(type, btn) {
   curFilter = type;
   document.querySelectorAll('.ftab').forEach(t => t.classList.remove('on'));
@@ -632,12 +840,20 @@ function applyFilter(type, btn) {
   renderList(type);
 }
 
+/* ── RENDER LIST ── */
 function renderList(f) {
   const list = document.getElementById('benefitList');
+
+  if (curChildIdx === -1) {
+    renderMultiChild(list);
+    return;
+  }
+
+  const cur = childResults[curChildIdx] || [];
   let filtered;
-  if (f === 'all')           filtered = cur;
+  if (f === 'all')              filtered = cur;
   else if (f.startsWith('cat_')) filtered = cur.filter(b => b.cat === f.slice(4));
-  else                       filtered = cur.filter(b => getSt(b) === f);
+  else                          filtered = cur.filter(b => getSt(b) === f);
 
   if (!filtered.length) {
     list.innerHTML = `<div style="text-align:center;padding:40px;color:var(--text-soft);font-size:14px">해당 항목이 없어요 😊</div>`;
@@ -645,13 +861,16 @@ function renderList(f) {
   }
 
   list.innerHTML = filtered.map((b, i) => {
-    const bd   = getBadge(b.dday, b.id);
-    const done = doneSet.has(b.id);
-    return `<div class="benefit-card${done ? ' done' : ''}" style="animation-delay:${i*.04}s" onclick="openModal('${b.id}')">
+    const bd   = getBadge(b.dday, b.uid);
+    const done = doneSet.has(b.uid);
+    const childBadge = children.filter(c => c.dob).length > 1
+      ? `<span style="font-size:10px;background:var(--accent-lt);color:var(--text-mid);font-weight:700;padding:1px 7px;border-radius:8px;margin-left:5px">${b.childLabel}</span>`
+      : '';
+    return `<div class="benefit-card${done ? ' done' : ''}" style="animation-delay:${i*.04}s" onclick="openModal('${b.uid}')">
       <div class="card-top">
         <div class="card-emoji">${b.emoji}</div>
         <div class="card-meta">
-          <div class="card-name">${b.name}</div>
+          <div class="card-name">${b.name}${childBadge}</div>
           <div class="card-amount">${b.amount}</div>
         </div>
         <div class="dday-pill ${bd.cls}">${bd.t}</div>
@@ -662,8 +881,8 @@ function renderList(f) {
           마감 ${b.dday >= 0 ? fmt(b.deadlineDate) : '기간 만료'}
         </div>
         <div class="card-actions">
-          ${!done ? `<button class="btn-done" onclick="toggleDone(event,'${b.id}')">완료</button>` : ''}
-          <button class="btn-cal" onclick="event.stopPropagation();openCalById('${b.id}')" title="캘린더 추가">📅</button>
+          ${!done ? `<button class="btn-done" onclick="toggleDone(event,'${b.uid}')">완료</button>` : ''}
+          <button class="btn-cal" onclick="event.stopPropagation();openCalByUid('${b.uid}')" title="캘린더 추가">📅</button>
           <a class="btn-apply" href="${b.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">신청</a>
         </div>
       </div>
@@ -671,24 +890,99 @@ function renderList(f) {
   }).join('');
 }
 
-function openCalById(id) {
-  const b = cur.find(x => x.id === id);
-  if (b) openGoogleCal(b);
+/* ── 다자녀 섹션 ── */
+function renderMultiChild(list) {
+  const cnt = children.filter(c => c.dob).length;
+  list.innerHTML = `
+    <div class="multi-banner">
+      <h3>👨‍👩‍👧 다자녀 추가 혜택 (${cnt}자녀 가구)</h3>
+
+      <div class="multi-item">
+        <div class="mi-emoji">🎁</div>
+        <div class="mi-body">
+          <div class="mi-badge">출생 지원</div>
+          <div class="mi-name">첫만남이용권 — 둘째 이상 300만원</div>
+          <div class="mi-desc">첫째 200만원보다 100만원 추가 지급. 출생신고 시 행복출산 원스톱 또는 주민센터에서 신청하세요.</div>
+        </div>
+      </div>
+
+      <div class="multi-item">
+        <div class="mi-emoji">💡</div>
+        <div class="mi-body">
+          <div class="mi-badge">공과금 절감</div>
+          <div class="mi-name">전기요금 감면</div>
+          <div class="mi-desc">2자녀 가구 월 최대 16,000원, 3자녀 이상 월 최대 20,000원 감면. 한국전력공사(국번없이 123)에 신청하세요.</div>
+        </div>
+      </div>
+
+      <div class="multi-item">
+        <div class="mi-emoji">🎭</div>
+        <div class="mi-body">
+          <div class="mi-badge">문화·여가</div>
+          <div class="mi-name">다자녀 우대카드 혜택</div>
+          <div class="mi-desc">전국 공공시설(박물관·수영장·도서관·국립공원 등) 할인 및 무료 이용. 주민센터에서 다자녀 우대카드 발급 후 사용.</div>
+        </div>
+      </div>
+
+      <div class="multi-item">
+        <div class="mi-emoji">🏠</div>
+        <div class="mi-body">
+          <div class="mi-badge">주거</div>
+          <div class="mi-name">공공임대 우선 공급 · 청약 가점</div>
+          <div class="mi-desc">국민임대·공공임대 입주 시 다자녀 가구 우선 공급 혜택. LH·SH 청약 시 가점 추가 적용됩니다.</div>
+        </div>
+      </div>
+
+      <div class="multi-item">
+        <div class="mi-emoji">🚗</div>
+        <div class="mi-body">
+          <div class="mi-badge">교통·이동</div>
+          <div class="mi-name">자동차 취득세 감면</div>
+          <div class="mi-desc">18세 미만 자녀 3명 이상: 7인승 이상 승합차·승용차 취득세 전액 면제. 2자녀는 50% 감면(지자체별 상이). 차량 구매 시 확인하세요.</div>
+        </div>
+      </div>
+
+      ${cnt >= 3 ? `<div class="multi-item">
+        <div class="mi-emoji">🎓</div>
+        <div class="mi-body">
+          <div class="mi-badge">3자녀 특별 혜택</div>
+          <div class="mi-name">대학 등록금 국가장학금 지원</div>
+          <div class="mi-desc">셋째 이상 자녀의 대학 등록금 전액 지원(소득 8분위 이하). 한국장학재단(kstudy.com)에서 매 학기 신청하세요.</div>
+        </div>
+      </div>` : ''}
+
+      <div class="multi-tip">
+        💡 <strong>다자녀 기준 변경 (2024년~):</strong> 대부분의 정부기관·지자체에서 2자녀 이상을 다자녀로 인정합니다.
+        지자체별 추가 출산장려금·혜택이 별도로 있으니 거주 지역 주민센터에 꼭 문의해 보세요.
+      </div>
+    </div>`;
 }
 
-function toggleDone(e, id) {
+/* ── DONE TOGGLE ── */
+function toggleDone(e, uid) {
   e.stopPropagation();
-  doneSet.has(id) ? doneSet.delete(id) : doneSet.add(id);
-  localStorage.setItem('subsidyDone', JSON.stringify([...doneSet]));
+  doneSet.has(uid) ? doneSet.delete(uid) : doneSet.add(uid);
+  localStorage.setItem('subsidyDoneV2', JSON.stringify([...doneSet]));
   renderSum();
   renderList(curFilter);
 }
 
+function openCalByUid(uid) {
+  for (const results of childResults) {
+    const b = results.find(x => x.uid === uid);
+    if (b) { openGoogleCal(b); return; }
+  }
+}
+
 /* ── MODAL ── */
-function openModal(id) {
-  const b = cur.find(x => x.id === id);
+function openModal(uid) {
+  let b = null;
+  for (const results of childResults) {
+    b = results.find(x => x.uid === uid);
+    if (b) break;
+  }
   if (!b) return;
-  const bd = getBadge(b.dday, id);
+  const bd = getBadge(b.dday, uid);
   document.getElementById('modalBody').innerHTML = `
     <div class="modal-hero">
       <div class="modal-emoji">${b.emoji}</div>
@@ -724,7 +1018,7 @@ function openModal(id) {
       <p>${b.tip}</p>
     </div>
     <div class="modal-cta">
-      <button class="cta-cal" onclick="openCalById('${id}')">📅 구글 캘린더에 추가</button>
+      <button class="cta-cal" onclick="openCalByUid('${uid}')">📅 구글 캘린더에 추가</button>
       <a class="cta-apply" href="${b.url}" target="_blank" rel="noopener">신청하러 가기 →</a>
     </div>`;
   document.getElementById('modalOverlay').classList.add('open');
@@ -732,12 +1026,12 @@ function openModal(id) {
 function closeModal() { document.getElementById('modalOverlay').classList.remove('open'); }
 function closeOuter(e) { if (e.target === document.getElementById('modalOverlay')) closeModal(); }
 document.addEventListener('keydown', e => {
-  if (e.key === 'Enter')  calculate();
   if (e.key === 'Escape') closeModal();
 });
 
 /* ── INIT ── */
 (async () => {
+  renderChildInputs();
   await loadBenefits();
   loadSaved();
 })();
