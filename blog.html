@@ -1504,35 +1504,82 @@ main{grid-template-columns:1fr;}
     <div style="font-size:13px;margin-top:8px;color:#bbb;">다른 키워드로 검색해보세요</div>
   </div>
 
+  <!-- 페이지네이션 -->
+  <div id="pagination" style="display:flex;justify-content:center;align-items:center;gap:8px;margin-top:28px;flex-wrap:wrap;"></div>
+
   <script>
+  const PER_PAGE = 6;
   let currentCat = '전체';
   let currentSearch = '';
+  let currentPage = 1;
 
-  function filterCards() {
-    const cards = document.querySelectorAll('.art-card');
-    let visible = 0;
-    cards.forEach(card => {
+  function getMatchedCards() {
+    const cards = Array.from(document.querySelectorAll('.art-card'));
+    return cards.filter(card => {
       const cat = card.dataset.category || '';
       const title = (card.dataset.title || '').toLowerCase();
       const desc = (card.dataset.desc || '').toLowerCase();
       const q = currentSearch.toLowerCase();
       const catMatch = currentCat === '전체' || cat === currentCat;
       const searchMatch = q === '' || title.includes(q) || desc.includes(q);
-      if (catMatch && searchMatch) {
-        card.style.display = '';
-        visible++;
-      } else {
-        card.style.display = 'none';
-      }
+      return catMatch && searchMatch;
     });
+  }
+
+  function renderPage() {
+    const matched = getMatchedCards();
+    const total = matched.length;
+    const totalPages = Math.ceil(total / PER_PAGE);
+    if (currentPage > totalPages) currentPage = 1;
+    const start = (currentPage - 1) * PER_PAGE;
+    const end = start + PER_PAGE;
+
+    document.querySelectorAll('.art-card').forEach(c => c.style.display = 'none');
+    matched.forEach((card, i) => {
+      card.style.display = (i >= start && i < end) ? '' : 'none';
+    });
+
     const cnt = document.getElementById('resultCount');
     const noResult = document.getElementById('noResult');
     if (currentCat === '전체' && currentSearch === '') {
       cnt.innerHTML = '';
     } else {
-      cnt.innerHTML = '검색 결과 <strong>' + visible + '</strong>개';
+      cnt.innerHTML = '검색 결과 <strong>' + total + '</strong>개';
     }
-    noResult.style.display = visible === 0 ? 'block' : 'none';
+    noResult.style.display = total === 0 ? 'block' : 'none';
+
+    renderPagination(totalPages);
+  }
+
+  function renderPagination(totalPages) {
+    const pg = document.getElementById('pagination');
+    pg.style.display = totalPages <= 1 ? 'none' : 'flex';
+    if (totalPages <= 1) return;
+
+    let html = '';
+    const btnBase = 'style="padding:8px 14px;border-radius:8px;border:1px solid #e8eaed;background:#fff;font-size:13px;font-weight:600;cursor:pointer;transition:.15s;"';
+    const btnActive = 'style="padding:8px 14px;border-radius:8px;border:1px solid #ff6b6b;background:#ff6b6b;color:#fff;font-size:13px;font-weight:600;cursor:pointer;"';
+
+    html += `<button ${currentPage===1?'style="padding:8px 14px;border-radius:8px;border:1px solid #e8eaed;background:#f9fafb;color:#ccc;font-size:13px;cursor:default;"':btnBase} onclick="goPage(${currentPage-1})">‹ 이전</button>`;
+    for (let i = 1; i <= totalPages; i++) {
+      html += `<button ${i===currentPage?btnActive:btnBase} onclick="goPage(${i})">${i}</button>`;
+    }
+    html += `<button ${currentPage===totalPages?'style="padding:8px 14px;border-radius:8px;border:1px solid #e8eaed;background:#f9fafb;color:#ccc;font-size:13px;cursor:default;"':btnBase} onclick="goPage(${currentPage+1})">다음 ›</button>`;
+    pg.innerHTML = html;
+  }
+
+  function goPage(p) {
+    const matched = getMatchedCards();
+    const totalPages = Math.ceil(matched.length / PER_PAGE);
+    if (p < 1 || p > totalPages) return;
+    currentPage = p;
+    renderPage();
+    document.querySelector('main').scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  function filterCards() {
+    currentPage = 1;
+    renderPage();
   }
 
   function setCategory(el) {
@@ -1555,6 +1602,8 @@ main{grid-template-columns:1fr;}
     document.getElementById('clearBtn').classList.remove('show');
     filterCards();
   }
+
+  renderPage();
   </script>
 
 
@@ -1613,11 +1662,16 @@ main{grid-template-columns:1fr;}
 
 
 <!-- 쿠팡파트너스 본문 배너 -->
-<div style="margin:24px auto;max-width:700px;padding:0 16px;">
+<div style="margin:24px auto;max-width:700px;padding:0 16px;overflow:hidden;">
   <p style="font-size:10px;color:#9ca3af;margin-bottom:6px;text-align:center;">이 광고는 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</p>
   <script src="https://ads-partners.coupang.com/g.js"></script>
-  <script>new PartnersCoupang.G({"id":998511,"template":"carousel","trackingCode":"AF1753457","width":"680","height":"140","tsource":""});</script>
+  <div class="coupang-banner-pc"><script>new PartnersCoupang.G({"id":998511,"template":"carousel","trackingCode":"AF1753457","width":"680","height":"140","tsource":""});</script></div>
+  <div class="coupang-banner-mo"><script>new PartnersCoupang.G({"id":998510,"template":"carousel","trackingCode":"AF1753457","width":"300","height":"250","tsource":""});</script></div>
 </div>
+<style>
+.coupang-banner-mo{display:none;}
+@media(max-width:700px){.coupang-banner-pc{display:none;}.coupang-banner-mo{display:block;}}
+</style>
 
 <footer>
   <div style="max-width:1100px;margin:0 auto;padding:32px 24px;text-align:center;">
