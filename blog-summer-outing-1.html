@@ -138,6 +138,13 @@ nav{display:flex;gap:2px;}.nav-a{padding:6px 12px;border-radius:6px;font-size:13
 .item-pros ul li{font-size:13px;color:var(--ink2);margin-bottom:5px;line-height:1.65;}
 .item-link{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;background:var(--orange);color:white;border-radius:8px;font-size:13px;font-weight:700;text-decoration:none;transition:.15s;}
 .item-link:hover{background:#ea6c0a;}
+/* 상품 이미지 */
+.item-img-wrap{margin-bottom:16px;border-radius:10px;overflow:hidden;background:#f9fafb;text-align:center;}
+.item-img-wrap img{width:100%;max-width:420px;height:280px;object-fit:contain;padding:12px;}
+.img-credit{font-size:10px;color:var(--ink3);text-align:right;padding:4px 10px 6px;border-top:1px solid var(--border);}
+.hero-img-wrap{margin-bottom:20px;border-radius:12px;overflow:hidden;background:#f9fafb;text-align:center;}
+.hero-img-wrap img{width:100%;max-width:480px;height:320px;object-fit:contain;padding:16px;}
+@media(max-width:640px){.item-img-wrap img{height:220px;}.hero-img-wrap img{height:240px;}}
 
 /* 박스 */
 .tip-box{background:var(--orange-soft);border:1px solid #fed7aa;border-radius:10px;padding:16px 18px;margin:20px 0;font-size:14px;color:#9a3412;line-height:1.75;}
@@ -185,7 +192,10 @@ footer a{color:#6b7280;text-decoration:none;}.footer-links{display:flex;justify-
 
 <div class="art-wrap">
 
-  <div class="art-thumb">☀️</div>
+  <div class="hero-img-wrap">
+    <img src="images/summer-outing-1-set.jpg" alt="이유부스터 파라솔 세트 — 아기가 야외에서 이유부스터에 앉아 파라솔로 햇빛을 가린 모습">
+    <div class="img-credit">이미지 출처: 쿠팡(coupang.com)</div>
+  </div>
 
   <div class="art-header">
     <div class="art-tags">
@@ -232,6 +242,10 @@ footer a{color:#6b7280;text-decoration:none;}.footer-links{display:flex;justify-
           <div class="item-num">1</div>
           <div class="item-name">이유부스터 <span class="item-badge badge-best">핵심템</span></div>
         </div>
+        <div class="item-img-wrap">
+          <img src="images/summer-outing-1-chair.jpg" alt="이유부스터 — 트레이 달린 접이식 야외 이유식 의자">
+          <div class="img-credit">이미지 출처: 쿠팡(coupang.com)</div>
+        </div>
         <p class="item-desc">
           이유식을 시작한 5~6개월 아기부터 사용할 수 있는 <strong>야외용 이유식 의자</strong>예요. 알루미늄 프레임 + 접이식 설계라 차 트렁크에 넣기도 가볍고, 펼치면 바로 사용 가능한 트레이 포함 구조예요. 안정적인 팔걸이와 발걸이가 있어서 아기가 흘러내리지 않고 바른 자세로 앉아 이유식을 먹을 수 있어요.
         </p>
@@ -254,6 +268,10 @@ footer a{color:#6b7280;text-decoration:none;}.footer-links{display:flex;justify-
         <div class="item-num-row">
           <div class="item-num">2</div>
           <div class="item-name">이유부스터 파라솔 <span class="item-badge badge-set">세트 추천</span></div>
+        </div>
+        <div class="item-img-wrap">
+          <img src="images/summer-outing-1-parasol.jpg" alt="이유부스터 파라솔 — 프린지 디테일의 UV 차단 파라솔">
+          <div class="img-credit">이미지 출처: 쿠팡(coupang.com)</div>
         </div>
         <p class="item-desc">
           이유부스터 본체에 클립으로 장착하는 <strong>전용 파라솔</strong>이에요. 자외선(UV) 차단 소재를 사용해서 여름 직사광선을 막아 주고, 360도 각도 조절이 가능해 햇빛 방향에 맞게 쉽게 돌릴 수 있어요. 데이지 패턴이 너무 귀엽다는 후기가 많아요. 이유부스터와 함께 구매하면 설치도 간편하고, 별도로 유모차 파라솔을 챙길 필요도 없어요.
