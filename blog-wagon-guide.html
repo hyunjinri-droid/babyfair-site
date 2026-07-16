@@ -100,6 +100,14 @@ strong{color:var(--ink);}
 .product-slot-btn{display:inline-block;background:var(--primary);color:#fff;font-size:12px;font-weight:700;padding:7px 16px;border-radius:8px;text-decoration:none;}
 .product-slot-btn:hover{background:var(--primary-mid);color:var(--primary);}
 .product-slot-notice{font-size:10px;color:var(--ink3);margin-top:6px;}
+.product-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin:20px 0;}
+.product-img-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;background:var(--border);}
+.product-img-row img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;}
+.product-card-body{padding:18px 20px;}
+.product-card-name{font-size:15px;font-weight:800;color:var(--ink);margin-bottom:6px;}
+.product-card-desc{font-size:13px;color:var(--ink2);line-height:1.6;margin-bottom:10px;}
+.product-card-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;}
+.ptag{font-size:11px;background:var(--primary-soft);color:var(--primary);border-radius:10px;padding:3px 9px;}
 .use-case-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:20px 0;}
 .use-case-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;}
 .use-case-icon{font-size:28px;margin-bottom:8px;}
@@ -353,13 +361,22 @@ footer{background:#0a0f1e;color:#9ca3af;padding:32px 24px;font-size:12px;text-al
   <p>처음 웨건을 구매하거나 간단한 공원 나들이 용도라면 폼포라 기본형이 가장 실용적입니다. 접이식 구조에 안전벨트, 기본 수납 공간을 갖추고 있어요.</p>
 
   <!-- 쿠팡 상품 슬롯 1 -->
-  <div class="product-slot">
-    <div class="product-slot-icon">🛒</div>
-    <div class="product-slot-body">
-      <div class="product-slot-name">폼포라 유아 웨건</div>
-      <div class="product-slot-desc">가볍고 접기 쉬운 접이식 웨건. 안전벨트·수납포켓 포함. 일상 나들이·마트 장보기에 딱 맞는 가성비 모델.</div>
+  <div class="product-card">
+    <div class="product-img-row">
+      <img src="images/wagon-pompola-1.jpg" alt="폼포라 유아웨건 캐노피 펼친 모습" loading="lazy">
+      <img src="images/wagon-pompola-3.jpg" alt="폼포라 유아웨건 접힌 모습" loading="lazy">
+      <img src="images/wagon-pompola-2.jpg" alt="폼포라 유아웨건 컵홀더 트레이 방수" loading="lazy">
+    </div>
+    <div class="product-card-body">
+      <div class="product-card-name">폼포라 유아 웨건</div>
+      <div class="product-card-desc">캐노피·컵홀더 트레이·방수 소재 기본 탑재. 컴팩트하게 접혀 차 트렁크 수납도 간편한 가성비 접이식 웨건.</div>
+      <div class="product-card-tags">
+        <span class="ptag">☀️ 캐노피 포함</span>
+        <span class="ptag">💧 방수 트레이</span>
+        <span class="ptag">🪗 접이식</span>
+      </div>
       <a class="product-slot-btn" href="https://link.coupang.com/a/fqc3O6zQ4W" target="_blank" rel="noopener noreferrer nofollow">쿠팡에서 상품 보러가기 →</a>
-      <div class="product-slot-notice">이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</div>
+      <div class="product-slot-notice">이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다. 이미지 출처: 쿠팡(coupang.com)</div>
     </div>
   </div>
 
