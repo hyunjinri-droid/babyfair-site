@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- 허브 -->
+  <url>
+    <loc>https://www.babyfairschedule.co.kr/taemong/</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- A군 · 불안·정보형 -->
+  <url>
+    <loc>https://www.babyfairschedule.co.kr/taemong/when/</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.babyfairschedule.co.kr/taemong/no-dream/</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.babyfairschedule.co.kr/taemong/who/</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.babyfairschedule.co.kr/taemong/multiple/</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.babyfairschedule.co.kr/taemong/or-not/</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- A군 · 추가 예정 (발행 시 lastmod 업데이트) -->
+  <!-- gender, buy-sell, record, why-vivid, bad-dream -->
+
+  <!-- B군 · 동물 태몽 (발행 시 추가) -->
+  <!-- snake, serpent, pig, tiger, dragon, fish, turtle, dog, cow, bird -->
+
+  <!-- C군 · 식물·사물·자연 (발행 시 추가) -->
+  <!-- peach, apple, pepper, jujube, flower, jewel, sun-moon, water, fire, poop -->
+
+</urlset>
