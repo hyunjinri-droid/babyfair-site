@@ -131,6 +131,12 @@ footer p{font-size:12px;line-height:1.8;}
 .f-links{display:flex;gap:16px;justify-content:center;margin:10px 0;flex-wrap:wrap;}
 .f-links a{color:rgba(255,255,255,.4);text-decoration:none;font-size:12px;}.f-links a:hover{color:rgba(255,255,255,.8);}
 
+/* 태몽 섹션 네비게이터 */
+.tn-nav{border-bottom:1px solid rgba(255,255,255,.1);overflow-x:auto;scrollbar-width:none;background:rgba(0,0,0,.25);}.tn-nav::-webkit-scrollbar{display:none;}
+.tn-inner2{max-width:1100px;margin:0 auto;padding:0 16px;display:flex;gap:2px;height:44px;align-items:center;}
+.tn-home{padding:5px 12px;border-radius:6px;font-size:12px;font-weight:700;color:rgba(255,255,255,.6);text-decoration:none;letter-spacing:.3px;white-space:nowrap;}.tn-home:hover,.tn-home.on{color:#c4b5fd;}
+.tn-sep{color:rgba(255,255,255,.2);margin:0 2px;font-size:16px;}
+.tn-a{padding:5px 12px;border-radius:6px;font-size:12px;font-weight:500;color:rgba(255,255,255,.55);text-decoration:none;white-space:nowrap;transition:.12s;}.tn-a:hover{color:#fff;background:rgba(255,255,255,.08);}
 @media(max-width:640px){.hero{padding:40px 20px;}.hub-wrap{padding:28px 16px 60px;}.card-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));}.cta-row{grid-template-columns:1fr;}.cat-desc{display:none;}header nav .nav-a{display:none;}}
 </style>
 </head>
@@ -148,6 +154,19 @@ footer p{font-size:12px;line-height:1.8;}
     <a class="h-cta" href="../index.html">일정 보기 →</a>
   </div>
 </header>
+
+<!-- 태몽 섹션 네비게이터 -->
+<nav class="tn-nav" aria-label="태몽 사전 목차" style="background:#1e1b4b;">
+  <div class="tn-inner2">
+    <a class="tn-home on" href="./">🌙 태몽 사전 허브</a>
+    <span class="tn-sep">·</span>
+    <a class="tn-a" href="when/">⏰ 태몽 시기</a>
+    <a class="tn-a" href="no-dream/">😕 안 꿨어요</a>
+    <a class="tn-a" href="who/">👨‍👩‍👧 누가 꾸나</a>
+    <a class="tn-a" href="multiple/">🌀 여러 개라면</a>
+    <a class="tn-a" href="or-not/">🔍 태몽 구별법</a>
+  </div>
+</nav>
 
 <!-- 히어로 -->
 <section class="hero">

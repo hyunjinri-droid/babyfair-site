@@ -104,6 +104,16 @@ footer{background:var(--ink);color:rgba(255,255,255,.4);padding:32px 24px;text-a
 footer p{font-size:12px;line-height:1.8;}
 .f-links{display:flex;gap:16px;justify-content:center;margin:10px 0;flex-wrap:wrap;}
 .f-links a{color:rgba(255,255,255,.4);text-decoration:none;font-size:12px;}.f-links a:hover{color:rgba(255,255,255,.8);}
+/* 태몽 섹션 네비게이터 */
+.tn-nav{background:#1e1b4b;border-bottom:1px solid rgba(255,255,255,.1);overflow-x:auto;scrollbar-width:none;}.tn-nav::-webkit-scrollbar{display:none;}
+.tn-inner{max-width:1100px;margin:0 auto;padding:0 16px;display:flex;gap:2px;height:44px;align-items:center;}
+.tn-home{padding:5px 12px;border-radius:6px;font-size:12px;font-weight:700;color:rgba(255,255,255,.5);text-decoration:none;letter-spacing:.3px;white-space:nowrap;}.tn-home:hover{color:rgba(255,255,255,.85);}
+.tn-sep{color:rgba(255,255,255,.2);margin:0 2px;font-size:16px;}
+.tn-a{padding:5px 12px;border-radius:6px;font-size:12px;font-weight:500;color:rgba(255,255,255,.6);text-decoration:none;white-space:nowrap;transition:.12s;}.tn-a:hover{color:#fff;background:rgba(255,255,255,.08);}.tn-a.on{color:#c4b5fd;background:rgba(196,181,253,.15);font-weight:700;}
+.inline-rel{background:var(--dream-soft);border:1px solid var(--dream-mid);border-radius:10px;padding:16px 18px;margin:22px 0;}
+.inline-rel .ir-label{font-size:11px;font-weight:700;color:var(--dream);margin-bottom:10px;letter-spacing:.3px;}
+.inline-rel .ir-links{display:flex;flex-direction:column;gap:0;}
+.inline-rel .ir-links a{font-size:13px;color:var(--ink);text-decoration:none;font-weight:600;padding:7px 0;border-bottom:1px solid var(--dream-mid);display:flex;align-items:center;gap:6px;}.inline-rel .ir-links a:last-child{border-bottom:none;padding-bottom:0;}.inline-rel .ir-links a:hover{color:var(--dream);}
 @media(max-width:640px){.art-wrap{padding:16px 16px 60px;}.art-header{padding:20px;}.art-body{padding:20px;}.art-title{font-size:22px;}header nav .nav-a{display:none;}}
 </style>
 </head>
@@ -121,6 +131,18 @@ footer p{font-size:12px;line-height:1.8;}
     <a class="h-cta" href="../../index.html">일정 보기 →</a>
   </div>
 </header>
+
+<nav class="tn-nav" aria-label="태몽 사전 목차">
+  <div class="tn-inner">
+    <a class="tn-home" href="../">🌙 태몽 사전</a>
+    <span class="tn-sep">·</span>
+    <a class="tn-a" href="../when/">⏰ 태몽 시기</a>
+    <a class="tn-a" href="../no-dream/">😕 안 꿨어요</a>
+    <a class="tn-a on" href="../who/">👨‍👩‍👧 누가 꾸나</a>
+    <a class="tn-a" href="../multiple/">🌀 여러 개라면</a>
+    <a class="tn-a" href="../or-not/">🔍 태몽 구별법</a>
+  </div>
+</nav>
 
 <div class="breadcrumb">
   <a href="../../index.html">홈</a><span>›</span>
@@ -181,6 +203,15 @@ footer p{font-size:12px;line-height:1.8;}
       <div class="person-body">
         <h3>친구·지인 태몽</h3>
         <p>임산부와 가까운 친구나 지인이 "네 꿈을 꿨어요"라고 알려주는 경우입니다. 전통에서는 이 경우도 태몽으로 받아들이기도 했습니다. 꿈을 사고파는 문화도 이와 연관되어 있습니다.</p>
+      </div>
+    </div>
+
+    <div class="inline-rel">
+      <div class="ir-label">📚 태몽 사전 관련 글</div>
+      <div class="ir-links">
+        <a href="../no-dream/">😕 태몽을 한 번도 못 꿨어요 — 걱정하지 않아도 되는 이유</a>
+        <a href="../multiple/">🌀 태몽을 여러 개 꿨어요 — 어떤 게 진짜인가요?</a>
+        <a href="../when/">⏰ 태몽은 언제 꾸나요? 임신 전·초기 시기 총정리</a>
       </div>
     </div>
 
