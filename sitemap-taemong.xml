@@ -41,8 +41,21 @@
     <priority>0.7</priority>
   </url>
 
+  <url>
+    <loc>https://www.babyfairschedule.co.kr/taemong/gender/</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.babyfairschedule.co.kr/taemong/buy-sell/</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <!-- A군 · 추가 예정 (발행 시 lastmod 업데이트) -->
-  <!-- gender, buy-sell, record, why-vivid, bad-dream -->
+  <!-- record, why-vivid, bad-dream -->
 
   <!-- B군 · 동물 태몽 (발행 시 추가) -->
   <!-- snake, serpent, pig, tiger, dragon, fish, turtle, dog, cow, bird -->
