@@ -54,8 +54,26 @@
     <priority>0.7</priority>
   </url>
 
+  <url>
+    <loc>https://www.babyfairschedule.co.kr/taemong/record/</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.babyfairschedule.co.kr/taemong/why-vivid/</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.babyfairschedule.co.kr/taemong/bad-dream/</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <!-- A군 · 추가 예정 (발행 시 lastmod 업데이트) -->
-  <!-- record, why-vivid, bad-dream -->
 
   <!-- B군 · 동물 태몽 (발행 시 추가) -->
   <!-- snake, serpent, pig, tiger, dragon, fish, turtle, dog, cow, bird -->
