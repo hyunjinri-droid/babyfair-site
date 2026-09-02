@@ -1594,9 +1594,10 @@ const FAIRS = [
 ];
 // BUILD:FAIRS:END
 
-const _now = new Date();
-_now.setHours(0,0,0,0);
-const TODAY = _now; // 오늘 날짜 자동 계산 (매일 갱신)
+// KST 기준 오늘 날짜 (UTC+9 보정)
+const _kst = new Date(Date.now() + 9*3600*1000);
+const _now = new Date(_kst.toISOString().slice(0,10) + 'T00:00:00+09:00');
+const TODAY = _now;
 const WD = ['일','월','화','수','목','금','토'];
 
 // ── 상태 ──
@@ -1605,11 +1606,11 @@ let mMonth = 'all', mType = 'all', mRegion = 'all', mSearch = '';
 // ── 유틸 ──
 function wd(d){ return WD[new Date(d).getDay()]; }
 function status(f){
-  const s=new Date(f.startDate); s.setHours(0,0,0,0);
-  const e=new Date(f.endDate); e.setHours(23,59,59,999);
+  const s=new Date(f.startDate+'T00:00:00+09:00');
+  const e=new Date(f.endDate+'T23:59:59+09:00');
   if(e<TODAY) return {l:'종료',c:'st-end'};
   if(s<=TODAY&&e>=TODAY) return {l:'진행중',c:'st-on'};
-  const d=Math.ceil((s-TODAY)/864e5);
+  const d=Math.round((s-TODAY)/864e5);
   if(d<=14) return {l:`D-${d}`,c:'st-soon'};
   return {l:'예정',c:'st-up'};
 }
@@ -1654,9 +1655,10 @@ function render(){
     return;
   }
 
-  // 월별 그룹
+  // 월별 그룹 (startDate 오름차순 정렬)
+  const list2 = list.slice().sort((a,b)=>a.startDate.localeCompare(b.startDate));
   const byM={};
-  list.forEach(f=>{if(!byM[f.month])byM[f.month]=[];byM[f.month].push(f);});
+  list2.forEach(f=>{if(!byM[f.month])byM[f.month]=[];byM[f.month].push(f);});
   const mLabels={1:'1월',2:'2월',3:'3월',4:'4월',5:'5월',6:'6월',7:'7월',8:'8월',9:'9월',10:'10월',11:'11월',12:'12월'};
 
   let html='';
@@ -1802,10 +1804,10 @@ function closeMo(){ document.getElementById('dim').classList.remove('open'); }
 
 // ── 사이드바 ──
 function renderUpcoming(){
-  const up=FAIRS.filter(f=>new Date(f.endDate)>=TODAY)
-    .sort((a,b)=>new Date(a.startDate)-new Date(b.startDate)).slice(0,5);
+  const up=FAIRS.filter(f=>new Date(f.endDate+'T23:59:59+09:00')>=TODAY)
+    .sort((a,b)=>new Date(a.startDate+'T00:00:00+09:00')-new Date(b.startDate+'T00:00:00+09:00')).slice(0,5);
   document.getElementById('upList').innerHTML=up.map(f=>{
-    const d=Math.ceil((new Date(f.startDate)-TODAY)/864e5);
+    const d=Math.round((new Date(f.startDate+'T00:00:00+09:00')-TODAY)/864e5);
     const dd=d<=0?'진행중':`D-${d}`;
     return `<div class="up-item" onclick="openMo(${f.id})">
       <div class="up-dot" style="background:${f.color}"></div>
