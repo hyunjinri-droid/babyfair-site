@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>달빛어린이병원·당번약국·휴일약국 찾기 | 야간 소아과·심야약국</title>
-<meta name="description" content="밤에 아픈 아이, 당황하지 마세요! 전국 달빛어린이병원, 당번약국, 휴일약국, 심야약국을 지역별로 빠르게 찾아드려요. 건강보험심사평가원 공공데이터 기반.">
-<meta name="keywords" content="달빛어린이병원, 당번약국, 휴일약국, 심야약국, 야간약국, 당번약국찾기, 휴일약국찾기, 달빛어린이병원 찾기, 야간 소아과, 밤에 아픈 아이">
+<title>달빛어린이병원·심야약국·당번약국·휴일약국 찾기 | 야간·연휴 소아과·약국</title>
+<meta name="description" content="밤·연휴에 아픈 아이, 당황하지 마세요! 전국 달빛어린이병원, 심야약국·당번약국·휴일약국(같은 약국, 지역마다 다른 이름)을 지역별로 빠르게 찾아드려요. 추석·연휴 당번약국도 확인하세요.">
+<meta name="keywords" content="달빛어린이병원, 심야약국, 당번약국, 휴일약국, 당번약국찾기, 휴일약국찾기, 연휴약국, 추석약국, 연휴당번약국, 야간약국, 달빛어린이병원 찾기, 야간 소아과, 밤에 아픈 아이">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://www.babyfairschedule.co.kr/night-care.html">
 
@@ -50,6 +50,22 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "달빛어린이병원은 보건복지부 지정 소아청소년과 병원으로 평일 야간(오후 11시까지)과 주말·공휴일에 운영합니다. 건강보험이 적용되어 응급실보다 저렴하게 이용할 수 있습니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "당번약국이랑 심야약국이랑 다른 건가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "같은 약국입니다. 공식 명칭은 대한약사회 공휴일지킴이약국이며, 지역·세대에 따라 심야약국, 당번약국, 휴일약국, 당직약국, 공휴일당번약국 등 다양한 이름으로 불립니다. 지역 약사회가 순번을 정해 야간과 공휴일에 운영하기 때문에 당번약국이라고도 합니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "추석·연휴에도 문 여는 약국(연휴 당번약국)을 찾으려면?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "이 페이지의 '당번약국·휴일약국 찾기' 탭에서 시·도를 선택하면 추석·연휴를 포함한 공휴일에도 운영하는 당번약국 목록을 확인할 수 있습니다. 연휴 당번약국은 지역 약사회가 정한 순번에 따라 달라지므로 방문 전 반드시 전화로 운영 여부를 확인하세요."
         }
       }
     ]
@@ -226,7 +242,7 @@ footer{background:rgba(17,24,39,.9);border-top:1px solid var(--border);padding:2
 <div class="hero">
   <div class="hero-badge">🌙 야간 육아 응급 서비스</div>
   <h1>밤에 아픈 아이,<br><span>당황하지 마세요</span></h1>
-  <p>전국 달빛어린이병원, <strong style="color:#a5b4fc;">당번약국·휴일약국·심야약국</strong>을<br>지역별로 빠르게 찾아드려요</p>
+  <p>전국 달빛어린이병원과 <strong style="color:#a5b4fc;">심야약국·당번약국·휴일약국</strong>을<br>지역별로 빠르게 찾아드려요</p>
   <div class="hero-stats">
     <div class="hs">
       <div class="hs-n">🌙</div>
@@ -242,6 +258,24 @@ footer{background:rgba(17,24,39,.9);border-top:1px solid var(--border);padding:2
     </div>
   </div>
 </div>
+
+<!-- 추석·연휴 시즌 배너 (10월 이후엔 display:none 처리) -->
+<div id="holidayBanner" style="position:relative;z-index:1;max-width:900px;margin:0 auto 0;padding:0 24px;">
+  <div style="background:linear-gradient(135deg,rgba(99,102,241,.18),rgba(16,185,129,.12));border:1px solid rgba(99,102,241,.35);border-radius:12px;padding:14px 18px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+    <span style="font-size:22px;">🎑</span>
+    <div style="flex:1;min-width:200px;">
+      <div style="font-size:13px;font-weight:700;color:#a5b4fc;margin-bottom:3px;">추석·10월 연휴 당번약국 찾기</div>
+      <div style="font-size:12px;color:var(--ink2);line-height:1.6;">연휴에도 문 여는 약국이 있어요. 아래 <strong style="color:var(--ink);">당번약국·휴일약국 찾기</strong> 탭에서 지역을 선택하면 휴일 운영 약국 목록을 바로 확인할 수 있어요.</div>
+    </div>
+  </div>
+</div>
+<script>
+// 10월 31일 이후에는 배너 자동 숨김
+(function(){
+  var d=new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Seoul'}));
+  if(d.getMonth()>9){var b=document.getElementById('holidayBanner');if(b)b.style.display='none';}
+})();
+</script>
 
 <!-- 탭 -->
 <div class="tabs-wrap">
@@ -306,8 +340,14 @@ footer{background:rgba(17,24,39,.9);border-top:1px solid var(--border);padding:2
     </a>
   </div>
   <div class="notice-box" style="display:none;" id="pharmacyNotice">
+    <div style="background:rgba(255,255,255,.06);border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:12px;line-height:1.8;">
+      <strong style="display:block;margin-bottom:4px;font-size:13px;">💊 이름은 달라도 같은 약국이에요</strong>
+      <span style="color:var(--ink2);">지역·연령대마다 부르는 이름이 달라요 — 아래는 모두 같은 제도를 가리켜요:</span><br>
+      <span style="color:#34d399;font-weight:600;">심야약국</span> = <span style="color:#34d399;font-weight:600;">당번약국</span> = <span style="color:#34d399;font-weight:600;">휴일약국</span> = <span style="color:#34d399;font-weight:600;">휴일지킴이약국</span> = <span style="color:#34d399;font-weight:600;">공휴일당번약국</span><br>
+      <span style="color:var(--ink2);">공식 명칭은 대한약사회 <strong style="color:var(--ink);">공휴일지킴이약국</strong>이에요. 지역 약사회가 순번을 정해 야간·공휴일에 운영해요.</span>
+    </div>
     <div style="margin-bottom:10px;">
-      💡 <strong>당번약국(휴일약국·심야약국)</strong>은 평일 오후 8시 이후 또는 주말·공휴일에도 운영하는 약국이에요. 지역 약사회가 순번을 정해 운영하며, '휴일지킴이약국'이라고도 해요.
+      💡 평일 오후 8시 이후·주말·공휴일(추석·설날 포함)에도 문을 여는 약국을 찾아드려요.
     </div>
     <div style="font-size:12px;line-height:1.7;margin-bottom:12px;opacity:.85;">
       ⚠️ 아래 정보는 <strong>건강보험심사평가원 공공데이터</strong> 기준이에요. 실제 운영시간·휴무일은 변경될 수 있어요.<br>
@@ -344,9 +384,9 @@ footer{background:rgba(17,24,39,.9);border-top:1px solid var(--border);padding:2
   </div>
 
   <div class="seo-info-box" style="margin-top:16px;">
-    <h2>💊 당번약국·휴일약국이란?</h2>
-    <p><strong>당번약국</strong>(휴일약국·휴일지킴이약국)은 지역 약사회가 순번을 정해 <strong>야간·공휴일·주말에도 문을 여는 약국</strong>이에요. '심야약국'이라고도 불리며, 달빛어린이병원에서 처방전을 받은 뒤 바로 들를 수 있어요.</p>
-    <p>위 탭에서 <strong>당번약국·휴일약국 찾기</strong>를 선택해 시·도를 고르면, 야간·주말 운영 약국 목록을 확인할 수 있어요. 운영 시간은 약국마다 다르므로 방문 전 반드시 전화로 확인하세요.</p>
+    <h2>💊 심야약국·당번약국·휴일약국, 다 같은 건가요?</h2>
+    <p>네, 모두 같은 약국이에요. 공식 명칭은 대한약사회의 <strong>공휴일지킴이약국</strong>인데, 지역·연령대에 따라 <strong>심야약국·당번약국·휴일약국·당직약국</strong>으로 제각각 불려요. 지역 약사회가 순번(당번)을 정해 야간과 공휴일에 운영하기 때문에 '당번약국'이라는 이름이 붙었어요.</p>
+    <p>추석·설날·10월 한글날 같은 <strong>연휴에도</strong> 당번약국은 운영해요. 위 탭에서 시·도를 선택하면 야간·주말·공휴일 운영 약국 목록을 바로 확인할 수 있어요. 운영시간은 약국마다 달라 방문 전 전화 확인을 권장해요.</p>
   </div>
 
   <h2>🗺️ 지역별 달빛어린이병원 바로 찾기</h2>
