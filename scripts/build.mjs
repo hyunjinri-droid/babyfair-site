@@ -121,7 +121,7 @@ const jsonld = {
           offers: {
             "@type": "Offer",
             url: ev.preRegUrl,
-            price: ev.preRegFree ? "0" : undefined,
+            price: ev.preRegFree === false ? undefined : "0",
             priceCurrency: "KRW",
             availability: "https://schema.org/InStock",
             validFrom: T,
