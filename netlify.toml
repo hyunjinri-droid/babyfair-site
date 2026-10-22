@@ -11,3 +11,62 @@
   to   = "https://www.babyfairschedule.co.kr/:splat"
   status = 301
   force  = true
+
+# 중복 블로그 글 301 리디렉션 (완전 중복 그룹 정리)
+
+# 부모급여 (→ blog-2026-parental-benefit.html 유지)
+[[redirects]]
+  from = "/blog-2026-parental-benefit-guide.html"
+  to   = "/blog-2026-parental-benefit.html"
+  status = 301
+
+[[redirects]]
+  from = "/blog-2026-parental-benefit-application.html"
+  to   = "/blog-2026-parental-benefit.html"
+  status = 301
+
+# 아기 예방접종 (→ blog-baby-vaccine-schedule-detail-2026.html 유지)
+[[redirects]]
+  from = "/blog-baby-vaccine-schedule-guide-2026.html"
+  to   = "/blog-baby-vaccine-schedule-detail-2026.html"
+  status = 301
+
+[[redirects]]
+  from = "/blog-baby-vaccine-schedule-monthly-2026.html"
+  to   = "/blog-baby-vaccine-schedule-detail-2026.html"
+  status = 301
+
+[[redirects]]
+  from = "/blog-vaccine-schedule-2026.html"
+  to   = "/blog-baby-vaccine-schedule-detail-2026.html"
+  status = 301
+
+# 신생아 수면 (→ blog-newborn-sleep-training-guide.html 유지)
+[[redirects]]
+  from = "/blog-newborn-sleep-pattern.html"
+  to   = "/blog-newborn-sleep-training-guide.html"
+  status = 301
+
+# 아기 침대 (→ blog-baby-crib-guide.html 유지)
+[[redirects]]
+  from = "/blog-baby-crib-bumper-safety.html"
+  to   = "/blog-baby-crib-guide.html"
+  status = 301
+
+# 달빛병원 vs 응급실 (→ blog-nightcare-vs-er.html 유지)
+[[redirects]]
+  from = "/blog-night-care-vs-er.html"
+  to   = "/blog-nightcare-vs-er.html"
+  status = 301
+
+# 임산부 건강보험 (→ blog-insurance.html 유지, canonical 기준)
+[[redirects]]
+  from = "/blog-insurance2.html"
+  to   = "/blog-insurance.html"
+  status = 301
+
+# 아동수당 (→ blog-2026-child-allowance.html 유지)
+[[redirects]]
+  from = "/blog-2026-aidong-allowance.html"
+  to   = "/blog-2026-child-allowance.html"
+  status = 301
