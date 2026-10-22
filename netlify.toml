@@ -70,3 +70,155 @@
   from = "/blog-2026-aidong-allowance.html"
   to   = "/blog-2026-child-allowance.html"
   status = 301
+
+# 유사 블로그 글 301 리디렉션 (유사 그룹 정리)
+
+# 임신 중 운동 (→ blog-pregnancy-exercise.html 유지)
+[[redirects]]
+  from = "/blog-2026-pregnancy-exercise-safe-prohibited.html"
+  to   = "/blog-pregnancy-exercise.html"
+  status = 301
+
+[[redirects]]
+  from = "/blog-pregnancy-safe-exercise-2026.html"
+  to   = "/blog-pregnancy-exercise.html"
+  status = 301
+
+[[redirects]]
+  from = "/blog-pregnancy-safe-exercise-check.html"
+  to   = "/blog-pregnancy-exercise.html"
+  status = 301
+
+[[redirects]]
+  from = "/blog-pregnancy-safe-exercise-guide.html"
+  to   = "/blog-pregnancy-exercise.html"
+  status = 301
+
+[[redirects]]
+  from = "/blog-pregnancy-safe-exercise-methods.html"
+  to   = "/blog-pregnancy-exercise.html"
+  status = 301
+
+[[redirects]]
+  from = "/blog-pregnancy-safe-exercise-prohibited.html"
+  to   = "/blog-pregnancy-exercise.html"
+  status = 301
+
+[[redirects]]
+  from = "/blog-pregnancy-safe-exercise-yoga-2026.html"
+  to   = "/blog-pregnancy-exercise.html"
+  status = 301
+
+[[redirects]]
+  from = "/blog-baby-fever-vaccine-check.html"
+  to   = "/blog-pregnancy-exercise.html"
+  status = 301
+
+[[redirects]]
+  from = "/blog-first-welcome-voucher-usage-guide-2026.html"
+  to   = "/blog-pregnancy-exercise.html"
+  status = 301
+
+[[redirects]]
+  from = "/blog-first-welcome-voucher-2026-1789975613802.html"
+  to   = "/blog-pregnancy-exercise.html"
+  status = 301
+
+# 임신 중 철분제 (→ blog-iron.html 유지)
+[[redirects]]
+  from = "/blog-iron-supplement-timing.html"
+  to   = "/blog-iron.html"
+  status = 301
+
+[[redirects]]
+  from = "/blog-pregnancy-iron-supplement-guide.html"
+  to   = "/blog-iron.html"
+  status = 301
+
+[[redirects]]
+  from = "/blog-pregnancy-iron-supplement-timing-guide.html"
+  to   = "/blog-iron.html"
+  status = 301
+
+[[redirects]]
+  from = "/blog-pregnancy-iron-supplement-anemia-2026.html"
+  to   = "/blog-iron.html"
+  status = 301
+
+[[redirects]]
+  from = "/blog-2026-firstwelcome-store-guide.html"
+  to   = "/blog-iron.html"
+  status = 301
+
+# 임신 중 카페인·음식 (→ blog-caffeine.html 유지)
+[[redirects]]
+  from = "/blog-pregnancy-caffeine-food-caution.html"
+  to   = "/blog-caffeine.html"
+  status = 301
+
+[[redirects]]
+  from = "/blog-pregnancy-caffeine-food-caution-2026.html"
+  to   = "/blog-caffeine.html"
+  status = 301
+
+[[redirects]]
+  from = "/blog-baby-vaccine-fever-care.html"
+  to   = "/blog-caffeine.html"
+  status = 301
+
+[[redirects]]
+  from = "/blog-firstwelcome-usage-2026.html"
+  to   = "/blog-caffeine.html"
+  status = 301
+
+# 첫만남이용권 (→ blog-2026-firstwelcome-usage.html 유지)
+[[redirects]]
+  from = "/blog-firstwelcome.html"
+  to   = "/blog-2026-firstwelcome-usage.html"
+  status = 301
+
+[[redirects]]
+  from = "/blog-first-welcome-voucher-2026.html"
+  to   = "/blog-2026-firstwelcome-usage.html"
+  status = 301
+
+[[redirects]]
+  from = "/blog-firstwelcome-usage-2026.html"
+  to   = "/blog-2026-firstwelcome-usage.html"
+  status = 301
+
+# 신생아 황달 (→ blog-jaundice.html 유지)
+[[redirects]]
+  from = "/blog-newborn-jaundice-phototherapy.html"
+  to   = "/blog-jaundice.html"
+  status = 301
+
+# 모유수유 (→ blog-breastfeeding.html 유지)
+[[redirects]]
+  from = "/blog-breastfeeding-success-guide.html"
+  to   = "/blog-breastfeeding.html"
+  status = 301
+
+# 아기 목욕 (→ blog-newborn-bath.html 유지)
+[[redirects]]
+  from = "/blog-baby-bath-products-guide.html"
+  to   = "/blog-newborn-bath.html"
+  status = 301
+
+# 아기 이유식 (→ blog-weaning.html 유지)
+[[redirects]]
+  from = "/blog-baby-weaning-start-2026.html"
+  to   = "/blog-weaning.html"
+  status = 301
+
+# 월령별 장난감 (→ blog-baby-toys-by-month.html 유지)
+[[redirects]]
+  from = "/blog-baby-development-toys-by-month.html"
+  to   = "/blog-baby-toys-by-month.html"
+  status = 301
+
+# 임신 중 약물 복용 (→ blog-pregnancy-safe-medication-caution.html 유지)
+[[redirects]]
+  from = "/blog-pregnancy-safe-medication-guide.html"
+  to   = "/blog-pregnancy-safe-medication-caution.html"
+  status = 301
