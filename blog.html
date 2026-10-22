@@ -258,6 +258,12 @@ main{grid-template-columns:1fr;}
 </div>
 
 
+<!-- AdSense 헤더 하단 광고 -->
+<div style="max-width:1100px;margin:0 auto;padding:12px 24px 0;">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2284090720087182" data-ad-slot="8862749299" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
+
 <!-- HERO -->
 <div class="blog-hero">
   <div class="blog-hero-in">
@@ -2971,10 +2977,27 @@ main{grid-template-columns:1fr;}
     const start = (currentPage - 1) * PER_PAGE;
     const end = start + PER_PAGE;
 
+    // 기존 중간 광고 제거
+    const existingMidAd = document.getElementById('mid-ad-blog');
+    if (existingMidAd) existingMidAd.remove();
+
     document.querySelectorAll('.art-card').forEach(c => c.style.display = 'none');
+    const visible = [];
     matched.forEach((card, i) => {
-      card.style.display = (i >= start && i < end) ? '' : 'none';
+      const show = (i >= start && i < end);
+      card.style.display = show ? '' : 'none';
+      if (show) visible.push(card);
     });
+
+    // 3번째 카드 뒤에 중간 광고 삽입
+    if (visible.length > 3) {
+      const adEl = document.createElement('div');
+      adEl.id = 'mid-ad-blog';
+      adEl.style.cssText = 'grid-column:1/-1;margin:4px 0;';
+      adEl.innerHTML = '<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2284090720087182" data-ad-slot="8862749299" data-ad-format="auto" data-full-width-responsive="true"></ins>';
+      visible[2].insertAdjacentElement('afterend', adEl);
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+    }
 
     const cnt = document.getElementById('resultCount');
     const noResult = document.getElementById('noResult');
