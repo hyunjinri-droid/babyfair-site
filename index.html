@@ -1102,6 +1102,12 @@ footer p { font-size: 11px; line-height: 1.8; }
 </section>
 
 
+<!-- AdSense 히어로 하단 광고 -->
+<div style="max-width:1100px;margin:0 auto;padding:16px 24px 0;">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2284090720087182" data-ad-slot="8862749299" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
+
 <!-- INTRO CONTENT SECTION - SEO 콘텐츠 -->
 <section class="intro-section">
   <div class="intro-inner">
@@ -2298,6 +2304,16 @@ function render(){
   });
 
   col.innerHTML=html;
+
+  // 첫 번째 월 블록 뒤에 광고 삽입
+  const monthBlocks = col.querySelectorAll('.month-block');
+  if(monthBlocks.length >= 1){
+    const adDiv = document.createElement('div');
+    adDiv.style.cssText = 'margin:8px 0;';
+    adDiv.innerHTML = '<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2284090720087182" data-ad-slot="8862749299" data-ad-format="auto" data-full-width-responsive="true"></ins>';
+    monthBlocks[0].insertAdjacentElement('afterend', adDiv);
+    (window.adsbygoogle = window.adsbygoogle || []).push({});
+  }
 }
 
 // ── 월 접기/펼치기 ──
