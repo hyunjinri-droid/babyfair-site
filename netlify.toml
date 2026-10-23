@@ -225,12 +225,6 @@
 
 # 베이비페어 관련 유사 글 301 리디렉션
 
-# 가이드 (→ blog-babyfair-guide.html 유지)
-[[redirects]]
-  from = "/blog-guide.html"
-  to   = "/blog-babyfair-guide.html"
-  status = 301
-
 # 준비물 (→ blog-checklist.html 유지)
 [[redirects]]
   from = "/blog-babyfair-supplies.html"
