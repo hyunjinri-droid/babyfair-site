@@ -222,3 +222,23 @@
   from = "/blog-pregnancy-safe-medication-guide.html"
   to   = "/blog-pregnancy-safe-medication-caution.html"
   status = 301
+
+# 베이비페어 관련 유사 글 301 리디렉션
+
+# 가이드 (→ blog-babyfair-guide.html 유지)
+[[redirects]]
+  from = "/blog-guide.html"
+  to   = "/blog-babyfair-guide.html"
+  status = 301
+
+# 준비물 (→ blog-checklist.html 유지)
+[[redirects]]
+  from = "/blog-babyfair-supplies.html"
+  to   = "/blog-checklist.html"
+  status = 301
+
+# 사전등록 (→ blog-2026-babyfair-prereg-benefits.html 유지)
+[[redirects]]
+  from = "/blog-prereg.html"
+  to   = "/blog-2026-babyfair-prereg-benefits.html"
+  status = 301
