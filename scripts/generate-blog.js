@@ -1,7 +1,10 @@
 /**
  * 블로그 자동 발행 스크립트
  * Claude API로 육아 블로그 포스트 생성 → HTML 저장 → blog.html 카드 추가 → sitemap.xml 업데이트
+ *
+ * ⚠️ 자동 발행 일시 중단 (2026-10-29): 키워드 풀 정리 전까지 실행 금지
  */
+throw new Error('자동 발행이 일시 중단되어 있습니다. 키워드 풀 정리 후 이 줄을 제거하세요.');
 
 const Anthropic = require('@anthropic-ai/sdk');
 const fs = require('fs');
