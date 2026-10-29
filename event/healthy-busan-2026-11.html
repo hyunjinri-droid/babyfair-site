@@ -212,7 +212,7 @@ footer p { font-size:11px; line-height:1.8; }
     <span style="font-size:16px;font-weight:400;color:var(--ink2);">(헬시 베이비페어) | 11.5(목) ~ 11.8(일) · 벡스코</span>
   </h1>
 
-  <div class="notice notice--warn"><strong>⏰ 사전등록 마감 D-0</strong> · 온라인 사전등록은 <strong>11월 5일(목)</strong>까지입니다. 마감 후에는 현장등록으로 무료 입장 가능합니다.</div>
+  <div id="prereg-notice" class="notice" style="display:none;"></div>
 
   <!-- 1. 기본 정보 -->
   <section>
@@ -222,7 +222,7 @@ footer p { font-size:11px; line-height:1.8; }
       <tr><th>기간</th><td>11월 5일(목) ~ 8일(일) · 4일간</td></tr>
       <tr><th>운영 시간</th><td>오전 10:00 ~ 오후 18:00</td></tr>
       <tr><th>장소</th><td>벡스코 제2전시장 5홀 (부산 해운대구)</td></tr>
-      <tr><th>주최</th><td>부산일보 · 부산시 (2회째 개최)</td></tr>
+      <tr><th>주최</th><td>부산일보 · 부산시</td></tr>
       <tr><th>입장료</th><td>사전등록·현장등록 모두 무료</td></tr>
       <tr><th>사전등록 마감</th><td><strong>11월 5일(목)</strong></td></tr>
       <tr><th>부스배치도</th><td><a href="https://healthybabyfair.co.kr/__page/bexco/booth.php" target="_blank" rel="noopener">공식 부스배치도 보기 →</a></td></tr>
@@ -235,7 +235,7 @@ footer p { font-size:11px; line-height:1.8; }
     <h2>사전등록 · 무료입장 &amp; 이벤트</h2>
 
     <div class="hl-box--amber" style="margin-bottom:14px;">
-      <strong>사전등록 마감 11/5(목)</strong> — 오늘까지 온라인 등록 시 무료입장 바코드 발급. 마감 이후에는 현장 당일 등록도 무료로 운영됩니다.
+      <strong>사전등록 마감 11/5(목)</strong> — 11월 5일(목)까지 온라인 사전등록 시 무료입장 바코드 발급. 마감 이후에는 현장 당일 등록도 무료로 운영됩니다.
     </div>
 
     <p style="font-size:14px;color:var(--ink2);line-height:1.7;margin-bottom:14px;">사전등록 완료 후 인증·공유 이벤트에 참여하면 유모차·카시트 등 육아용품을 경품으로 받을 수 있습니다. 인스타그램 해시태그·지인 공유 등 방법은 공식 홈페이지 이벤트 페이지에서 확인하세요. 행사 기간 중에는 매일 선착순 현장 선물도 준비되어 있습니다.</p>
@@ -245,17 +245,34 @@ footer p { font-size:11px; line-height:1.8; }
       <p style="font-size:12px;color:var(--ink3);margin-bottom:8px;">이 안내는 텐핑 소문내기 활동으로, 신청 시 운영자가 일정 수수료를 받습니다.</p>
       <div style="display:inline-block; width:100%; text-align:center;"><div style="display:inline-block;"><div style="margin:10px; padding:15px; background:#fff; border:1px solid #dae2e3;"><div style="width:100%; max-width:800px;"><a href="https://iryan.kr/t8g85ldl5x" target="_blank" rel="sponsored nofollow"><img src="https://img.tenping.kr/Content/Upload/Images/2026100616590001_Dis_20261021201642.png" width="100%" style="width:100%; height:auto; border-radius:0;" alt="2026 부산 헬시 베이비 페스티벌 무료입장 사전등록"></a></div><div style="margin:10px;"><div style="margin:5px 0; color:#333; font-size:16px; line-height:1.4em; height:2.6em; display:-webkit-box; text-overflow:ellipsis; -webkit-line-clamp:2; -webkit-box-orient:vertical; word-wrap:break-word; font-weight:300; text-align:left; overflow:hidden; max-width:400px;">베베핀 무료공연까지! 2026년 11월 부산 베이비페어, 참가브랜드 부스배치도 공개 무료입장 이벤트</div></div><div style="width:100%; margin:20px 0 5px; background-color:#f5fbff; text-align:left;"><a href="https://iryan.kr/t8g85ldl5x" target="_blank" rel="sponsored nofollow" style="text-decoration:none; display:block;"><div style="padding:17px 0; background-color:#dcf3ff;"><div style="line-height:1.4; margin:0; padding:0 0 0 20px; color:#234f83; font-size:21px; font-weight:300; display:inline-block;">무료입장 사전등록하기</div><div style="margin-right:20px; margin-top:-6px; float:right; display:inline-block; color:#234f83; font-size:30px; font-weight:300;">»</div></div></a></div></div></div></div>
     </div>
-    <div id="prereg-closed" style="display:none; margin-top:4px; padding:14px 18px; background:var(--green-soft); border:1px solid #6ee7b7; border-radius:var(--radius-sm); font-size:14px; color:var(--ink2); line-height:1.6;">
-      온라인 사전등록은 마감됐습니다. <strong>현장등록도 무료</strong>로 운영되니 당일 바로 입장하실 수 있습니다.
-    </div>
+    <div id="prereg-closed"></div>
     <script>
     (function(){
-      var end = new Date('2026-11-05T23:59:59+09:00');
-      if(new Date() > end){
-        var b = document.getElementById('tenping-banner');
-        var c = document.getElementById('prereg-closed');
-        if(b) b.style.display = 'none';
-        if(c) c.style.display = 'block';
+      var deadline = new Date('2026-11-05T23:59:59+09:00');
+      var now = new Date();
+      var noticeEl = document.getElementById('prereg-notice');
+      var bannerEl = document.getElementById('tenping-banner');
+      var closedEl = document.getElementById('prereg-closed');
+
+      if(now > deadline){
+        if(bannerEl) bannerEl.style.display = 'none';
+        if(closedEl){
+          closedEl.style.cssText = 'margin-top:4px;padding:14px 18px;background:var(--green-soft);border:1px solid #6ee7b7;border-radius:var(--radius-sm);font-size:14px;color:var(--ink2);line-height:1.6;';
+          closedEl.innerHTML = '온라인 사전등록은 마감됐습니다. <strong>현장등록도 무료</strong>로 운영되니 당일 바로 입장하실 수 있습니다.';
+        }
+      } else {
+        var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        var dDay = Math.round((new Date(2026,10,5) - today) / 86400000);
+        if(noticeEl){
+          noticeEl.style.display = 'block';
+          if(dDay === 0){
+            noticeEl.className = 'notice notice--live';
+            noticeEl.innerHTML = '<strong>⏰ 사전등록 D-0 · 오늘까지</strong> 온라인 사전등록 마감일입니다. 지금 바로 등록하세요.';
+          } else {
+            noticeEl.className = 'notice notice--warn';
+            noticeEl.innerHTML = '<strong>⏰ 사전등록 D-' + dDay + '</strong> · 온라인 사전등록 마감 <strong>11월 5일(목)</strong>까지입니다.';
+          }
+        }
       }
     })();
     </script>
@@ -287,7 +304,7 @@ footer p { font-size:11px; line-height:1.8; }
       </div>
       <div class="content-card">
         <div class="cc-title">🚗 지바겐 푸쉬카 무료 대여</div>
-        <div class="cc-desc">지바겐 스타일 프리미엄 푸쉬카를 무료로 빌릴 수 있습니다. 선착순이므로 일찍 입장하세요.</div>
+        <div class="cc-desc">지바겐 스타일 푸쉬카를 무료로 빌릴 수 있습니다. 선착순이므로 일찍 입장하세요.</div>
       </div>
       <div class="content-card">
         <div class="cc-title">🎪 지바겐 선착순 특가</div>
@@ -367,7 +384,7 @@ footer p { font-size:11px; line-height:1.8; }
     <ul>
       <li><strong>지하철 권장</strong> — 부산 지하철 2호선 해운대역 5번 출구에서 도보 약 5분.</li>
       <li>사전등록을 마쳐두면 바코드로 바로 입장할 수 있어 줄 서는 시간을 줄일 수 있습니다.</li>
-      <li>주말(토·일) 오후 13~16시가 가장 혼잡합니다. 목·금 오전이 여유롭습니다.</li>
+      <li>주말 오후는 붐비는 편이라 오전 방문을 추천합니다. 평일은 여유롭습니다.</li>
       <li>베베핀 포토타임 번호표는 공연 시작 전 선착순 — 행사장 도착 후 바로 확인하세요.</li>
       <li>수유실·기저귀 교환대 위치는 입장 후 안내 데스크에서 확인하세요.</li>
       <li>벡스코 주차: 15분 이내 무료, 이후 10분당 450원. 주말은 혼잡합니다.</li>
