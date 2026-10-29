@@ -779,6 +779,7 @@ nav {
   border: 1px solid var(--primary-mid); transition: .15s;
 }
 .c-prereg:hover { background: var(--primary); color: white; }
+.c-prereg { text-decoration: none; }
 
 /* MID AD */
 /* ── SIDEBAR ── */
@@ -2259,6 +2260,7 @@ function render(){
               <span>⏱ ${f.time}</span>
             </div>
             ${!isEnded&&f.prereg?`<div class="c-prereg" onclick="event.stopPropagation();window.open('${f.officialUrl}','_blank')">📋 사전등록 →</div>`:''}
+            ${f.eventPageUrl&&!isEnded?`<a class="c-prereg" href="${f.eventPageUrl}" onclick="event.stopPropagation()">무료입장·혜택 안내 →</a>`:''}
           </div>
           <div class="c-right">
             <div class="c-period">${m}/${f.day}(${wd(f.startDate)})~${ed}(${ew})</div>
