@@ -121,7 +121,7 @@ const jsonld = {
           offers: {
             "@type": "Offer",
             url: ev.preRegUrl,
-            price: ev.preRegFree === false ? undefined : "0",
+            price: ev.preRegFree ? "0" : undefined,
             priceCurrency: "KRW",
             availability: "https://schema.org/InStock",
             validFrom: T,
@@ -235,6 +235,9 @@ for (const ev of events) {
     .replaceAll("{{CONFIRM_NOTE}}", confirmNote)
     .replaceAll("{{VERIFIED_AT}}", ev.verifiedAt || "")
     .replaceAll("{{JSONLD}}", ev.status === "ended" ? "" : `<script type="application/ld+json">${JSON.stringify(jsonld["@graph"].find((e) => e.url === ev.url) || {})}</script>`);
+
+  // customPage: true 이면 수작업 편집 파일이므로 덮어쓰지 않는다
+  if (ev.customPage) return;
 
   writeFileSync(join(PATHS.eventDir, `${ev.id}.html`), out);
 }
