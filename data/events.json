@@ -21,7 +21,6 @@
     "verifiedAt": "이 정보를 마지막으로 공식 사이트에서 확인한 날짜 YYYY-MM-DD",
     "notes": "특이사항 (선택)"
   },
-
   "events": [
     {
       "id": "bebe-busan-2026-09",
@@ -371,14 +370,15 @@
       "address": "",
       "startDate": "2026-11-26",
       "endDate": "2026-11-29",
-      "openTime": "",
-      "closeTime": "",
-      "officialUrl": "https://cobe.co.kr/",
-      "preRegUrl": "",
-      "preRegFree": null,
+      "openTime": "10:00",
+      "closeTime": "18:00",
+      "officialUrl": "https://iryan.kr/t8g85lb35h",
+      "preRegUrl": "https://iryan.kr/t8g85lb35h",
+      "preRegFree": true,
       "confirmed": true,
-      "verifiedAt": "2026-09-14",
-      "notes": "코베 연간 일정에서 확인. 11월 회차 신청 링크는 아직 미오픈(현재 수원 신청 페이지는 9월 회차). 관람시간 추후 확인."
+      "verifiedAt": "2026-11-16",
+      "notes": "텐핑 CPA 배너 적용 수작업 페이지.",
+      "customPage": true
     },
     {
       "id": "momnbaby-kintex-2026-11",
@@ -415,12 +415,13 @@
       "endDate": "2026-12-06",
       "openTime": "10:00",
       "closeTime": "18:00",
-      "officialUrl": "https://cobe.co.kr/__page/exco/summary.php",
-      "preRegUrl": "https://cobe.co.kr/__page/exco/visit_apply_form.php",
+      "officialUrl": "https://iryan.kr/t8hcsd3pv5",
+      "preRegUrl": "https://iryan.kr/t8hcsd3pv5",
       "preRegFree": true,
       "confirmed": true,
-      "verifiedAt": "2026-09-14",
-      "notes": "사전등록 또는 현장등록 시 무료. 입장권 구매 시 10,000원. 사전등록 마감 2026-12-02."
+      "verifiedAt": "2026-11-18",
+      "notes": "텐핑 CPA 배너 적용 수작업 페이지.",
+      "customPage": true
     },
     {
       "id": "incheon-baby-2026-12",
@@ -506,7 +507,6 @@
       "verifiedAt": "2026-09-14",
       "notes": "입장마감 17:30. 온라인·초대권 사전등록자 무료. 일반 현장등록 5,000원이나 임산부·육아 중인 가족 무료."
     },
-
     {
       "id": "cobe-suwon-2026-01",
       "name": "2026 코베 베이비페어 수원",
@@ -821,6 +821,44 @@
       "confirmed": false,
       "verifiedAt": "2026-09-02",
       "notes": "종료된 행사."
+    },
+    {
+      "id": "cobe-daejeon-2026-12",
+      "name": "2026 코베 베이비페어 대전",
+      "organizer": "코베",
+      "organizerUrl": "https://www.cobe.co.kr",
+      "type": "babyfair",
+      "venue": "대전컨벤션센터 제2전시장(DCC)",
+      "city": "대전",
+      "region": "기타 지방",
+      "startDate": "2026-12-10",
+      "endDate": "2026-12-13",
+      "openTime": "10:00",
+      "closeTime": "18:00",
+      "officialUrl": "https://www.cobe.co.kr",
+      "preRegUrl": "",
+      "preRegFree": true,
+      "confirmed": true,
+      "verifiedAt": "2026-11-18"
+    },
+    {
+      "id": "cobe-gwangju-2026-12",
+      "name": "2026 코베 베이비페어 광주",
+      "organizer": "코베",
+      "organizerUrl": "https://www.cobe.co.kr",
+      "type": "babyfair",
+      "venue": "김대중컨벤션센터(KDJ Center)",
+      "city": "광주",
+      "region": "기타 지방",
+      "startDate": "2026-12-10",
+      "endDate": "2026-12-13",
+      "openTime": "10:00",
+      "closeTime": "18:00",
+      "officialUrl": "https://www.cobe.co.kr",
+      "preRegUrl": "",
+      "preRegFree": true,
+      "confirmed": true,
+      "verifiedAt": "2026-11-18"
     }
   ]
 }
