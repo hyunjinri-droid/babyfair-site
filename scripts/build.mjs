@@ -237,7 +237,7 @@ for (const ev of events) {
     .replaceAll("{{JSONLD}}", ev.status === "ended" ? "" : `<script type="application/ld+json">${JSON.stringify(jsonld["@graph"].find((e) => e.url === ev.url) || {})}</script>`);
 
   // customPage: true 이면 수작업 편집 파일이므로 덮어쓰지 않는다
-  if (ev.customPage) return;
+  if (ev.customPage) continue;
 
   writeFileSync(join(PATHS.eventDir, `${ev.id}.html`), out);
 }
