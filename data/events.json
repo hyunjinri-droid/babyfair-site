@@ -859,6 +859,27 @@
       "preRegFree": true,
       "confirmed": true,
       "verifiedAt": "2026-11-18"
+    },
+    {
+      "id": "befe-coex-2027-04",
+      "name": "2027 베이비페어 (베페) 코엑스",
+      "organizer": "베페",
+      "organizerUrl": "https://www.befe.co.kr",
+      "type": "babyfair",
+      "venue": "코엑스(COEX) Hall A",
+      "city": "서울",
+      "region": "서울",
+      "address": "서울특별시 강남구 영동대로 513 코엑스",
+      "startDate": "2027-04-01",
+      "endDate": "2027-04-04",
+      "openTime": "10:00",
+      "closeTime": "18:00",
+      "officialUrl": "https://www.befe.co.kr",
+      "preRegUrl": "",
+      "preRegFree": true,
+      "confirmed": false,
+      "verifiedAt": "2026-11-27",
+      "notes": "베페 공식 앱 기준 예상 일정. 코엑스 공식 일정에는 미등재. 방문 전 확인 필요."
     }
   ]
 }
